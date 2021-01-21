@@ -1,0 +1,33 @@
+server:
+  port: 8080
+management:
+  endpoint:
+    metrics:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "info,health,metrics,loggers"
+      base-path: /manage
+
+spring:
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+
+
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: sandbox
+
+server:
+  port: 8180
+
+logging:
+  level:
+    org.cdsframework.rckms: DEBUG
+
