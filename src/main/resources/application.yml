@@ -15,6 +15,10 @@ spring:
     serialization:
       WRITE_DATES_AS_TIMESTAMPS: false
 
+  data:
+    mongodb:
+      auto-index-creation: true
+      uri: ${mongodb.uri}
 
 
 ---
@@ -31,3 +35,5 @@ logging:
   level:
     org.cdsframework.rckms: DEBUG
 
+mongodb:
+  uri: mongodb://localhost:8888/ss-comparison-service
