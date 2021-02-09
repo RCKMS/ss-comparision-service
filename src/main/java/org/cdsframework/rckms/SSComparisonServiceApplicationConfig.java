@@ -8,15 +8,21 @@ import org.cdsframework.rckms.dao.converter.OffsetDateTimeWriteConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @Configuration
+@EnableAsync
+@EnableScheduling
 public class SSComparisonServiceApplicationConfig
 {
   @Bean
-  public MongoCustomConversions mongoCustomConversions() {
+  public MongoCustomConversions mongoCustomConversions()
+  {
     List list = new ArrayList<>();
     list.add(new OffsetDateTimeReadConverter());
     list.add(new OffsetDateTimeWriteConverter());
     return new MongoCustomConversions(list);
   }
+
 }

@@ -1,6 +1,7 @@
 package org.cdsframework.rckms.dao;
 
 import java.time.OffsetDateTime;
+import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
@@ -31,6 +32,7 @@ public class QueueRecord
   private String comparisonSetKey;
 
   @Field
+  @Indexed
   private OffsetDateTime createDate;
 
   @Field
@@ -112,5 +114,28 @@ public class QueueRecord
   public void setError(String error)
   {
     this.error = error;
+  }
+
+  @Override
+  public String toString()
+  {
+    return id + "/" + comparisonSetKey;
+  }
+
+  @Override
+  public boolean equals(Object o)
+  {
+    if (!(o instanceof QueueRecord))
+      return false;
+    if (this == o)
+      return true;
+    QueueRecord other = (QueueRecord) o;
+    return Objects.equals(this.getComparisonSetKey(), other.getComparisonSetKey());
+  }
+
+  @Override
+  public int hashCode()
+  {
+    return Objects.hash(this.getComparisonSetKey());
   }
 }

@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
-import org.cdsframework.rckms.SSComparisonService;
+import org.cdsframework.rckms.ManagementService;
 import org.cdsframework.rckms.dao.ComparisonSet;
 import org.cdsframework.rckms.dao.ServiceOutput;
 import org.springframework.http.ResponseEntity;
@@ -22,9 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
 @Validated
 public class ComparisonSetController
 {
-  private SSComparisonService comparisonService;
+  private ManagementService comparisonService;
 
-  public ComparisonSetController(SSComparisonService comparisonService)
+  public ComparisonSetController(ManagementService comparisonService)
   {
     this.comparisonService = comparisonService;
   }

@@ -20,6 +20,16 @@ spring:
       auto-index-creation: true
       uri: ${mongodb.uri}
 
+processor:
+  enabled: true
+
+  # Async config for the processor threads
+  thread-pool:
+    initial-size: 10
+    max-size: 30
+
+  # How often to check for new queue records if the queue is empty
+  query-frequency: 10s
 
 ---
 

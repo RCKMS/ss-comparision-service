@@ -13,14 +13,14 @@ import org.cdsframework.rckms.rest.AddOutputRequest;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SSComparisonService
+public class ManagementService
 {
 
   private QueueRepository queueRepo;
   private ComparisonSetRepository comparisonSetRepo;
   private ServiceOutputRepository serviceOutputRepo;
 
-  public SSComparisonService(QueueRepository queueRepo, ComparisonSetRepository comparisonSetRepo,
+  public ManagementService(QueueRepository queueRepo, ComparisonSetRepository comparisonSetRepo,
       ServiceOutputRepository serviceOutputRepo)
   {
     this.queueRepo = queueRepo;
@@ -36,6 +36,7 @@ public class SSComparisonService
 
     // 2. upsert comparison_set doc
     int matchCount = comparisonSetRepo.addOrUpdate(comparisonSetKey);
+    
     // If matchCount > 0, then the comparisonSetKey already existed and we did an update instead of insert.
     // If so, then this comparison set is now ready for processing so we can add the queue record
     if (matchCount > 0)
@@ -55,5 +56,10 @@ public class SSComparisonService
   public List<ServiceOutput> getServiceOutput(String comparisonSetKey)
   {
     return serviceOutputRepo.findByComparisonSetKey(comparisonSetKey);
+  }
+
+  public void saveComparisonSet(ComparisonSet comparisonSet)
+  {
+    comparisonSetRepo.save(comparisonSet);
   }
 }
