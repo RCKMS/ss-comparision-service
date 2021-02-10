@@ -16,6 +16,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 public class ProcessorConfig
 {
   private Duration queryFrequency;
+  private boolean deleteOnComplete = true;
 
   @Bean
   @ConfigurationProperties(prefix = "processor.thread-pool")
@@ -43,5 +44,15 @@ public class ProcessorConfig
   public void setQueryFrequency(Duration queryFrequency)
   {
     this.queryFrequency = queryFrequency;
+  }
+
+  public boolean isDeleteOnComplete()
+  {
+    return deleteOnComplete;
+  }
+
+  public void setDeleteOnComplete(boolean deleteOnComplete)
+  {
+    this.deleteOnComplete = deleteOnComplete;
   }
 }

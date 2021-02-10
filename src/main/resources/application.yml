@@ -31,6 +31,9 @@ processor:
   # How often to check for new queue records if the queue is empty
   query-frequency: 10s
 
+  # If false, then queue records will be set to COMPLETE instead of deleted (useful for testing)
+  delete-on-complete: true
+
 ---
 
 spring:
@@ -46,4 +49,4 @@ logging:
     org.cdsframework.rckms: DEBUG
 
 mongodb:
-  uri: mongodb://localhost:8888/ss-comparison-service
+  uri: mongodb://localhost:8888/ss-comparison-service?maxIdleTimeMS=300000

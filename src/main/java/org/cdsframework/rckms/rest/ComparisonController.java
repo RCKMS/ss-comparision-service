@@ -7,7 +7,9 @@ import javax.validation.Valid;
 
 import org.cdsframework.rckms.ManagementService;
 import org.cdsframework.rckms.dao.ComparisonSet;
+import org.cdsframework.rckms.dao.ComparisonTest;
 import org.cdsframework.rckms.dao.ServiceOutput;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,30 +18,36 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
-@RequestMapping("/ss-comparison-service/v1/comparison-sets")
+@RequestMapping("/ss-comparison-service/v1")
 @Validated
-public class ComparisonSetController
+public class ComparisonController
 {
   private ManagementService comparisonService;
 
-  public ComparisonSetController(ManagementService comparisonService)
+  public ComparisonController(ManagementService comparisonService)
   {
     this.comparisonService = comparisonService;
   }
 
-  @PostMapping(value = "/{comparison-key}/output/{source-id}")
+  @PostMapping(value = "/comparison-tests/{comparison-test}/comparison-sets/{comparison-key}/output/{source-id}")
   public ResponseEntity<Void> addOutput(
+      @PathVariable(name = "comparison-test") String comparisonTestId,
       @PathVariable(name = "comparison-key") String comparisonKey,
       @PathVariable(name = "source-id") String sourceId,
       @Valid @RequestBody AddOutputRequest req)
   {
-    comparisonService.addServiceOutput(comparisonKey, sourceId, req);
+    Optional<ComparisonTest> test = comparisonService.getComparisonTest(comparisonTestId);
+    if (test.isEmpty())
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("ComparisonTest '%s' not found.", comparisonTestId));
+    
+    comparisonService.addServiceOutput(test.get(), comparisonKey, sourceId, req);
     return ResponseEntity.accepted().build();
   }
 
-  @GetMapping(value = "/{comparison-key}")
+  @GetMapping(value = "/comparison-sets/{comparison-key}")
   public ResponseEntity<ComparisonSet> getComparisonSet(@PathVariable(name = "comparison-key") String comparisonKey)
   {
     Optional<ComparisonSet> result = comparisonService.getComparisonSet(comparisonKey);
@@ -49,7 +57,7 @@ public class ComparisonSetController
     return (ResponseEntity.ok(result.get()));
   }
 
-  @GetMapping(value = "/{comparison-key}/output")
+  @GetMapping(value = "/comparison-sets/{comparison-key}/output")
   public ResponseEntity<List<ServiceOutput>> getServiceOutput(@PathVariable(name = "comparison-key") String comparisonKey)
   {
     List<ServiceOutput> result = comparisonService.getServiceOutput(comparisonKey);

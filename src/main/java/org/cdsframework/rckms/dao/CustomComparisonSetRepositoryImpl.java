@@ -2,7 +2,6 @@ package org.cdsframework.rckms.dao;
 
 import java.time.OffsetDateTime;
 
-import org.cdsframework.rckms.dao.QueueRecord.QueueStatus;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -20,16 +19,17 @@ public class CustomComparisonSetRepositoryImpl implements CustomComparisonSetRep
   }
 
   @Override
-  public int addOrUpdate(String comparisonSetKey)
+  public int addOrUpdate(ComparisonTest test, String comparisonSetKey)
   {
     Query query = new Query();
     query.addCriteria(Criteria.where("comparisonSetKey").is(comparisonSetKey));
     Update update = new Update()
         .inc("serviceOutputCount", 1)
+        .setOnInsert("comparisonTestId", test.getId())
         .setOnInsert("comparisonSetKey", comparisonSetKey)
         .setOnInsert("createDate", OffsetDateTime.now());
 
     UpdateResult result = mongoTemplate.upsert(query, update, ComparisonSet.class);
-    return (int)result.getMatchedCount();
+    return (int) result.getMatchedCount();
   }
 }

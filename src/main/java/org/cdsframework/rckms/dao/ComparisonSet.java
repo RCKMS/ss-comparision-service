@@ -17,6 +17,9 @@ public class ComparisonSet
   private String id;
 
   @Field
+  private String comparisonTestId;
+
+  @Field
   @Indexed(unique = true)
   private String comparisonSetKey;
 
@@ -91,6 +94,16 @@ public class ComparisonSet
   public void setServiceOutputCount(int serviceOutputCount)
   {
     this.serviceOutputCount = serviceOutputCount;
+  }
+
+  public String getComparisonTestId()
+  {
+    return comparisonTestId;
+  }
+
+  public void setComparisonTestId(String comparisonTestId)
+  {
+    this.comparisonTestId = comparisonTestId;
   }
 
   @Override

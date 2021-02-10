@@ -77,17 +77,14 @@ public class ProcessingService
 
       // 3. Remove the QueueRecord. Physically deleting the queue record for successful records ensures we keep the queue
       // collection small and therefore quick to query
-      deleteQueueRecord(record);
+      onComplete(record);
 
       logger.info("Processed queue record successfully: id={}; comparisonSetKey={}", record.getId(), record.getComparisonSetKey());
     }
     catch (Exception e)
     {
       logger.error("Error processing queue record " + record + ": " + e.getMessage(), e);
-      record.setStatus(QueueStatus.ERROR);
-      record.setStatusDate(OffsetDateTime.now());
-      record.setError(e.getMessage());
-      queueRepo.save(record);
+      onError(record, e.getMessage());
     }
 
   }
@@ -104,6 +101,13 @@ public class ProcessingService
   private List<ComparisonResult> compare(ComparisonSet comparisonSet, List<ServiceOutput> outputs)
   {
     logger.debug("Comparing outputs: {}", outputs);
+    try
+    {
+      Thread.sleep(500);
+    }
+    catch (InterruptedException e)
+    {
+    }
     // TODO:
     List<ComparisonResult> results = new ArrayList<>();
     return results;
@@ -114,6 +118,27 @@ public class ProcessingService
     comparisonSet.setComparisonDate(OffsetDateTime.now());
     comparisonSet.setResults(results);
     managementService.saveComparisonSet(comparisonSet);
+  }
+
+  private void onComplete(QueueRecord record)
+  {
+    if (config.isDeleteOnComplete())
+      deleteQueueRecord(record);
+    else
+      updateQueueRecord(record, QueueStatus.COMPLETE, null);
+  }
+
+  private void onError(QueueRecord record, String error)
+  {
+    updateQueueRecord(record, QueueStatus.ERROR, error);
+  }
+
+  private void updateQueueRecord(QueueRecord record, QueueStatus status, String error)
+  {
+    record.setStatus(status);
+    record.setStatusDate(OffsetDateTime.now());
+    record.setError(error);
+    queueRepo.save(record);
   }
 
   private void deleteQueueRecord(QueueRecord record)
