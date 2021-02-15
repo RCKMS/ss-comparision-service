@@ -6,13 +6,14 @@ import java.util.Objects;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.index.CompoundIndexes;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "service_output")
 @CompoundIndexes({
-                     @CompoundIndex(name = "key_source", def = "{'comparisonSetKey' : 1, 'sourceId': 1}", unique = true)
+                     // This index can't be unique because it's possible that AIMS receives an retryable error,
+                     // so we'd get more than one output file for the same eICR instance
+                     @CompoundIndex(name = "key_source", def = "{'comparisonSetKey' : 1, 'sourceId': 1}", unique = false)
                  })
 public class ServiceOutput
 {
@@ -135,13 +136,12 @@ public class ServiceOutput
     if (this == o)
       return true;
     ServiceOutput other = (ServiceOutput) o;
-    return Objects.equals(this.getComparisonSetKey(), other.getComparisonSetKey())
-        && Objects.equals(this.getSourceId(), other.getSourceId());
+    return Objects.equals(this.getId(), other.getId());
   }
 
   @Override
   public int hashCode()
   {
-    return Objects.hash(this.getComparisonSetKey(), this.getSourceId());
+    return Objects.hash(this.getId());
   }
 }

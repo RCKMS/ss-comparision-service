@@ -13,6 +13,12 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class ComparisonSet
 {
 
+  public enum Status
+  {
+    PASS(),
+    FAIL()
+  }
+
   @Id
   private String id;
 
@@ -32,6 +38,9 @@ public class ComparisonSet
 
   @Field
   private OffsetDateTime comparisonDate;
+
+  @Field
+  private Status status;
 
   @Field
   private List<ComparisonResult> results;
@@ -104,6 +113,16 @@ public class ComparisonSet
   public void setComparisonTestId(String comparisonTestId)
   {
     this.comparisonTestId = comparisonTestId;
+  }
+
+  public Status getStatus()
+  {
+    return status;
+  }
+
+  public void setStatus(Status status)
+  {
+    this.status = status;
   }
 
   @Override

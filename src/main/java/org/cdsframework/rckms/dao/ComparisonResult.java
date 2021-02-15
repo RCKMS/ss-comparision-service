@@ -5,15 +5,27 @@ import java.util.Objects;
 public class ComparisonResult
 {
 
-  public enum Status
+  public enum Type
   {
-    UNMATCHED(),
-    DIFF()
+    CONTROL_MISSING(),
+    VARIANT_MISSING(),
+    STATUS_DIFF(),
+    NODE_UNMATCHED(),
+    NODE_DIFF()
   }
 
   private String node;
   private String description;
-  private Status status;
+  private Type type;
+
+  ComparisonResult()
+  {
+  }
+
+  public ComparisonResult(Type type)
+  {
+    this.type = type;
+  }
 
   public String getNode()
   {
@@ -35,14 +47,14 @@ public class ComparisonResult
     this.description = description;
   }
 
-  public Status getStatus()
+  public Type getType()
   {
-    return status;
+    return type;
   }
 
-  public void setStatus(Status status)
+  public void setType(Type type)
   {
-    this.status = status;
+    this.type = type;
   }
 
   @Override

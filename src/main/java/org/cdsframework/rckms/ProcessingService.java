@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import org.cdsframework.rckms.dao.ComparisonResult;
 import org.cdsframework.rckms.dao.ComparisonSet;
+import org.cdsframework.rckms.dao.ComparisonSet.Status;
 import org.cdsframework.rckms.dao.QueueRecord;
 import org.cdsframework.rckms.dao.QueueRecord.QueueStatus;
 import org.cdsframework.rckms.dao.QueueRepository;
@@ -117,6 +118,7 @@ public class ProcessingService
   {
     comparisonSet.setComparisonDate(OffsetDateTime.now());
     comparisonSet.setResults(results);
+    comparisonSet.setStatus(results.isEmpty() ? Status.PASS : Status.FAIL);
     managementService.saveComparisonSet(comparisonSet);
   }
 
