@@ -5,17 +5,29 @@ import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.CompoundIndex;
+import org.springframework.data.mongodb.core.index.CompoundIndexes;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "comparison_set")
+@CompoundIndexes({
+                     @CompoundIndex(name = "comparisonTestId_createDate", def = "{'comparisonTestId' : 1, 'createDate': 1}")
+                 })
+
 public class ComparisonSet
 {
 
   public enum Status
   {
+    // haven't received a complete pair of outputs yet
+    INCOMPLETE(),
+    // Received at least 2 outputs and awaiting processing
+    PENDING(),
+    // Comparison completed and passed
     PASS(),
+    // Comparison completed with failures/differences
     FAIL()
   }
 
@@ -23,7 +35,6 @@ public class ComparisonSet
   private String id;
 
   @Field
-  @Indexed
   private String comparisonTestId;
 
   @Field

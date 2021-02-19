@@ -6,6 +6,7 @@ import java.util.Objects;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.index.CompoundIndexes;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -22,8 +23,9 @@ public class ServiceOutput
   {
   }
 
-  public ServiceOutput(String comparisonSetKey, String sourceId, int serviceStatus, String output)
+  public ServiceOutput(String comparisonTestId, String comparisonSetKey, String sourceId, int serviceStatus, String output)
   {
+    this.comparisonTestId = comparisonTestId;
     this.comparisonSetKey = comparisonSetKey;
     this.sourceId = sourceId;
     this.serviceStatus = serviceStatus;
@@ -33,6 +35,10 @@ public class ServiceOutput
 
   @Id
   private String id;
+
+  @Field
+  @Indexed
+  private String comparisonTestId;
 
   @Field
   private String comparisonSetKey;
@@ -120,6 +126,16 @@ public class ServiceOutput
   public void setComparisonDate(OffsetDateTime comparisonDate)
   {
     this.comparisonDate = comparisonDate;
+  }
+
+  public String getComparisonTestId()
+  {
+    return comparisonTestId;
+  }
+
+  public void setComparisonTestId(String comparisonTestId)
+  {
+    this.comparisonTestId = comparisonTestId;
   }
 
   @Override

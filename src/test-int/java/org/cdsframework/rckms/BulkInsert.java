@@ -47,8 +47,8 @@ public class BulkInsert
   {
     String testId = OffsetDateTime.now().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
     String engineId = "202103";
-    String controlSourceId = "sourceA";
-    String variantSourceId = "sourceB";
+    String controlSourceId = "control";
+    String variantSourceId = "variant";
     ComparisonTest test = managementService.getComparisonTest(testId).orElse(null);
     if (test == null)
     {
@@ -61,13 +61,17 @@ public class BulkInsert
     ClassLoader cl = this.getClass().getClassLoader();
     ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(cl);
     Resource[] resources = resolver.getResources("classpath*:/*.xml");
-    //    for (Resource resource : resources)
-    //    {
-    //      resource.getFilename();
-    //    }
+    int count = resources.length;
+    //    int duplicatedVariantCount = 1;
+    //    int missingVariantCount = 1;
+    //    int missingControlCount = 1;
+    //    int diffCount = 3;
+    //    int serviceStatusDiffCount = 1;
+    //    int matchCount =
+    //        count - duplicatedVariantCount - missingVariantCount - missingControlCount - diffCount - serviceStatusDiffCount;
 
     ExecutorService executor = Executors.newFixedThreadPool(10);
-    for (int i = 0; i < resources.length; i++)
+    for (int i = 0; i < count; i++)
     {
       final int j = i;
       executor.submit(() ->
@@ -76,7 +80,7 @@ public class BulkInsert
         AddOutputRequest req = new AddOutputRequest();
         req.setServiceStatus(200);
         req.setServiceOutput(XmlUtils.asString(resources[j]));
-        if (j % 16 == 0)
+        if (j >= 16 && j % 16 == 0)
         {
           // duplicate some requests
           managementService.addServiceOutput(test1, comparisonSetKey, controlSourceId, req);
@@ -84,20 +88,20 @@ public class BulkInsert
           managementService.addServiceOutput(test1, comparisonSetKey, variantSourceId, req);
         }
         else
-          if (j % 43 == 0)
+          if (j >= 43 && j % 43 == 0)
           {
             // missing variant
             managementService.addServiceOutput(test1, comparisonSetKey, controlSourceId, req);
           }
           else
-            if (j % 41 == 0)
+            if (j >= 41 && j % 41 == 0)
             {
               // missing control
               managementService.addServiceOutput(test1, comparisonSetKey, variantSourceId, req);
             }
 
             else
-              if (j % 31 == 0)
+              if (j >= 31 && j % 31 == 0)
               {
                 // difference
                 managementService.addServiceOutput(test1, comparisonSetKey, controlSourceId, req);
@@ -105,18 +109,38 @@ public class BulkInsert
                 managementService.addServiceOutput(test1, comparisonSetKey, variantSourceId, req);
               }
               else
-              {
-                // Normal match
-                managementService.addServiceOutput(test1, comparisonSetKey, controlSourceId, req);
-                managementService.addServiceOutput(test1, comparisonSetKey, variantSourceId, req);
-              }
+                if (j >= 29 && j % 29 == 0)
+                {
+                  // service status difference
+                  managementService.addServiceOutput(test1, comparisonSetKey, controlSourceId, req);
+                  req.setServiceStatus(500);
+                  managementService.addServiceOutput(test1, comparisonSetKey, variantSourceId, req);
+                }
+                else
+                {
+                  // Normal match
+                  addServiceOutput(test1, comparisonSetKey, controlSourceId, req);
+                  addServiceOutput(test1, comparisonSetKey, variantSourceId, req);
+                }
 
       });
 
     }
     logger.info("Submitted {} resources for testId {}", resources.length, testId);
     executor.shutdown();
-    executor.awaitTermination(60, TimeUnit.SECONDS);
+    executor.awaitTermination(120, TimeUnit.SECONDS);
+  }
+
+  private void addServiceOutput(ComparisonTest test, String compSetKey, String sourceId, AddOutputRequest req)
+  {
+    try
+    {
+      managementService.addServiceOutput(test, compSetKey, sourceId, req);
+    }
+    catch (Exception e)
+    {
+      e.printStackTrace();
+    }
   }
 
 }

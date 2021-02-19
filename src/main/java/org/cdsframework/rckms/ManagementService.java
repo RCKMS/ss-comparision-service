@@ -44,7 +44,8 @@ public class ManagementService
   public void addServiceOutput(ComparisonTest test, String comparisonSetKey, String sourceId, AddOutputRequest req)
   {
     // 1. add service_output
-    ServiceOutput serviceOutput = new ServiceOutput(comparisonSetKey, sourceId, req.getServiceStatus(), req.getServiceOutput());
+    ServiceOutput serviceOutput =
+        new ServiceOutput(test.getId(), comparisonSetKey, sourceId, req.getServiceStatus(), req.getServiceOutput());
     serviceOutputRepo.save(serviceOutput);
 
     // 2. upsert comparison_set doc
@@ -54,7 +55,9 @@ public class ManagementService
     // If so, then this comparison set is now ready for processing so we can add the queue record
     if (matchCount > 0)
     {
-      // 3. Add queue record to indicate we can process this comparison set now
+      // 3. Since the status can't be updated to PENDING as part of the upsert above, we update it now
+      comparisonSetRepo.markReadyForComparison(comparisonSetKey);
+      // 4. Add queue record to indicate we can process this comparison set now
       QueueRecord queueRecord = new QueueRecord(comparisonSetKey);
       queueRepo.save(queueRecord);
     }

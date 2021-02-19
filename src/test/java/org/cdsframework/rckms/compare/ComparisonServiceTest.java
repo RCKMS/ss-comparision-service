@@ -29,8 +29,8 @@ public class ComparisonServiceTest
     ComparisonTest test = mockComparisonTest("test", "control");
     ComparisonSet compSet = mockComparisonSet("test", compSetKey);
     List<ServiceOutput> outputs = List.of(
-        mockServiceOutput(compSetKey, "control", 200, "<root/>"),
-        mockServiceOutput(compSetKey, "variant", 200, "<root/>")
+        mockServiceOutput(test.getId(), compSetKey, "control", 200, "<root/>"),
+        mockServiceOutput(test.getId(), compSetKey, "variant", 200, "<root/>")
     );
     ManagementService mgmtSvc = mockManagementService(test, compSet, outputs);
     ComparisonEngine engine = mockEngine("default");
@@ -49,7 +49,7 @@ public class ComparisonServiceTest
     ComparisonTest test = mockComparisonTest("test", "control");
     ComparisonSet compSet = mockComparisonSet("test", compSetKey);
     List<ServiceOutput> outputs = List.of(
-        mockServiceOutput(compSetKey, "variant", 200, "<root/>")
+        mockServiceOutput(test.getId(), compSetKey, "variant", 200, "<root/>")
     );
     ManagementService mgmtSvc = mockManagementService(test, compSet, outputs);
     ComparisonEngine engine = mockEngine("default");
@@ -71,7 +71,7 @@ public class ComparisonServiceTest
     ComparisonTest test = mockComparisonTest("test", "control");
     ComparisonSet compSet = mockComparisonSet("test", compSetKey);
     List<ServiceOutput> outputs = List.of(
-        mockServiceOutput(compSetKey, "control", 200, "<root/>")
+        mockServiceOutput(test.getId(), compSetKey, "control", 200, "<root/>")
     );
     ManagementService mgmtSvc = mockManagementService(test, compSet, outputs);
     ComparisonEngine engine = mockEngine("default");
@@ -148,9 +148,9 @@ public class ComparisonServiceTest
     return test;
   }
 
-  private static ServiceOutput mockServiceOutput(String compSetKey, String sourceId, int serviceStatus, String xml)
+  private static ServiceOutput mockServiceOutput(String testId, String compSetKey, String sourceId, int serviceStatus, String xml)
   {
-    ServiceOutput output = new ServiceOutput(compSetKey, sourceId, serviceStatus, xml);
+    ServiceOutput output = new ServiceOutput(testId, compSetKey, sourceId, serviceStatus, xml);
     return output;
   }
 }
