@@ -23,6 +23,9 @@ public class CustomQueueRepositoryImpl implements CustomQueueRepository
   @Override
   public Optional<QueueRecord> takeNextPending()
   {
+    // This finds the first PENDING record and sets its status to PROCESSING all in one atomic operation,
+    // thereby ensuring the same record won't get processed more than once in the case of running multiple
+    // instances of the queue processor
     Query query = new Query();
     query.addCriteria(Criteria.where("status").is(QueueStatus.PENDING))
         .with(Sort.by("createDate"));

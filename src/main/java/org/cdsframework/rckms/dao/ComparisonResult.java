@@ -11,7 +11,8 @@ public class ComparisonResult
     VARIANT_MISSING(),
     STATUS_DIFF(),
     NODE_UNMATCHED(),
-    NODE_DIFF()
+    NODE_DIFF(),
+    OTHER()
   }
 
   private String node;

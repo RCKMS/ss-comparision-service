@@ -26,6 +26,10 @@ public class ComparisonTest
   private String controlSourceId;
 
   @Field
+  @NotBlank
+  private String comparisonEngineId = "default";
+
+  @Field
   @Indexed
   private OffsetDateTime createDate;
 
@@ -77,6 +81,16 @@ public class ComparisonTest
   public void setCreateDate(OffsetDateTime createDate)
   {
     this.createDate = createDate;
+  }
+
+  public String getComparisonEngineId()
+  {
+    return comparisonEngineId;
+  }
+
+  public void setComparisonEngineId(String comparisonEngineId)
+  {
+    this.comparisonEngineId = comparisonEngineId;
   }
 
   @Override

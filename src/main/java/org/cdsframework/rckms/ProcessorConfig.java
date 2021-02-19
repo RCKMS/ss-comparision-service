@@ -17,6 +17,7 @@ public class ProcessorConfig
 {
   private Duration queryFrequency;
   private boolean deleteOnComplete = true;
+  private boolean enabled;
 
   @Bean
   @ConfigurationProperties(prefix = "processor.thread-pool")
@@ -54,5 +55,15 @@ public class ProcessorConfig
   public void setDeleteOnComplete(boolean deleteOnComplete)
   {
     this.deleteOnComplete = deleteOnComplete;
+  }
+
+  public boolean isEnabled()
+  {
+    return enabled;
+  }
+
+  public void setEnabled(boolean enabled)
+  {
+    this.enabled = enabled;
   }
 }

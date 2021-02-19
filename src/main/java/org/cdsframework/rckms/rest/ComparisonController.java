@@ -25,11 +25,11 @@ import org.springframework.web.server.ResponseStatusException;
 @Validated
 public class ComparisonController
 {
-  private ManagementService comparisonService;
+  private ManagementService managementService;
 
-  public ComparisonController(ManagementService comparisonService)
+  public ComparisonController(ManagementService managementService)
   {
-    this.comparisonService = comparisonService;
+    this.managementService = managementService;
   }
 
   @PostMapping(value = "/comparison-tests/{comparison-test}/comparison-sets/{comparison-key}/output/{source-id}")
@@ -39,18 +39,18 @@ public class ComparisonController
       @PathVariable(name = "source-id") String sourceId,
       @Valid @RequestBody AddOutputRequest req)
   {
-    Optional<ComparisonTest> test = comparisonService.getComparisonTest(comparisonTestId);
+    Optional<ComparisonTest> test = managementService.getComparisonTest(comparisonTestId);
     if (test.isEmpty())
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("ComparisonTest '%s' not found.", comparisonTestId));
-    
-    comparisonService.addServiceOutput(test.get(), comparisonKey, sourceId, req);
+
+    managementService.addServiceOutput(test.get(), comparisonKey, sourceId, req);
     return ResponseEntity.accepted().build();
   }
 
   @GetMapping(value = "/comparison-sets/{comparison-key}")
   public ResponseEntity<ComparisonSet> getComparisonSet(@PathVariable(name = "comparison-key") String comparisonKey)
   {
-    Optional<ComparisonSet> result = comparisonService.getComparisonSet(comparisonKey);
+    Optional<ComparisonSet> result = managementService.getComparisonSet(comparisonKey);
     if (result.isEmpty())
       return ResponseEntity.notFound().build();
 
@@ -60,7 +60,7 @@ public class ComparisonController
   @GetMapping(value = "/comparison-sets/{comparison-key}/output")
   public ResponseEntity<List<ServiceOutput>> getServiceOutput(@PathVariable(name = "comparison-key") String comparisonKey)
   {
-    List<ServiceOutput> result = comparisonService.getServiceOutput(comparisonKey);
+    List<ServiceOutput> result = managementService.getServiceOutput(comparisonKey);
     return (ResponseEntity.ok(result));
   }
 }

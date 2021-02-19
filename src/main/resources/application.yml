@@ -46,7 +46,7 @@ server:
 
 logging:
   level:
-    org.cdsframework.rckms: DEBUG
+    org.cdsframework.rckms: TRACE
 
 mongodb:
   uri: mongodb://localhost:8888/ss-comparison-service?maxIdleTimeMS=300000

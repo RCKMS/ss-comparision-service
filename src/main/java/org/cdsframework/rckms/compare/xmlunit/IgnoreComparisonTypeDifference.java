@@ -1,4 +1,4 @@
-package org.cdsframework.rckms.compare;
+package org.cdsframework.rckms.compare.xmlunit;
 
 import java.util.function.Function;
 
@@ -51,9 +51,9 @@ final class IgnoreComparisonTypeDifference implements DifferenceEvaluator
 
     if (nodePredicate.test(targetNode))
     {
-      if (logger.isDebugEnabled())
-        logger.debug("Ignoring difference[{}] on nodes: Control={}; Test={}", comparisonType,
-            comparison.getControlDetails().getXPath(), comparison.getTestDetails().getXPath());
+      //      if (logger.isDebugEnabled())
+      //        logger.debug("Ignoring difference[{}] on nodes: Control={}; Test={}", comparisonType,
+      //            comparison.getControlDetails().getXPath(), comparison.getTestDetails().getXPath());
       return ComparisonResult.SIMILAR;
     }
 

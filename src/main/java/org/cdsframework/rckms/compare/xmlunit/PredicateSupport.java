@@ -1,4 +1,4 @@
-package org.cdsframework.rckms.compare;
+package org.cdsframework.rckms.compare.xmlunit;
 
 import java.util.Objects;
 

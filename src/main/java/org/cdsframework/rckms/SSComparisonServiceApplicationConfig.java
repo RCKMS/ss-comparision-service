@@ -17,6 +17,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
 
+import io.micrometer.core.aop.TimedAspect;
+import io.micrometer.core.instrument.MeterRegistry;
+
 @Configuration
 @EnableAsync
 @EnableScheduling
@@ -42,6 +45,12 @@ public class SSComparisonServiceApplicationConfig
     Caffeine builder = Caffeine.newBuilder();
     mgr.setCaffeine(builder);
     return mgr;
+  }
+
+  @Bean
+  public TimedAspect timedAspect(MeterRegistry registry)
+  {
+    return new TimedAspect(registry);
   }
 
 }

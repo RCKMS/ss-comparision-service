@@ -1,5 +1,6 @@
-package org.cdsframework.rckms.compare;
+package org.cdsframework.rckms.compare.xmlunit;
 
+import org.w3c.dom.Attr;
 import org.w3c.dom.Node;
 
 final class NodeNamePredicate implements PredicateSupport<Node>
@@ -41,6 +42,12 @@ final class NodeNamePredicate implements PredicateSupport<Node>
   private boolean parentMatches(Node node, String parentName)
   {
     Node parent = node.getParentNode();
-    return parent != null && parentName.equals(parent.getNodeName());
+    switch (node.getNodeType())
+    {
+      case Node.ATTRIBUTE_NODE:
+        return parentName.equals(((Attr) node).getOwnerElement().getNodeName());
+      default:
+        return node.getParentNode() != null && parentName.equals(node.getParentNode().getNodeName());
+    }
   }
 }

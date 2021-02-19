@@ -23,6 +23,7 @@ public class ComparisonSet
   private String id;
 
   @Field
+  @Indexed
   private String comparisonTestId;
 
   @Field
