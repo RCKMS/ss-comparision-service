@@ -87,41 +87,37 @@ public class BulkInsert
           managementService.addServiceOutput(test1, comparisonSetKey, variantSourceId, req);
           managementService.addServiceOutput(test1, comparisonSetKey, variantSourceId, req);
         }
-        else
-          if (j >= 43 && j % 43 == 0)
-          {
-            // missing variant
-            managementService.addServiceOutput(test1, comparisonSetKey, controlSourceId, req);
-          }
-          else
-            if (j >= 41 && j % 41 == 0)
-            {
-              // missing control
-              managementService.addServiceOutput(test1, comparisonSetKey, variantSourceId, req);
-            }
+        else if (j >= 43 && j % 43 == 0)
+        {
+          // missing variant
+          managementService.addServiceOutput(test1, comparisonSetKey, controlSourceId, req);
+        }
+        else if (j >= 41 && j % 41 == 0)
+        {
+          // missing control
+          managementService.addServiceOutput(test1, comparisonSetKey, variantSourceId, req);
+        }
 
-            else
-              if (j >= 31 && j % 31 == 0)
-              {
-                // difference
-                managementService.addServiceOutput(test1, comparisonSetKey, controlSourceId, req);
-                req.setServiceOutput(req.getServiceOutput().replace("2.16.840.1.114222.4.5.274", "2.16.840.1.114222.4.5.275"));
-                managementService.addServiceOutput(test1, comparisonSetKey, variantSourceId, req);
-              }
-              else
-                if (j >= 29 && j % 29 == 0)
-                {
-                  // service status difference
-                  managementService.addServiceOutput(test1, comparisonSetKey, controlSourceId, req);
-                  req.setServiceStatus(500);
-                  managementService.addServiceOutput(test1, comparisonSetKey, variantSourceId, req);
-                }
-                else
-                {
-                  // Normal match
-                  addServiceOutput(test1, comparisonSetKey, controlSourceId, req);
-                  addServiceOutput(test1, comparisonSetKey, variantSourceId, req);
-                }
+        else if (j >= 31 && j % 31 == 0)
+        {
+          // difference
+          managementService.addServiceOutput(test1, comparisonSetKey, controlSourceId, req);
+          req.setServiceOutput(req.getServiceOutput().replace("2.16.840.1.114222.4.5.274", "2.16.840.1.114222.4.5.275"));
+          managementService.addServiceOutput(test1, comparisonSetKey, variantSourceId, req);
+        }
+        else if (j >= 29 && j % 29 == 0)
+        {
+          // service status difference
+          managementService.addServiceOutput(test1, comparisonSetKey, controlSourceId, req);
+          req.setServiceStatus(500);
+          managementService.addServiceOutput(test1, comparisonSetKey, variantSourceId, req);
+        }
+        else
+        {
+          // Normal match
+          addServiceOutput(test1, comparisonSetKey, controlSourceId, req);
+          addServiceOutput(test1, comparisonSetKey, variantSourceId, req);
+        }
 
       });
 

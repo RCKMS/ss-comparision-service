@@ -1,10 +1,19 @@
 package org.cdsframework.rckms.dao;
 
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
+
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.stream.Collectors;
 
+import org.cdsframework.rckms.dao.ComparisonResult.Type;
 import org.cdsframework.rckms.dao.ComparisonSet.Status;
+import org.cdsframework.rckms.dao.util.MongoUtils;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
@@ -49,4 +58,66 @@ public class CustomComparisonSetRepositoryImpl implements CustomComparisonSetRep
     UpdateResult result = mongoTemplate.updateFirst(query, update, ComparisonSet.class);
     return (int) result.getMatchedCount();
   }
+
+  @Override
+  public Map<Status, Integer> statusCounts(String comparisonTestId, OffsetDateTime start, OffsetDateTime end)
+  {
+    Criteria match = Criteria.where("comparisonTestId").is(comparisonTestId);
+    MongoUtils.andBetween(match, "createDate", start, end);
+
+    Aggregation agg = newAggregation(
+        match(match),
+        group("status").count().as("count")
+    );
+    AggregationResults<GroupCount> groupResults
+        = mongoTemplate.aggregate(agg, ComparisonSet.class, GroupCount.class);
+    return groupResults.getMappedResults().stream()
+        .collect(Collectors.toMap(group -> Status.valueOf(group.getGroup()), GroupCount::getCount));
+  }
+
+  @Override
+  public Map<Type, Integer> failureTypeCounts(String comparisonTestId, OffsetDateTime start, OffsetDateTime end)
+  {
+    Criteria match = Criteria.where("comparisonTestId").is(comparisonTestId);
+    MongoUtils.andBetween(match, "createDate", start, end);
+
+    Aggregation agg = newAggregation(
+        match(match),
+        unwind("results"),
+        group("results.type").count().as("count")
+    );
+    AggregationResults<GroupCount> groupResults
+        = mongoTemplate.aggregate(agg, ComparisonSet.class, GroupCount.class);
+    return groupResults.getMappedResults().stream()
+        .filter(group -> group.getGroup() != null)
+        .collect(Collectors.toMap(group -> Type.valueOf(group.getGroup()), GroupCount::getCount));
+  }
+
+  public static class GroupCount
+  {
+    @Id
+    private String group;
+    private int count;
+
+    public String getGroup()
+    {
+      return group;
+    }
+
+    public void setGroup(String group)
+    {
+      this.group = group;
+    }
+
+    public int getCount()
+    {
+      return count;
+    }
+
+    public void setCount(int count)
+    {
+      this.count = count;
+    }
+  }
+
 }

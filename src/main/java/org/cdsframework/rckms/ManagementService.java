@@ -15,6 +15,7 @@ import org.cdsframework.rckms.dao.QueueRepository;
 import org.cdsframework.rckms.dao.ServiceOutput;
 import org.cdsframework.rckms.dao.ServiceOutputRepository;
 import org.cdsframework.rckms.rest.AddOutputRequest;
+import org.cdsframework.rckms.rest.ComparisonTestSummary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
@@ -90,5 +91,22 @@ public class ManagementService
   {
     test.setCreateDate(OffsetDateTime.now());
     return comparisonTestRepo.save(test);
+  }
+
+  public Optional<ComparisonTestSummary> getTestSummary(String testId, OffsetDateTime start, OffsetDateTime end)
+  {
+    Optional<ComparisonTest> test = comparisonTestRepo.findById(testId);
+    if (test.isEmpty())
+      return Optional.empty();
+
+    ComparisonTestSummary summary = new ComparisonTestSummary(testId);
+    summary.setStartDate(start);
+    summary.setEndDate(end);
+    summary.addComparisonSetInfo(
+        comparisonSetRepo.statusCounts(testId, start, end),
+        comparisonSetRepo.failureTypeCounts(testId, start, end));
+    summary.addServiceOutputCounts(serviceOutputRepo.countsForTestGroupedBySource(testId, start, end));
+
+    return Optional.of(summary);
   }
 }

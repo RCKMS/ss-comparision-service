@@ -1,5 +1,6 @@
 package org.cdsframework.rckms.rest;
 
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,6 +10,7 @@ import org.cdsframework.rckms.ManagementService;
 import org.cdsframework.rckms.dao.ComparisonSet;
 import org.cdsframework.rckms.dao.ComparisonTest;
 import org.cdsframework.rckms.dao.ServiceOutput;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -62,5 +65,18 @@ public class ComparisonController
   {
     List<ServiceOutput> result = managementService.getServiceOutput(comparisonKey);
     return (ResponseEntity.ok(result));
+  }
+
+  @GetMapping(value = "/comparison-tests/{comparison-test}/summary")
+  public ResponseEntity<ComparisonTestSummary> getTestSummary(
+      @PathVariable(name = "comparison-test") String comparisonTestId,
+      @RequestParam(value = "startDate", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+          OffsetDateTime startDate,
+      @RequestParam(value = "endDate", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) OffsetDateTime endDate)
+  {
+    Optional<ComparisonTestSummary> result = managementService.getTestSummary(comparisonTestId, startDate, endDate);
+    if (result.isEmpty())
+      return ResponseEntity.notFound().build();
+    return (ResponseEntity.ok(result.get()));
   }
 }
