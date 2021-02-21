@@ -4,6 +4,7 @@ import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
 
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -57,6 +58,15 @@ public class CustomComparisonSetRepositoryImpl implements CustomComparisonSetRep
 
     UpdateResult result = mongoTemplate.updateFirst(query, update, ComparisonSet.class);
     return (int) result.getMatchedCount();
+  }
+
+  @Override
+  public List<ComparisonSet> findComparisonSets(ComparisonSetQuery queryDef)
+  {
+    Query query = new Query();
+    query.addCriteria(queryDef.toCriteria());
+    List<ComparisonSet> results = mongoTemplate.find(query, ComparisonSet.class);
+    return results;
   }
 
   @Override

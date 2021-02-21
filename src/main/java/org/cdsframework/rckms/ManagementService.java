@@ -3,10 +3,12 @@ package org.cdsframework.rckms;
 import static org.cdsframework.rckms.SSComparisonServiceApplicationConfig.*;
 
 import java.time.OffsetDateTime;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 import org.cdsframework.rckms.dao.ComparisonSet;
+import org.cdsframework.rckms.dao.ComparisonSetQuery;
 import org.cdsframework.rckms.dao.ComparisonSetRepository;
 import org.cdsframework.rckms.dao.ComparisonTest;
 import org.cdsframework.rckms.dao.ComparisonTestRepository;
@@ -68,6 +70,15 @@ public class ManagementService
   public Optional<ComparisonSet> getComparisonSet(String comparisonSetKey)
   {
     return Optional.ofNullable(comparisonSetRepo.findByComparisonSetKey(comparisonSetKey));
+  }
+
+  public List<ComparisonSet> findComparisonSets(ComparisonSetQuery query)
+  {
+    Optional<ComparisonTest> test = comparisonTestRepo.findById(query.getComparisonTestId());
+    if (test.isEmpty())
+      return Collections.EMPTY_LIST;
+
+    return comparisonSetRepo.findComparisonSets(query);
   }
 
   public List<ServiceOutput> getServiceOutput(String comparisonSetKey)
