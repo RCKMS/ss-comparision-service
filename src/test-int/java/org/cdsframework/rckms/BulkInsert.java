@@ -2,6 +2,9 @@ package org.cdsframework.rckms;
 
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -61,16 +64,15 @@ public class BulkInsert
     ClassLoader cl = this.getClass().getClassLoader();
     ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(cl);
     Resource[] resources = resolver.getResources("classpath*:/*.xml");
-    int count = resources.length;
-    //    int duplicatedVariantCount = 1;
-    //    int missingVariantCount = 1;
-    //    int missingControlCount = 1;
-    //    int diffCount = 3;
-    //    int serviceStatusDiffCount = 1;
-    //    int matchCount =
-    //        count - duplicatedVariantCount - missingVariantCount - missingControlCount - diffCount - serviceStatusDiffCount;
 
-    ExecutorService executor = Executors.newFixedThreadPool(10);
+    List<Resource> batch = new ArrayList<>();
+    // Duplicate if needed to make a large batch
+    for (int i = 0; i < 30; i++)
+      batch.addAll(Arrays.asList(resources));
+
+    int count = batch.size();
+
+    ExecutorService executor = Executors.newFixedThreadPool(15);
     for (int i = 0; i < count; i++)
     {
       final int j = i;
@@ -79,7 +81,7 @@ public class BulkInsert
         String comparisonSetKey = UUID.randomUUID().toString();
         AddOutputRequest req = new AddOutputRequest();
         req.setServiceStatus(200);
-        req.setServiceOutput(XmlUtils.asString(resources[j]));
+        req.setServiceOutput(XmlUtils.asString(batch.get(j)));
         if (j >= 16 && j % 16 == 0)
         {
           // duplicate some requests
@@ -122,7 +124,7 @@ public class BulkInsert
       });
 
     }
-    logger.info("Submitted {} resources for testId {}", resources.length, testId);
+    logger.info("Submitted {} resources for testId {}", count, testId);
     executor.shutdown();
     executor.awaitTermination(120, TimeUnit.SECONDS);
   }

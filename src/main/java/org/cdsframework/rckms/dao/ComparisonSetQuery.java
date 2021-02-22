@@ -4,7 +4,9 @@ import java.time.OffsetDateTime;
 
 import org.cdsframework.rckms.dao.ComparisonSet.Status;
 import org.cdsframework.rckms.dao.util.MongoUtils;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 
 public class ComparisonSetQuery
 {
@@ -12,10 +14,12 @@ public class ComparisonSetQuery
   private OffsetDateTime start;
   private OffsetDateTime end;
   private Status status;
+  private Pageable pageable;
 
-  public ComparisonSetQuery(String testId)
+  public ComparisonSetQuery(String testId, Pageable pageable)
   {
     this.comparisonTestId = testId;
+    this.pageable = pageable;
   }
 
   public ComparisonSetQuery onOrAfter(OffsetDateTime date)
@@ -45,6 +49,15 @@ public class ComparisonSetQuery
     return criteria;
   }
 
+  public Query toQuery()
+  {
+    Query query = new Query();
+    query.addCriteria(toCriteria());
+    if (pageable != null)
+      query.with(pageable);
+    return query;
+  }
+
   public String getComparisonTestId()
   {
     return comparisonTestId;
@@ -63,5 +76,10 @@ public class ComparisonSetQuery
   public Status getStatus()
   {
     return status;
+  }
+
+  public Pageable getPageable()
+  {
+    return pageable;
   }
 }

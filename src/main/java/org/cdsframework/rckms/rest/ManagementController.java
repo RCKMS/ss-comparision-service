@@ -8,7 +8,10 @@ import org.cdsframework.rckms.ManagementService;
 import org.cdsframework.rckms.dao.ComparisonSet;
 import org.cdsframework.rckms.dao.ComparisonSet.Status;
 import org.cdsframework.rckms.dao.ComparisonSetQuery;
+import org.cdsframework.rckms.dao.ComparisonTest;
 import org.cdsframework.rckms.dao.ServiceOutput;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -41,20 +44,25 @@ public class ManagementController
   }
 
   @GetMapping(value = "/comparison-tests/{comparison-test}/comparison-sets")
-  public ResponseEntity<List<ComparisonSet>> findComparisonSets(
+  public ResponseEntity<Page<ComparisonSet>> findComparisonSets(
       @PathVariable(name = "comparison-test") String comparisonTestId,
       @RequestParam(name = "status", required = false) Status status,
       @RequestParam(value = "startDate", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
           OffsetDateTime startDate,
-      @RequestParam(value = "endDate", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) OffsetDateTime endDate
+      @RequestParam(value = "endDate", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) OffsetDateTime endDate,
+      Pageable pageable
   )
   {
-    ComparisonSetQuery query = new ComparisonSetQuery(comparisonTestId)
+    Optional<ComparisonTest> test = managementService.getComparisonTest(comparisonTestId);
+    if (test.isEmpty())
+      return ResponseEntity.notFound().build();
+
+    ComparisonSetQuery query = new ComparisonSetQuery(comparisonTestId, pageable)
         .withStatus(status)
         .onOrAfter(startDate)
         .onOrBefore(endDate);
-    List<ComparisonSet> results = managementService.findComparisonSets(query);
-    return (ResponseEntity.ok(results));
+    Page<ComparisonSet> results = managementService.findComparisonSets(query);
+    return ResponseEntity.ok(results);
   }
 
   @GetMapping(value = "/comparison-sets/{comparison-key}/output")

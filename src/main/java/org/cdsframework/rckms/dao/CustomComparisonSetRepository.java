@@ -1,10 +1,10 @@
 package org.cdsframework.rckms.dao;
 
 import java.time.OffsetDateTime;
-import java.util.List;
 import java.util.Map;
 
 import org.cdsframework.rckms.dao.ComparisonSet.Status;
+import org.springframework.data.domain.Page;
 
 public interface CustomComparisonSetRepository
 {
@@ -16,6 +16,6 @@ public interface CustomComparisonSetRepository
 
   Map<ComparisonResult.Type, Integer> failureTypeCounts(String comparisonTestId, OffsetDateTime start, OffsetDateTime end);
 
-  List<ComparisonSet> findComparisonSets(ComparisonSetQuery query);
+  Page<ComparisonSet> findComparisonSets(ComparisonSetQuery query);
 
 }

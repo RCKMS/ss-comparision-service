@@ -20,6 +20,14 @@ spring:
       auto-index-creation: true
       uri: ${mongodb.uri}
 
+    web:
+      pageable:
+        size-parameter: page-size
+        page-parameter: page
+        default-page-size: 50
+        one-indexed-parameters: false
+        max-page-size: 1000
+
 processor:
   enabled: true
 

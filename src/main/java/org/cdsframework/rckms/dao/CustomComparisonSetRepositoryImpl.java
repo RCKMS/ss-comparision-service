@@ -12,12 +12,14 @@ import org.cdsframework.rckms.dao.ComparisonResult.Type;
 import org.cdsframework.rckms.dao.ComparisonSet.Status;
 import org.cdsframework.rckms.dao.util.MongoUtils;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.domain.Page;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.data.support.PageableExecutionUtils;
 
 import com.mongodb.client.result.UpdateResult;
 
@@ -61,12 +63,13 @@ public class CustomComparisonSetRepositoryImpl implements CustomComparisonSetRep
   }
 
   @Override
-  public List<ComparisonSet> findComparisonSets(ComparisonSetQuery queryDef)
+  public Page<ComparisonSet> findComparisonSets(ComparisonSetQuery queryDef)
   {
-    Query query = new Query();
-    query.addCriteria(queryDef.toCriteria());
+    Query query = queryDef.toQuery();
     List<ComparisonSet> results = mongoTemplate.find(query, ComparisonSet.class);
-    return results;
+    return PageableExecutionUtils.getPage(results, queryDef.getPageable(),
+        // This gets the total count. limit(-1).skip(-1) overrides the limit/skip set by the query above
+        () -> mongoTemplate.count(Query.of(query).limit(-1).skip(-1), ComparisonSet.class));
   }
 
   @Override

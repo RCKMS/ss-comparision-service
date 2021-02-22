@@ -3,7 +3,6 @@ package org.cdsframework.rckms;
 import static org.cdsframework.rckms.SSComparisonServiceApplicationConfig.*;
 
 import java.time.OffsetDateTime;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +20,7 @@ import org.cdsframework.rckms.rest.ComparisonTestSummary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -72,12 +72,8 @@ public class ManagementService
     return Optional.ofNullable(comparisonSetRepo.findByComparisonSetKey(comparisonSetKey));
   }
 
-  public List<ComparisonSet> findComparisonSets(ComparisonSetQuery query)
+  public Page<ComparisonSet> findComparisonSets(ComparisonSetQuery query)
   {
-    Optional<ComparisonTest> test = comparisonTestRepo.findById(query.getComparisonTestId());
-    if (test.isEmpty())
-      return Collections.EMPTY_LIST;
-
     return comparisonSetRepo.findComparisonSets(query);
   }
 
