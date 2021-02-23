@@ -57,6 +57,10 @@ public class ComparisonSet
   @Field
   private List<ComparisonResult> results;
 
+  // Note that this field is only populated on comparison sets that have been compared and that had errors
+  @Field
+  private List<ServiceOutput> serviceOutputs;
+
   public String getId()
   {
     return id;
@@ -135,6 +139,16 @@ public class ComparisonSet
   public void setStatus(Status status)
   {
     this.status = status;
+  }
+
+  public List<ServiceOutput> getServiceOutputs()
+  {
+    return serviceOutputs;
+  }
+
+  public void setServiceOutputs(List<ServiceOutput> serviceOutputs)
+  {
+    this.serviceOutputs = serviceOutputs;
   }
 
   @Override
