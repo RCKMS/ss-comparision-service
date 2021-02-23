@@ -76,7 +76,7 @@ public class ComparisonService
     sw.stop();
 
     sw.start(String.format("saveComparisonResults(%s)", comparisonSetKey));
-    saveComparisonResults(comparisonSet, results);
+    saveComparisonResults(comparisonSet, outputs, results);
     if (logger.isTraceEnabled())
       logger.trace("Comparison complete: testId={}; comparisonSetKey{}; errorCount={}", test.getId(), comparisonSetKey,
           results.size());
@@ -138,12 +138,14 @@ public class ComparisonService
     return comparisonSet.get();
   }
 
-  private void saveComparisonResults(ComparisonSet comparisonSet, List<ComparisonResult> results)
+  private void saveComparisonResults(ComparisonSet comparisonSet, List<ServiceOutput> outputs, List<ComparisonResult> results)
   {
-    comparisonSet.setComparisonDate(OffsetDateTime.now());
+    OffsetDateTime now = OffsetDateTime.now();
+    comparisonSet.setComparisonDate(now);
     comparisonSet.setResults(results);
     comparisonSet.setStatus(results.isEmpty() ? Status.PASS : Status.FAIL);
     managementService.saveComparisonSet(comparisonSet);
+    managementService.markServiceOutputsAsCompared(outputs, now);
   }
 
   public static final class ComparisonServiceException extends RuntimeException

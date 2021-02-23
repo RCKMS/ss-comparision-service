@@ -87,6 +87,16 @@ public class ManagementService
     comparisonSetRepo.save(comparisonSet);
   }
 
+  public void saveServiceOutput(ServiceOutput output)
+  {
+    serviceOutputRepo.save(output);
+  }
+
+  public void markServiceOutputsAsCompared(List<ServiceOutput> outputs, OffsetDateTime comparisonDate)
+  {
+    serviceOutputRepo.markCompared(outputs, comparisonDate);
+  }
+
   @Cacheable(cacheNames = CACHE_COMPARISON_TESTS)
   public Optional<ComparisonTest> getComparisonTest(String testId)
   {

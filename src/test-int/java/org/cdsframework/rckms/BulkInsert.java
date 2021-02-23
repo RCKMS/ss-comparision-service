@@ -67,7 +67,7 @@ public class BulkInsert
 
     List<Resource> batch = new ArrayList<>();
     // Duplicate if needed to make a large batch
-    for (int i = 0; i < 30; i++)
+    for (int i = 0; i < 1; i++)
       batch.addAll(Arrays.asList(resources));
 
     int count = batch.size();

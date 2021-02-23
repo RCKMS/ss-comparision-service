@@ -42,6 +42,8 @@ processor:
   # If false, then queue records will be set to COMPLETE instead of deleted (useful for testing)
   delete-on-complete: true
 
+service-output-expiration: 10d
+
 ---
 
 spring:

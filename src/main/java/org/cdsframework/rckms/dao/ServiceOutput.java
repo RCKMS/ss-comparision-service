@@ -56,6 +56,7 @@ public class ServiceOutput
   private OffsetDateTime createDate;
 
   @Field
+  // See MongoConfig for the TTL index on this.
   private OffsetDateTime comparisonDate;
 
   public String getId()
