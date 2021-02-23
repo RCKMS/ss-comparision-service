@@ -2,21 +2,22 @@ package org.cdsframework.rckms.compare;
 
 import org.cdsframework.rckms.dao.ComparisonSet;
 import org.cdsframework.rckms.dao.ComparisonTest;
+import org.cdsframework.rckms.dao.ServiceOutput;
 
 public class ComparisonContext
 {
   private ComparisonTest comparisonTest;
   private ComparisonSet comparisonSet;
-  private String controlXml;
-  private String variantXml;
+  private ServiceOutput control;
+  private ServiceOutput variant;
 
   public ComparisonContext(ComparisonTest comparisonTest, ComparisonSet comparisonSet,
-      String controlXml, String variantXml)
+      ServiceOutput control, ServiceOutput variant)
   {
     this.comparisonTest = comparisonTest;
     this.comparisonSet = comparisonSet;
-    this.controlXml = controlXml;
-    this.variantXml = variantXml;
+    this.control = control;
+    this.variant = variant;
   }
 
   public ComparisonTest getComparisonTest()
@@ -31,11 +32,21 @@ public class ComparisonContext
 
   public String getControlXml()
   {
-    return controlXml;
+    return control.getOutput();
   }
 
   public String getVariantXml()
   {
-    return variantXml;
+    return variant.getOutput();
+  }
+
+  public ServiceOutput getControl()
+  {
+    return control;
+  }
+
+  public ServiceOutput getVariant()
+  {
+    return variant;
   }
 }

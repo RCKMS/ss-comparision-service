@@ -18,6 +18,8 @@ public class ComparisonResult
   private String node;
   private String description;
   private Type type;
+  private String controlServiceOutputId;
+  private String variantServiceOutputId;
 
   ComparisonResult()
   {
@@ -56,6 +58,26 @@ public class ComparisonResult
   public void setType(Type type)
   {
     this.type = type;
+  }
+
+  public String getControlServiceOutputId()
+  {
+    return controlServiceOutputId;
+  }
+
+  public void setControlServiceOutputId(String controlServiceOutputId)
+  {
+    this.controlServiceOutputId = controlServiceOutputId;
+  }
+
+  public String getVariantServiceOutputId()
+  {
+    return variantServiceOutputId;
+  }
+
+  public void setVariantServiceOutputId(String variantServiceOutputId)
+  {
+    this.variantServiceOutputId = variantServiceOutputId;
   }
 
   @Override

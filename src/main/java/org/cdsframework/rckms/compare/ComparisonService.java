@@ -90,7 +90,7 @@ public class ComparisonService
   private void compare(ComparisonTest test, ComparisonSet comparisonSet, ServiceOutput control, ServiceOutput variant,
       List<ComparisonResult> results)
   {
-    ComparisonContext context = new ComparisonContext(test, comparisonSet, control.getOutput(), variant.getOutput());
+    ComparisonContext context = new ComparisonContext(test, comparisonSet, control, variant);
     if (control.getServiceStatus() != variant.getServiceStatus())
     {
       results.add(ComparisonResults.statusDiff(test, control, variant));

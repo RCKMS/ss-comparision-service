@@ -25,7 +25,7 @@ abstract class AbstractXmlUnitComparisonEngine implements ComparisonEngine
     Diff diff = createDiffBuilder(context.getControlXml(), context.getVariantXml()).build();
 
     List<ComparisonResult> results = new ArrayList<>();
-    diff.getDifferences().forEach(d -> results.add(transform(d)));
+    diff.getDifferences().forEach(d -> results.add(transform(d, context)));
     //    int i = 0;
     //    for (Difference d : diff.getDifferences())
     //    {
@@ -45,7 +45,7 @@ abstract class AbstractXmlUnitComparisonEngine implements ComparisonEngine
     return results;
   }
 
-  private ComparisonResult transform(Difference diff)
+  private ComparisonResult transform(Difference diff, ComparisonContext context)
   {
     ComparisonResult result;
 
@@ -68,6 +68,8 @@ abstract class AbstractXmlUnitComparisonEngine implements ComparisonEngine
     }
     result.setNode(nodePath);
     result.setDescription(diff.toString());
+    result.setControlServiceOutputId(context.getControl().getId());
+    result.setVariantServiceOutputId(context.getVariant().getId());
 
     return result;
   }

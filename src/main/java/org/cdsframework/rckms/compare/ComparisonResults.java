@@ -31,7 +31,10 @@ public class ComparisonResults
   {
     String desc = String.format("%s=%d; %s=%d", control.getSourceId(), control.getServiceStatus(), variant.getSourceId(),
         variant.getServiceStatus());
-    return create(Type.STATUS_DIFF, desc);
+    ComparisonResult result = create(Type.STATUS_DIFF, desc);
+    result.setControlServiceOutputId(control.getId());
+    result.setVariantServiceOutputId(variant.getId());
+    return result;
   }
 
   static ComparisonResult create(Type type, String desc)

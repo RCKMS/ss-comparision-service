@@ -7,6 +7,7 @@ import java.util.List;
 import org.cdsframework.rckms.compare.ComparisonContext;
 import org.cdsframework.rckms.dao.ComparisonResult;
 import org.cdsframework.rckms.dao.ComparisonResult.Type;
+import org.cdsframework.rckms.dao.ServiceOutput;
 import org.junit.jupiter.api.Test;
 
 public class XmlUnitComparisonEngine202103Test
@@ -45,8 +46,16 @@ public class XmlUnitComparisonEngine202103Test
   {
     String controlXml = XmlUtils.loadXml(controlUri);
     String variantXml = XmlUtils.loadXml(variantUri);
-    ComparisonContext ctx = new ComparisonContext(null, null, controlXml, variantXml);
+    ComparisonContext ctx =
+        new ComparisonContext(null, null,
+            createServiceOutput("control", controlXml), createServiceOutput("variant", variantXml));
     return ctx;
+  }
+
+  private ServiceOutput createServiceOutput(String sourceId, String xml)
+  {
+    ServiceOutput output = new ServiceOutput("test", "comparison-set-key", sourceId, 200, xml);
+    return output;
   }
 
 }
