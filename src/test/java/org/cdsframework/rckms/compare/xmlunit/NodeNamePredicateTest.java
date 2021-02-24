@@ -26,6 +26,8 @@ public class NodeNamePredicateTest
 
     predicate = new NodeNamePredicate("root").withAncestry("foo");
     assertFalse(predicate.test(root));
+    predicate = new NodeNamePredicate("foo/root");
+    assertFalse(predicate.test(root));
   }
 
   @Test
@@ -42,11 +44,17 @@ public class NodeNamePredicateTest
 
     predicate = new NodeNamePredicate("child2").withAncestry("child1");
     assertTrue(predicate.test(child2));
+    predicate = new NodeNamePredicate("child1/child2");
+    assertTrue(predicate.test(child2));
 
     predicate = new NodeNamePredicate("child2").withAncestry("child1", "root");
     assertTrue(predicate.test(child2));
+    predicate = new NodeNamePredicate("root/child1/child2");
+    assertTrue(predicate.test(child2));
 
     predicate = new NodeNamePredicate("child2").withAncestry("root");
+    assertFalse(predicate.test(child2));
+    predicate = new NodeNamePredicate("root/child2");
     assertFalse(predicate.test(child2));
   }
 
@@ -64,8 +72,12 @@ public class NodeNamePredicateTest
 
     predicate = new NodeNamePredicate("#text").withAncestry("child1");
     assertTrue(predicate.test(textNode));
+    predicate = new NodeNamePredicate("child1/#text");
+    assertTrue(predicate.test(textNode));
 
     predicate = new NodeNamePredicate("#text").withAncestry("root");
+    assertFalse(predicate.test(textNode));
+    predicate = new NodeNamePredicate("root/#text");
     assertFalse(predicate.test(textNode));
   }
 
@@ -81,6 +93,8 @@ public class NodeNamePredicateTest
     assertTrue(predicate.test(node));
 
     predicate = new NodeNamePredicate("attr").withAncestry("root");
+    assertTrue(predicate.test(node));
+    predicate = new NodeNamePredicate("root/attr");
     assertTrue(predicate.test(node));
   }
 

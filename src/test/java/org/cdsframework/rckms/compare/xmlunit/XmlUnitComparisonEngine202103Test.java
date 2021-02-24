@@ -5,41 +5,38 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
 import org.cdsframework.rckms.compare.ComparisonContext;
+import org.cdsframework.rckms.compare.ComparisonEngine;
 import org.cdsframework.rckms.dao.ComparisonResult;
 import org.cdsframework.rckms.dao.ComparisonResult.Type;
 import org.cdsframework.rckms.dao.ServiceOutput;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class XmlUnitComparisonEngine202103Test
 {
-  @Test
-  public void testIdentical() throws Exception
-  {
-    ComparisonContext ctx = createContext("classpath:202103_control_MA.xml", "classpath:202103_control_MA.xml");
-    XmlUnitComparisonEngine202103 comparison = new XmlUnitComparisonEngine202103();
-    assertTrue(comparison.compare(ctx).isEmpty());
-  }
+  private static final Logger logger = LoggerFactory.getLogger(XmlUnitComparisonEngine202103Test.class);
 
   @Test
   public void testIgnoreKnownDifferences() throws Exception
   {
     // This variant contains diagnostics element and an extra routingEntity element
-    ComparisonContext ctx = createContext("classpath:202103_control_MA.xml", "classpath:202103_variant_MA.xml");
+    ComparisonContext ctx = createContext("classpath:202103_control.xml", "classpath:202103_variant.xml");
     XmlUnitComparisonEngine202103 comparison = new XmlUnitComparisonEngine202103();
-    List<ComparisonResult> results = comparison.compare(ctx);
+    List<ComparisonResult> results = compare(comparison, ctx);
     assertTrue(results.isEmpty(), results.toString());
   }
 
   @Test
-  public void testValidDifference() throws Exception
+  public void testUnexpectedDifference() throws Exception
   {
     // This variant contains a different responseCode
-    ComparisonContext ctx = createContext("classpath:202103_control_MA.xml", "classpath:202103_variant_MA_with_diff.xml");
+    ComparisonContext ctx = createContext("classpath:202103_control.xml", "classpath:202103_variant_with_diff.xml");
     XmlUnitComparisonEngine202103 comparison = new XmlUnitComparisonEngine202103();
-    List<ComparisonResult> results = comparison.compare(ctx);
+    List<ComparisonResult> results = compare(comparison, ctx);
     assertEquals(1, results.size());
     assertEquals(Type.NODE_DIFF, results.get(0).getType());
-    assertEquals("/rckmsOutput[1]/responseCode[1]/text()[1]", results.get(0).getNode());
+    assertEquals("/rckmsOutput[1]/jurisdiction[1]/serviceResponseCode[1]/text()[1]", results.get(0).getNode());
   }
 
   private ComparisonContext createContext(String controlUri, String variantUri) throws Exception
@@ -56,6 +53,17 @@ public class XmlUnitComparisonEngine202103Test
   {
     ServiceOutput output = new ServiceOutput("test", "comparison-set-key", sourceId, 200, xml);
     return output;
+  }
+
+  private List<ComparisonResult> compare(ComparisonEngine engine, ComparisonContext ctx)
+  {
+    List<ComparisonResult> results = engine.compare(ctx);
+    int i = 0;
+    for (ComparisonResult result : results)
+    {
+      logger.info("Diff[" + ++i + "]: " + result.toString() + ": " + result.getDescription());
+    }
+    return results;
   }
 
 }

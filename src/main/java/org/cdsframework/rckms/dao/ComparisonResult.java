@@ -83,7 +83,7 @@ public class ComparisonResult
   @Override
   public String toString()
   {
-    return node;
+    return type + (node != null ? "(" + node + ")" : "");
   }
 
   @Override

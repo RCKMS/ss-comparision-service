@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rckmsOutput xmlns="org.cdsframework.rckms.output" requestDate="2021-02-23-19:02">
+    <jurisdiction id="ut" displayName="Utah Department of Health">
+        <serviceResponseCode>200</serviceResponseCode>
+        <serviceResponseMessage displayName="Success" code="OK">Jurisdiction request completed successfully for ut
+        </serviceResponseMessage>
+        <output>
+            PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxuczI6Y2RzT3V0cHV0IHhtbG5zOm5zMj0ib3JnLm9wZW5jZHMudm1yLnYxXzAuc2NoZW1hLmNkc291dHB1dCIgeG1sbnM6bnMzPSJvcmcub3BlbmNkcy52bXIudjFfMC5zY2hlbWEudm1yIiB4bWxuczpuczQ9Im9yZy5vcGVuY2RzLnZtci52MV8wLnNjaGVtYS5jZHNpbnB1dC5zcGVjaWZpY2F0aW9uIiB4bWxuczpuczU9Im9yZy5vcGVuY2RzLnZtci52MV8wLnNjaGVtYS5jZHNpbnB1dCI+PHZtck91dHB1dD48dGVtcGxhdGVJZCByb290PSIyLjE2Ljg0MC4xLjExMzg4My4zLjE4MjkuMTEuMS4yLjE4Ii8+PHBhdGllbnQ+PHRlbXBsYXRlSWQgcm9vdD0iMi4xNi44NDAuMS4xMTM4ODMuMy4xODI5LjExLjIuMy4zIi8+PGlkIHJvb3Q9IjIuMTYuODQwLjEuMTEzODgzLjE5LjUiIGV4dGVuc2lvbj0iNmU2NmVkZWYtZTY0YS00MDU1LTg2Y2QtZGI5ZDdkZWNjYTNkIi8+PGRlbW9ncmFwaGljcz48YmlydGhUaW1lIHZhbHVlPSIyMDE0MDEwMTAwMDAwMC4wMDArMDAwMCIvPjxnZW5kZXIgY29kZT0iRiIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuMS4xMS4xIi8+PGFkZHJlc3MgdXNlPSJIIj48cGFydCB0eXBlPSJTQUwiIHZhbHVlPSIyODggTm9ydGggMTQ2MCBXZXN0Ii8+PHBhcnQgdHlwZT0iQ1RZIiB2YWx1ZT0iU2FsdCBMYWtlIENpdHkiLz48cGFydCB0eXBlPSJTVEEiIHZhbHVlPSJVVCIvPjxwYXJ0IHR5cGU9IlpJUCIgdmFsdWU9Ijg0MTE2Ii8+PHBhcnQgdHlwZT0iQ1BBIiB2YWx1ZT0iU2FsdCBMYWtlIi8+PHBhcnQgdHlwZT0iQ05UIiB2YWx1ZT0iVVMiLz48L2FkZHJlc3M+PHRlbGVjb20gdmFsdWU9InRlbDo1NTUtNTU1LTIwMDUiIHVzZT0iSFAiLz48dGVsZWNvbSB2YWx1ZT0ibWFpbHRvOmtra2lkZEBlbWFpbC5jb20iIHVzZT0iSFAiLz48aXNEZWNlYXNlZCB2YWx1ZT0iZmFsc2UiLz48L2RlbW9ncmFwaGljcz48Y2xpbmljYWxTdGF0ZW1lbnRzPjxlbmNvdW50ZXJFdmVudHM+PGVuY291bnRlckV2ZW50Pjx0ZW1wbGF0ZUlkIHJvb3Q9IjIuMTYuODQwLjEuMTEzODgzLjMuMTgyOS4xMS40LjMuOCIvPjxpZCByb290PSIyLjE2Ljg0MC4xLjExMzg4My4xOSIgZXh0ZW5zaW9uPSI3OTljOTY3ZC1jNzQ3LTQwOWQtOGYzYi1kNjJjNmU2ZDM2Y2IiLz48ZW5jb3VudGVyVHlwZSBjb2RlPSI5OTIxMyIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuNi4xMiIgY29kZVN5c3RlbU5hbWU9IkNQVC00IiBkaXNwbGF5TmFtZT0iT2ZmaWNlIG91dHBhdGllbnQgdmlzaXQgMTUgbWludXRlcyIvPjxlbmNvdW50ZXJFdmVudFRpbWUgaGlnaD0iMjAxNjAxMDQwMDAwMDAuMDAwKzAwMDAiIGxvdz0iMjAxNjAxMDQwMDAwMDAuMDAwKzAwMDAiLz48cmVsYXRlZENsaW5pY2FsU3RhdGVtZW50Pjx0YXJnZXRSZWxhdGlvbnNoaXBUb1NvdXJjZSBjb2RlPSJQRVJUIiBjb2RlU3lzdGVtPSIyLjE2Ljg0MC4xLjExMzg4My41LjEwMDIiLz48b2JzZXJ2YXRpb25SZXN1bHQ+PHRlbXBsYXRlSWQgcm9vdD0iMi4xNi44NDAuMS4xMTM4ODMuMy43OTUuMTEuNi4zLjEiLz48aWQgcm9vdD0iZjMzN2QyMzAtNmJiNC00NjQ1LTlmNWMtOTFhNjYxYzc5N2RkIi8+PG9ic2VydmF0aW9uRm9jdXMgY29kZT0iUEhfRGlzY2hhcmdlRGlzcG9zaXRpb25fSEw3XzJ4IiBjb2RlU3lzdGVtPSIyLjE2Ljg0MC4xLjExMzg4My4zLjE4MjkuMTEuNC4zLjEyIi8+PC9vYnNlcnZhdGlvblJlc3VsdD48L3JlbGF0ZWRDbGluaWNhbFN0YXRlbWVudD48L2VuY291bnRlckV2ZW50PjxlbmNvdW50ZXJFdmVudD48dGVtcGxhdGVJZCByb290PSIyLjE2Ljg0MC4xLjExMzg4My4zLjE4MjkuMTEuNC4zLjgiLz48aWQgcm9vdD0iZDFiZTI0YjQtMjk1YS00M2Y0LWE5MzEtZGYwNjBmNjg3ZDAwIiBleHRlbnNpb249IjgwNzg2YTA0LWMyM2YtNDlkMS04NTQzLWQ1ZWUxMzFjNzgxYyIvPjxlbmNvdW50ZXJUeXBlIGNvZGU9Ijk5MjEzIiBjb2RlU3lzdGVtPSIyLjE2Ljg0MC4xLjExMzg4My42LjEyIiBjb2RlU3lzdGVtTmFtZT0iQ1BULTQiIGRpc3BsYXlOYW1lPSJPZmZpY2Ugb3V0cGF0aWVudCB2aXNpdCAxNSBtaW51dGVzIi8+PGVuY291bnRlckV2ZW50VGltZSBoaWdoPSIyMDE2MDEwNDAwMDAwMC4wMDArMDAwMCIgbG93PSIyMDE2MDEwNDAwMDAwMC4wMDArMDAwMCIvPjxyZWxhdGVkQ2xpbmljYWxTdGF0ZW1lbnQ+PHRhcmdldFJlbGF0aW9uc2hpcFRvU291cmNlIGNvZGU9IlBFUlQiIGNvZGVTeXN0ZW09IjIuMTYuODQwLjEuMTEzODgzLjUuMTAwMiIvPjxwcm9ibGVtPjx0ZW1wbGF0ZUlkIHJvb3Q9IjIuMTYuODQwLjEuMTEzODgzLjMuMTgyOS4xMS43LjIuMjAiLz48aWQgcm9vdD0iMzY1ZmRiMjYtYTQ2MC00MGM4LWExYTgtZWQ0MWRlMTUyOTI4IiBleHRlbnNpb249IjRjZTA0MGE0LTg5YjMtNDJjNi04YjMxLWFhYmJhMTMzN2M3YiIvPjxwcm9ibGVtQ29kZSBjb2RlPSJBMzcuMCIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuNi45MCIgY29kZVN5c3RlbU5hbWU9IklDRC0xMCIgZGlzcGxheU5hbWU9Ildob29waW5nIGNvdWdoIGR1ZSB0byBCb3JkZXRlbGxhIHBlcnR1c3NpcyIvPjxwcm9ibGVtRWZmZWN0aXZlVGltZSBoaWdoPSIyMDE2MDEwNDAwMDAwMC4wMDArMDAwMCIgbG93PSIyMDE2MDEwNDAwMDAwMC4wMDArMDAwMCIvPjxkaWFnbm9zdGljRXZlbnRUaW1lIGxvdz0iMjAxNjAxMDQwMDAwMDAuMDAwKzAwMDAiLz48cHJvYmxlbVN0YXR1cyBjb2RlPSJjb21wbGV0ZWQiIGNvZGVTeXN0ZW09IjIuMTYuODQwLjEuMTEzODgzLjMuMTkzNy45OC41LjgiIGNvZGVTeXN0ZW1OYW1lPSJTTk9NRUQtQ1QiLz48L3Byb2JsZW0+PC9yZWxhdGVkQ2xpbmljYWxTdGF0ZW1lbnQ+PC9lbmNvdW50ZXJFdmVudD48L2VuY291bnRlckV2ZW50cz48b2JzZXJ2YXRpb25SZXN1bHRzPjxvYnNlcnZhdGlvblJlc3VsdD48dGVtcGxhdGVJZCByb290PSIyLjE2Ljg0MC4xLjExMzg4My4zLjc5NS4xMS42LjMuMSIvPjxpZCByb290PSI0YjEyODI4Yy1iOWI0LTQwNjItYjdlYy1mN2JkZGIzNDJjNmUiIGV4dGVuc2lvbj0iY2FhY2UyMWUtZGQ4Zi00ZGIxLWIyODYtZTRiMmMyYjEwZGY3Ii8+PG9ic2VydmF0aW9uRm9jdXMgY29kZT0iNzY2ODktOSIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuNi4xIiBjb2RlU3lzdGVtTmFtZT0iTE9JTkMiIGRpc3BsYXlOYW1lPSJTZXggQXNzaWduZWQgQXQgQmlydGgiLz48b2JzZXJ2YXRpb25FdmVudFRpbWUgaGlnaD0iMjAxNDAxMDEwMDAwMDAuMDAwKzAwMDAiIGxvdz0iMjAxNDAxMDEwMDAwMDAuMDAwKzAwMDAiLz48b2JzZXJ2YXRpb25WYWx1ZT48Y29uY2VwdCBjb2RlPSJGIiBjb2RlU3lzdGVtPSIyLjE2Ljg0MC4xLjExMzg4My41LjEiIGNvZGVTeXN0ZW1OYW1lPSJBZG1pbmlzdHJhdGl2ZUdlbmRlciIgZGlzcGxheU5hbWU9IkZlbWFsZSIvPjwvb2JzZXJ2YXRpb25WYWx1ZT48L29ic2VydmF0aW9uUmVzdWx0PjxvYnNlcnZhdGlvblJlc3VsdD48aWQgcm9vdD0iMjlhM2FlZDctZGM2ZC00NmVmLTg0ODMtOWE2Nzc4ZmI1MDgyIi8+PG9ic2VydmF0aW9uRm9jdXMgY29kZT0iUkNLTVNfTG9naWNTZXRfRmlyZWRfSW5kaWNhdG9yIiBjb2RlU3lzdGVtPSIyLjE2Ljg0MC4xLjExMzg4My4zLjc5NS41LjQuMTIuMi4zIiBjb2RlU3lzdGVtTmFtZT0iUmVwb3J0YWJsZSBDb25kaXRpb25zIEZvY3VzIiBkaXNwbGF5TmFtZT0iTG9naWMgU2V0IEZpcmVkIEluZGljYXRvciIvPjxvYnNlcnZhdGlvbkV2ZW50VGltZSBoaWdoPSIyMDIxMDIyMzE5MTMxMi44OTArMDAwMCIgbG93PSIyMDIxMDIyMzE5MTMxMi44OTArMDAwMCIvPjxvYnNlcnZhdGlvblZhbHVlPjxpZGVudGlmaWVyIHJvb3Q9ImU3Yjc2MDkzNWUwYWU3MmI1MGJmNGUyMThlZWI3NjY3Ii8+PC9vYnNlcnZhdGlvblZhbHVlPjwvb2JzZXJ2YXRpb25SZXN1bHQ+PG9ic2VydmF0aW9uUmVzdWx0PjxpZCByb290PSJhZWIyY2JiYS1kNmRlLTQ5MGQtYjRiNi1iNmY3ZGY0MWE5MzIiLz48b2JzZXJ2YXRpb25Gb2N1cyBjb2RlPSJSQ0tNU19NYXliZV9SZXBvcnRpbmdfSW5kaWNhdG9yIiBjb2RlU3lzdGVtPSIyLjE2Ljg0MC4xLjExMzg4My4zLjc5NS41LjQuMTIuMi4zIiBjb2RlU3lzdGVtTmFtZT0iUmVwb3J0YWJsZSBDb25kaXRpb25zIEZvY3VzIiBkaXNwbGF5TmFtZT0iUmVwb3J0YWJsZSBDb25kaXRpb25zIEZvY3VzIi8+PG9ic2VydmF0aW9uRXZlbnRUaW1lIGhpZ2g9IjIwMjEwMjIzMTkxMzEyLjg4NCswMDAwIiBsb3c9IjIwMjEwMjIzMTkxMzEyLjg4NCswMDAwIi8+PG9ic2VydmF0aW9uVmFsdWU+PGNvbmNlcHQgY29kZT0iMzkyODAwMiIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuNi45NiIgZGlzcGxheU5hbWU9Ilppa2EgdmlydXMgZGlzZWFzZSAoZGlzb3JkZXIpIiBvcmlnaW5hbFRleHQ9IlJlcG9ydGFiaWxpdHkgY291bGQgbm90IGJlIGRldGVybWluZWQgZHVlIHRvIG1pc3NpbmcgaW5mb3JtYXRpb24gbmVlZGVkIGZvciB0aGUgZm9sbG93aW5nIGNyaXRlcmlhOiBOZWdhdGl2ZSByZXN1bHRzIG9mIHRlc3RzIGZvciBkZXRlY3Rpb24gb2YgWmlrYSBWaXJ1cyBudWNsZWljIGFjaWQgYnkgYW55IG1ldGhvZCBpbiBhIGNsaW5pY2FsIHNwZWNpbWVuIChpLmUuLCA/bmVnYXRpdmU/IG51Y2xlaWMgYWNpZCByZXN1bHRzKSIvPjwvb2JzZXJ2YXRpb25WYWx1ZT48L29ic2VydmF0aW9uUmVzdWx0PjxvYnNlcnZhdGlvblJlc3VsdD48aWQgcm9vdD0iMWYyYTQxNTctMGQ0OC00MzFhLThjZjEtMTQyMDE3ZjY5Nzc2Ii8+PG9ic2VydmF0aW9uRm9jdXMgY29kZT0iUkNLTVNfTWF5YmVfUmVwb3J0aW5nX0luZGljYXRvciIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuMy43OTUuNS40LjEyLjIuMyIgY29kZVN5c3RlbU5hbWU9IlJlcG9ydGFibGUgQ29uZGl0aW9ucyBGb2N1cyIgZGlzcGxheU5hbWU9IlJlcG9ydGFibGUgQ29uZGl0aW9ucyBGb2N1cyIvPjxvYnNlcnZhdGlvbkV2ZW50VGltZSBoaWdoPSIyMDIxMDIyMzE5MTMxMi44ODUrMDAwMCIgbG93PSIyMDIxMDIyMzE5MTMxMi44ODUrMDAwMCIvPjxvYnNlcnZhdGlvblZhbHVlPjxjb25jZXB0IGNvZGU9IjE1NjI4MDAzIiBjb2RlU3lzdGVtPSIyLjE2Ljg0MC4xLjExMzg4My42Ljk2IiBkaXNwbGF5TmFtZT0iR29ub3JyaGVhIChkaXNvcmRlcikiIG9yaWdpbmFsVGV4dD0iUmVwb3J0YWJpbGl0eSBjb3VsZCBub3QgYmUgZGV0ZXJtaW5lZCBkdWUgdG8gbWlzc2luZyBpbmZvcm1hdGlvbiBuZWVkZWQgZm9yIHRoZSBmb2xsb3dpbmcgY3JpdGVyaWE6IERldGVjdGlvbiBvZiBOZWlzc2VyaWEgZ29ub3JyaG9lYWUgbnVjbGVpYyBhY2lkIGluIGEgY2xpbmljYWwgc3BlY2ltZW4gYnkgYW55IG1ldGhvZCIvPjwvb2JzZXJ2YXRpb25WYWx1ZT48L29ic2VydmF0aW9uUmVzdWx0PjxvYnNlcnZhdGlvblJlc3VsdD48aWQgcm9vdD0iY2ExMzVlM2EtMDRjMi00MDk1LWFlMWMtMWJlOWE0MzZjZDczIi8+PG9ic2VydmF0aW9uRm9jdXMgY29kZT0iUkNLTVNfTWF5YmVfUmVwb3J0aW5nX0luZGljYXRvciIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuMy43OTUuNS40LjEyLjIuMyIgY29kZVN5c3RlbU5hbWU9IlJlcG9ydGFibGUgQ29uZGl0aW9ucyBGb2N1cyIgZGlzcGxheU5hbWU9IlJlcG9ydGFibGUgQ29uZGl0aW9ucyBGb2N1cyIvPjxvYnNlcnZhdGlvbkV2ZW50VGltZSBoaWdoPSIyMDIxMDIyMzE5MTMxMi44ODMrMDAwMCIgbG93PSIyMDIxMDIyMzE5MTMxMi44ODMrMDAwMCIvPjxvYnNlcnZhdGlvblZhbHVlPjxjb25jZXB0IGNvZGU9IjMwMjIzMTAwOCIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuNi45NiIgZGlzcGxheU5hbWU9IlNhbG1vbmVsbGEgaW5mZWN0aW9uIChkaXNvcmRlcikiIG9yaWdpbmFsVGV4dD0iUmVwb3J0YWJpbGl0eSBjb3VsZCBub3QgYmUgZGV0ZXJtaW5lZCBkdWUgdG8gbWlzc2luZyBpbmZvcm1hdGlvbiBuZWVkZWQgZm9yIHRoZSBmb2xsb3dpbmcgY3JpdGVyaWE6IElkZW50aWZpY2F0aW9uIG9mIFNhbG1vbmVsbGEgc3BlY2llcyBhbmQgc2Vyb3ZhcnMgKGV4Y2VwdCBTLiB0eXBoaSBhbmQgUy4gcGFyYXR5cGhpKSBpbiBhIGNsaW5pY2FsIHNwZWNpbWVuIGJ5IGN1bHR1cmUgbWV0aG9kLCBpbmNsdWRpbmcgaWRlbnRpZmljYXRpb24gdGVzdHMgcGVyZm9ybWVkIG9uIGFuIGlzb2xhdGUiLz48L29ic2VydmF0aW9uVmFsdWU+PC9vYnNlcnZhdGlvblJlc3VsdD48b2JzZXJ2YXRpb25SZXN1bHQ+PGlkIHJvb3Q9IjllZDViNzAxLTNmYzEtNGQ3OS1iNzVjLTViMzdlMTcyNDVkNyIvPjxvYnNlcnZhdGlvbkZvY3VzIGNvZGU9IlJDS01TX01heWJlX1JlcG9ydGluZ19JbmRpY2F0b3IiIGNvZGVTeXN0ZW09IjIuMTYuODQwLjEuMTEzODgzLjMuNzk1LjUuNC4xMi4yLjMiIGNvZGVTeXN0ZW1OYW1lPSJSZXBvcnRhYmxlIENvbmRpdGlvbnMgRm9jdXMiIGRpc3BsYXlOYW1lPSJSZXBvcnRhYmxlIENvbmRpdGlvbnMgRm9jdXMiLz48b2JzZXJ2YXRpb25FdmVudFRpbWUgaGlnaD0iMjAyMTAyMjMxOTEzMTIuODg1KzAwMDAiIGxvdz0iMjAyMTAyMjMxOTEzMTIuODg1KzAwMDAiLz48b2JzZXJ2YXRpb25WYWx1ZT48Y29uY2VwdCBjb2RlPSIxODY3NDcwMDkiIGNvZGVTeXN0ZW09IjIuMTYuODQwLjEuMTEzODgzLjYuOTYiIGRpc3BsYXlOYW1lPSJDb3JvbmF2aXJ1cyBpbmZlY3Rpb24gKGRpc29yZGVyKSIgb3JpZ2luYWxUZXh0PSJSZXBvcnRhYmlsaXR5IGNvdWxkIG5vdCBiZSBkZXRlcm1pbmVkIGR1ZSB0byBtaXNzaW5nIGluZm9ybWF0aW9uIG5lZWRlZCBmb3IgdGhlIGZvbGxvd2luZyBjcml0ZXJpYTogRGV0ZWN0aW9uIG9mIFNBUlMtQ29WLTIgbnVjbGVpYyBhY2lkIGluIGEgY2xpbmljYWwgc3BlY2ltZW4gYnkgYW55IG1ldGhvZCIvPjwvb2JzZXJ2YXRpb25WYWx1ZT48L29ic2VydmF0aW9uUmVzdWx0PjxvYnNlcnZhdGlvblJlc3VsdD48aWQgcm9vdD0iODViYTkwZmYtZjQwZi00ZGQwLTg5NDItOTRkODVhZDE3NGY0Ii8+PG9ic2VydmF0aW9uRm9jdXMgY29kZT0iUkNLTVNfTWF5YmVfU3BlY2lmaWNhdGlvbl9JRCIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuMy43OTUuNS40LjEyLjIuMyIgY29kZVN5c3RlbU5hbWU9IlJlcG9ydGFibGUgQ29uZGl0aW9ucyBGb2N1cyIgZGlzcGxheU5hbWU9IlJlcG9ydGFibGUgQ29uZGl0aW9ucyBGb2N1cyIvPjxvYnNlcnZhdGlvbkV2ZW50VGltZSBoaWdoPSIyMDIxMDIyMzE5MTMxMi44ODQrMDAwMCIgbG93PSIyMDIxMDIyMzE5MTMxMi44ODQrMDAwMCIvPjxvYnNlcnZhdGlvblZhbHVlPjxpZGVudGlmaWVyIHJvb3Q9Ijg0ZTMxYTBlNjM1Y2RkZDZlNzE0MTU1OGM2ODA0MzNkIi8+PC9vYnNlcnZhdGlvblZhbHVlPjwvb2JzZXJ2YXRpb25SZXN1bHQ+PG9ic2VydmF0aW9uUmVzdWx0PjxpZCByb290PSJiYjI0MzNlYy00NDhkLTQ4OTctYjhhYS1mNDVkNzNmYzc1OTIiLz48b2JzZXJ2YXRpb25Gb2N1cyBjb2RlPSJSQ0tNU19NYXliZV9TcGVjaWZpY2F0aW9uX0lEIiBjb2RlU3lzdGVtPSIyLjE2Ljg0MC4xLjExMzg4My4zLjc5NS41LjQuMTIuMi4zIiBjb2RlU3lzdGVtTmFtZT0iUmVwb3J0YWJsZSBDb25kaXRpb25zIEZvY3VzIiBkaXNwbGF5TmFtZT0iUmVwb3J0YWJsZSBDb25kaXRpb25zIEZvY3VzIi8+PG9ic2VydmF0aW9uRXZlbnRUaW1lIGhpZ2g9IjIwMjEwMjIzMTkxMzEyLjg4NSswMDAwIiBsb3c9IjIwMjEwMjIzMTkxMzEyLjg4NSswMDAwIi8+PG9ic2VydmF0aW9uVmFsdWU+PGlkZW50aWZpZXIgcm9vdD0iODc2ODI5MzllZjBhMWMzZDRhYzdiODVmMmQwNTVlYzciLz48L29ic2VydmF0aW9uVmFsdWU+PC9vYnNlcnZhdGlvblJlc3VsdD48b2JzZXJ2YXRpb25SZXN1bHQ+PGlkIHJvb3Q9IjkyOTZhYzBhLTFjY2UtNGY1Zi1hN2QyLTc4OWQzNTI5ZTA1OSIvPjxvYnNlcnZhdGlvbkZvY3VzIGNvZGU9IlJDS01TX01heWJlX0NyaXRlcmlhX0ZpcmVkX0luZGljYXRvciIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuMy43OTUuNS40LjEyLjIuMyIgY29kZVN5c3RlbU5hbWU9IlJlcG9ydGFibGUgQ29uZGl0aW9ucyBGb2N1cyIgZGlzcGxheU5hbWU9IkNyaXRlcmlhIE1heWJlIEZpcmVkIEluZGljYXRvciIvPjxvYnNlcnZhdGlvbkV2ZW50VGltZSBoaWdoPSIyMDIxMDIyMzE5MTMxMi44ODcrMDAwMCIgbG93PSIyMDIxMDIyMzE5MTMxMi44ODcrMDAwMCIvPjxvYnNlcnZhdGlvblZhbHVlPjxpZGVudGlmaWVyIHJvb3Q9IjY3N2E2M2NjYWY5OThmYzM1ZTNlZjBhYmZhYjVjNDA4Ii8+PC9vYnNlcnZhdGlvblZhbHVlPjwvb2JzZXJ2YXRpb25SZXN1bHQ+PG9ic2VydmF0aW9uUmVzdWx0PjxpZCByb290PSJkMGUwNjAwYS03NzI3LTQ0OTEtYjk5Zi03NDE1YmY1ZWFhMzAiLz48b2JzZXJ2YXRpb25Gb2N1cyBjb2RlPSJSQ0tNU19Mb2dpY1NldF9GaXJlZF9JbmRpY2F0b3IiIGNvZGVTeXN0ZW09IjIuMTYuODQwLjEuMTEzODgzLjMuNzk1LjUuNC4xMi4yLjMiIGNvZGVTeXN0ZW1OYW1lPSJSZXBvcnRhYmxlIENvbmRpdGlvbnMgRm9jdXMiIGRpc3BsYXlOYW1lPSJMb2dpYyBTZXQgRmlyZWQgSW5kaWNhdG9yIi8+PG9ic2VydmF0aW9uRXZlbnRUaW1lIGhpZ2g9IjIwMjEwMjIzMTkxMzEyLjg5MCswMDAwIiBsb3c9IjIwMjEwMjIzMTkxMzEyLjg5MCswMDAwIi8+PG9ic2VydmF0aW9uVmFsdWU+PGlkZW50aWZpZXIgcm9vdD0iYTU2ZjJlNmZlNjg2NDQwZDg4YzIzMDg0NGQ1M2YzNTEiLz48L29ic2VydmF0aW9uVmFsdWU+PC9vYnNlcnZhdGlvblJlc3VsdD48b2JzZXJ2YXRpb25SZXN1bHQ+PGlkIHJvb3Q9IjcxMjVkZDcyLTBkNmYtNDkyZC04OTU0LTdlYWU3NGRhMmMwMyIvPjxvYnNlcnZhdGlvbkZvY3VzIGNvZGU9IlJDS01TX0xvZ2ljU2V0X0ZpcmVkX0luZGljYXRvciIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuMy43OTUuNS40LjEyLjIuMyIgY29kZVN5c3RlbU5hbWU9IlJlcG9ydGFibGUgQ29uZGl0aW9ucyBGb2N1cyIgZGlzcGxheU5hbWU9IkxvZ2ljIFNldCBGaXJlZCBJbmRpY2F0b3IiLz48b2JzZXJ2YXRpb25FdmVudFRpbWUgaGlnaD0iMjAyMTAyMjMxOTEzMTIuODg5KzAwMDAiIGxvdz0iMjAyMTAyMjMxOTEzMTIuODg5KzAwMDAiLz48b2JzZXJ2YXRpb25WYWx1ZT48aWRlbnRpZmllciByb290PSJjYmIzMzM2YTZkMGJmOTdiZGU3Y2EyNTc2MTZlMTE5OCIvPjwvb2JzZXJ2YXRpb25WYWx1ZT48L29ic2VydmF0aW9uUmVzdWx0PjxvYnNlcnZhdGlvblJlc3VsdD48aWQgcm9vdD0iMDhmODZjZmUtN2VkMC00MDZlLTlkYzMtZmIxYTdjY2MwNGYxIi8+PG9ic2VydmF0aW9uRm9jdXMgY29kZT0iUkNLTVNfUmVwb3J0aW5nX1NwZWNpZmljYXRpb25fSUQiIGNvZGVTeXN0ZW09IjIuMTYuODQwLjEuMTEzODgzLjMuNzk1LjUuNC4xMi4yLjMiIGNvZGVTeXN0ZW1OYW1lPSJSZXBvcnRhYmxlIENvbmRpdGlvbnMgRm9jdXMiIGRpc3BsYXlOYW1lPSJSZXBvcnRhYmxlIENvbmRpdGlvbnMgRm9jdXMiLz48b2JzZXJ2YXRpb25FdmVudFRpbWUgaGlnaD0iMjAyMTAyMjMxOTEzMTIuODgxKzAwMDAiIGxvdz0iMjAyMTAyMjMxOTEzMTIuODgxKzAwMDAiLz48b2JzZXJ2YXRpb25WYWx1ZT48aWRlbnRpZmllciByb290PSI0ZTkyMmRhNjY2NGY2ZmM3MjM2MGEyNjg1MWUwYjNmZiIvPjwvb2JzZXJ2YXRpb25WYWx1ZT48L29ic2VydmF0aW9uUmVzdWx0PjxvYnNlcnZhdGlvblJlc3VsdD48aWQgcm9vdD0iNDFlZGZkZDctOWU2ZC00OTA3LWFhNGQtNWY1YjFhZmQxZTVhIi8+PG9ic2VydmF0aW9uRm9jdXMgY29kZT0iUkNLTVNfTWF5YmVfU3BlY2lmaWNhdGlvbl9JRCIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuMy43OTUuNS40LjEyLjIuMyIgY29kZVN5c3RlbU5hbWU9IlJlcG9ydGFibGUgQ29uZGl0aW9ucyBGb2N1cyIgZGlzcGxheU5hbWU9IlJlcG9ydGFibGUgQ29uZGl0aW9ucyBGb2N1cyIvPjxvYnNlcnZhdGlvbkV2ZW50VGltZSBoaWdoPSIyMDIxMDIyMzE5MTMxMi44ODMrMDAwMCIgbG93PSIyMDIxMDIyMzE5MTMxMi44ODMrMDAwMCIvPjxvYnNlcnZhdGlvblZhbHVlPjxpZGVudGlmaWVyIHJvb3Q9ImVhNDcyNDQzZTY5Njk2MzU0NjhiNTU2ZGZlNWMxZDUwIi8+PC9vYnNlcnZhdGlvblZhbHVlPjwvb2JzZXJ2YXRpb25SZXN1bHQ+PG9ic2VydmF0aW9uUmVzdWx0PjxpZCByb290PSIxZWE0NzA4ZS05Y2NkLTQ1M2YtODEzZS1lNDA1ZmJjZmQ3MWUiLz48b2JzZXJ2YXRpb25Gb2N1cyBjb2RlPSJSQ0tNU19NYXliZV9Dcml0ZXJpYV9GaXJlZF9JbmRpY2F0b3IiIGNvZGVTeXN0ZW09IjIuMTYuODQwLjEuMTEzODgzLjMuNzk1LjUuNC4xMi4yLjMiIGNvZGVTeXN0ZW1OYW1lPSJSZXBvcnRhYmxlIENvbmRpdGlvbnMgRm9jdXMiIGRpc3BsYXlOYW1lPSJDcml0ZXJpYSBNYXliZSBGaXJlZCBJbmRpY2F0b3IiLz48b2JzZXJ2YXRpb25FdmVudFRpbWUgaGlnaD0iMjAyMTAyMjMxOTEzMTIuODg2KzAwMDAiIGxvdz0iMjAyMTAyMjMxOTEzMTIuODg2KzAwMDAiLz48b2JzZXJ2YXRpb25WYWx1ZT48aWRlbnRpZmllciByb290PSI3YWVmZjBkOTE1ZGM0NWJiZmFmNTFmNGRjMWE1ZjdiYSIvPjwvb2JzZXJ2YXRpb25WYWx1ZT48L29ic2VydmF0aW9uUmVzdWx0PjxvYnNlcnZhdGlvblJlc3VsdD48aWQgcm9vdD0iMTllNmUzZmQtZjFkNi00MDc1LWE0OTctMTAxOTFiYzFkMmQ3Ii8+PG9ic2VydmF0aW9uRm9jdXMgY29kZT0iUkNLTVNfTWF5YmVfQ3JpdGVyaWFfRmlyZWRfSW5kaWNhdG9yIiBjb2RlU3lzdGVtPSIyLjE2Ljg0MC4xLjExMzg4My4zLjc5NS41LjQuMTIuMi4zIiBjb2RlU3lzdGVtTmFtZT0iUmVwb3J0YWJsZSBDb25kaXRpb25zIEZvY3VzIiBkaXNwbGF5TmFtZT0iQ3JpdGVyaWEgTWF5YmUgRmlyZWQgSW5kaWNhdG9yIi8+PG9ic2VydmF0aW9uRXZlbnRUaW1lIGhpZ2g9IjIwMjEwMjIzMTkxMzEyLjg4OSswMDAwIiBsb3c9IjIwMjEwMjIzMTkxMzEyLjg4OSswMDAwIi8+PG9ic2VydmF0aW9uVmFsdWU+PGlkZW50aWZpZXIgcm9vdD0iMjRmNGNmZjhhZjE2NjlmOThiYjQ4NjdmZTA3NWE5N2EiLz48L29ic2VydmF0aW9uVmFsdWU+PC9vYnNlcnZhdGlvblJlc3VsdD48b2JzZXJ2YXRpb25SZXN1bHQ+PGlkIHJvb3Q9IjE1MDZiOTcwLWYzNmYtNGU0NC04ZTIxLTYyZTU4OTgzOWZlMiIvPjxvYnNlcnZhdGlvbkZvY3VzIGNvZGU9IlJDS01TX01heWJlX1NwZWNpZmljYXRpb25fSUQiIGNvZGVTeXN0ZW09IjIuMTYuODQwLjEuMTEzODgzLjMuNzk1LjUuNC4xMi4yLjMiIGNvZGVTeXN0ZW1OYW1lPSJSZXBvcnRhYmxlIENvbmRpdGlvbnMgRm9jdXMiIGRpc3BsYXlOYW1lPSJSZXBvcnRhYmxlIENvbmRpdGlvbnMgRm9jdXMiLz48b2JzZXJ2YXRpb25FdmVudFRpbWUgaGlnaD0iMjAyMTAyMjMxOTEzMTIuODgzKzAwMDAiIGxvdz0iMjAyMTAyMjMxOTEzMTIuODgzKzAwMDAiLz48b2JzZXJ2YXRpb25WYWx1ZT48aWRlbnRpZmllciByb290PSI0MGJiZDVjNDUzZmY0M2JiMTIwMjdmNTc3YWE5ZjgzZCIvPjwvb2JzZXJ2YXRpb25WYWx1ZT48L29ic2VydmF0aW9uUmVzdWx0PjxvYnNlcnZhdGlvblJlc3VsdD48aWQgcm9vdD0iODJiNWRjZDAtYWJhYi00NTQ3LTk0YWItYmZkZTgzYzZiNTc1Ii8+PG9ic2VydmF0aW9uRm9jdXMgY29kZT0iUkNLTVNfTWF5YmVfQ3JpdGVyaWFfRmlyZWRfSW5kaWNhdG9yIiBjb2RlU3lzdGVtPSIyLjE2Ljg0MC4xLjExMzg4My4zLjc5NS41LjQuMTIuMi4zIiBjb2RlU3lzdGVtTmFtZT0iUmVwb3J0YWJsZSBDb25kaXRpb25zIEZvY3VzIiBkaXNwbGF5TmFtZT0iQ3JpdGVyaWEgTWF5YmUgRmlyZWQgSW5kaWNhdG9yIi8+PG9ic2VydmF0aW9uRXZlbnRUaW1lIGhpZ2g9IjIwMjEwMjIzMTkxMzEyLjg4OSswMDAwIiBsb3c9IjIwMjEwMjIzMTkxMzEyLjg4OSswMDAwIi8+PG9ic2VydmF0aW9uVmFsdWU+PGlkZW50aWZpZXIgcm9vdD0iYmIxN2YyMjVlNGEwNDE2ZGI1YWY0Y2JlZmVhOGRjZWQiLz48L29ic2VydmF0aW9uVmFsdWU+PC9vYnNlcnZhdGlvblJlc3VsdD48b2JzZXJ2YXRpb25SZXN1bHQ+PGlkIHJvb3Q9ImE1OTc5MzU5LWNmMDItNDA2Mi05YjIwLTIzZTExYjZlY2YyZiIvPjxvYnNlcnZhdGlvbkZvY3VzIGNvZGU9IlJDS01TX0xvZ2ljU2V0X0ZpcmVkX0luZGljYXRvciIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuMy43OTUuNS40LjEyLjIuMyIgY29kZVN5c3RlbU5hbWU9IlJlcG9ydGFibGUgQ29uZGl0aW9ucyBGb2N1cyIgZGlzcGxheU5hbWU9IkxvZ2ljIFNldCBGaXJlZCBJbmRpY2F0b3IiLz48b2JzZXJ2YXRpb25FdmVudFRpbWUgaGlnaD0iMjAyMTAyMjMxOTEzMTIuODkwKzAwMDAiIGxvdz0iMjAyMTAyMjMxOTEzMTIuODkwKzAwMDAiLz48b2JzZXJ2YXRpb25WYWx1ZT48aWRlbnRpZmllciByb290PSI0NGI0NzI1ZGQ1YTZkNzI2YWI3ZGE0NDEyMDY4NzlhYSIvPjwvb2JzZXJ2YXRpb25WYWx1ZT48L29ic2VydmF0aW9uUmVzdWx0PjxvYnNlcnZhdGlvblJlc3VsdD48aWQgcm9vdD0iOTFhZjA2MmUtMzZiNy00NGJjLWI5NDUtM2IzOTIzMjg1NTljIi8+PG9ic2VydmF0aW9uRm9jdXMgY29kZT0iUkNLTVNfUmVwb3J0aW5nX0luZGljYXRvciIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuMy43OTUuNS40LjEyLjIuMyIgY29kZVN5c3RlbU5hbWU9IlJlcG9ydGFibGUgQ29uZGl0aW9ucyBGb2N1cyIgZGlzcGxheU5hbWU9IlJlcG9ydGFibGUgQ29uZGl0aW9ucyBGb2N1cyIvPjxvYnNlcnZhdGlvbkV2ZW50VGltZSBoaWdoPSIyMDIxMDIyMzE5MTMxMi44ODErMDAwMCIgbG93PSIyMDIxMDIyMzE5MTMxMi44ODErMDAwMCIvPjxvYnNlcnZhdGlvblZhbHVlPjxjb25jZXB0IGNvZGU9IjI3ODM2MDA3IiBjb2RlU3lzdGVtPSIyLjE2Ljg0MC4xLjExMzg4My42Ljk2IiBkaXNwbGF5TmFtZT0iUGVydHVzc2lzIChkaXNvcmRlcikiLz48L29ic2VydmF0aW9uVmFsdWU+PC9vYnNlcnZhdGlvblJlc3VsdD48b2JzZXJ2YXRpb25SZXN1bHQ+PGlkIHJvb3Q9ImMwZGUxODEyLThhMDUtNGI5ZS1hMjk0LTc5MmQwOGVlYTQ3MyIvPjxvYnNlcnZhdGlvbkZvY3VzIGNvZGU9IlJDS01TX0xvZ2ljU2V0X0ZpcmVkX0luZGljYXRvciIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuMy43OTUuNS40LjEyLjIuMyIgY29kZVN5c3RlbU5hbWU9IlJlcG9ydGFibGUgQ29uZGl0aW9ucyBGb2N1cyIgZGlzcGxheU5hbWU9IkxvZ2ljIFNldCBGaXJlZCBJbmRpY2F0b3IiLz48b2JzZXJ2YXRpb25FdmVudFRpbWUgaGlnaD0iMjAyMTAyMjMxOTEzMTIuODkwKzAwMDAiIGxvdz0iMjAyMTAyMjMxOTEzMTIuODkwKzAwMDAiLz48b2JzZXJ2YXRpb25WYWx1ZT48aWRlbnRpZmllciByb290PSJkN2Y4MDcwM2UwYjE2MmYwMTc1YmUwOTFmZTJiNGRhMyIvPjwvb2JzZXJ2YXRpb25WYWx1ZT48L29ic2VydmF0aW9uUmVzdWx0PjxvYnNlcnZhdGlvblJlc3VsdD48aWQgcm9vdD0iNzAyMTAxNDctMTRiZC00NjZhLWFjZDEtZGQzZTA2MWYyMGI4Ii8+PG9ic2VydmF0aW9uRm9jdXMgY29kZT0iUkNLTVNfTWF5YmVfUmVwb3J0aW5nX0luZGljYXRvciIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuMy43OTUuNS40LjEyLjIuMyIgY29kZVN5c3RlbU5hbWU9IlJlcG9ydGFibGUgQ29uZGl0aW9ucyBGb2N1cyIgZGlzcGxheU5hbWU9IlJlcG9ydGFibGUgQ29uZGl0aW9ucyBGb2N1cyIvPjxvYnNlcnZhdGlvbkV2ZW50VGltZSBoaWdoPSIyMDIxMDIyMzE5MTMxMi44ODQrMDAwMCIgbG93PSIyMDIxMDIyMzE5MTMxMi44ODQrMDAwMCIvPjxvYnNlcnZhdGlvblZhbHVlPjxjb25jZXB0IGNvZGU9IjEyODMwMjAwNiIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuNi45NiIgZGlzcGxheU5hbWU9IkNocm9uaWMgaGVwYXRpdGlzIEMgKGRpc29yZGVyKSIgb3JpZ2luYWxUZXh0PSJSZXBvcnRhYmlsaXR5IGNvdWxkIG5vdCBiZSBkZXRlcm1pbmVkIGR1ZSB0byBtaXNzaW5nIGluZm9ybWF0aW9uIG5lZWRlZCBmb3IgdGhlIGZvbGxvd2luZyBjcml0ZXJpYTogTmVnYXRpdmUgcmVzdWx0cyBmb3IgdGVzdHMgZm9yIGRldGVjdGlvbiBvZiBoZXBhdGl0aXMgQyB2aXJ1cyBudWNsZWljIGFjaWQgaW4gYSBjbGluaWNhbCBzcGVjaW1lbiBieSBhbnkgb3JnYW5pc20tc3BlY2lmaWMgbWV0aG9kIi8+PC9vYnNlcnZhdGlvblZhbHVlPjwvb2JzZXJ2YXRpb25SZXN1bHQ+PG9ic2VydmF0aW9uUmVzdWx0PjxpZCByb290PSJhMWQ5ZWU4ZS05NzRlLTQyOWEtYTVlOC00ZDk1NDQyMGNmZTEiLz48b2JzZXJ2YXRpb25Gb2N1cyBjb2RlPSJSQ0tNU19Dcml0ZXJpYV9GaXJlZF9JbmRpY2F0b3IiIGNvZGVTeXN0ZW09IjIuMTYuODQwLjEuMTEzODgzLjMuNzk1LjUuNC4xMi4yLjMiIGNvZGVTeXN0ZW1OYW1lPSJSZXBvcnRhYmxlIENvbmRpdGlvbnMgRm9jdXMiIGRpc3BsYXlOYW1lPSJDcml0ZXJpYSBGaXJlZCBJbmRpY2F0b3IiLz48b2JzZXJ2YXRpb25FdmVudFRpbWUgaGlnaD0iMjAyMTAyMjMxOTEzMTIuODg2KzAwMDAiIGxvdz0iMjAyMTAyMjMxOTEzMTIuODg2KzAwMDAiLz48b2JzZXJ2YXRpb25WYWx1ZT48aWRlbnRpZmllciByb290PSI1OTFiN2EwZjkzMGQ3MzQ0NmNhMmZlMmE1OTVkNTcyYyIvPjwvb2JzZXJ2YXRpb25WYWx1ZT48L29ic2VydmF0aW9uUmVzdWx0PjxvYnNlcnZhdGlvblJlc3VsdD48aWQgcm9vdD0iNjQyYzc1YWQtZGE2Zi00ODg4LWE1ZDUtOTMwNGNiNGQ0MjZlIi8+PG9ic2VydmF0aW9uRm9jdXMgY29kZT0iUkNLTVNfTWF5YmVfQ3JpdGVyaWFfRmlyZWRfSW5kaWNhdG9yIiBjb2RlU3lzdGVtPSIyLjE2Ljg0MC4xLjExMzg4My4zLjc5NS41LjQuMTIuMi4zIiBjb2RlU3lzdGVtTmFtZT0iUmVwb3J0YWJsZSBDb25kaXRpb25zIEZvY3VzIiBkaXNwbGF5TmFtZT0iQ3JpdGVyaWEgTWF5YmUgRmlyZWQgSW5kaWNhdG9yIi8+PG9ic2VydmF0aW9uRXZlbnRUaW1lIGhpZ2g9IjIwMjEwMjIzMTkxMzEyLjg4NiswMDAwIiBsb3c9IjIwMjEwMjIzMTkxMzEyLjg4NiswMDAwIi8+PG9ic2VydmF0aW9uVmFsdWU+PGlkZW50aWZpZXIgcm9vdD0iMjlhNGFjYTg3NGIzMzQxMjlkZjAzNzE3OWMxMTE0MzUiLz48L29ic2VydmF0aW9uVmFsdWU+PC9vYnNlcnZhdGlvblJlc3VsdD48b2JzZXJ2YXRpb25SZXN1bHQ+PGlkIHJvb3Q9ImNhNjZlM2U3LTc3NjQtNGM1Yi04OTZiLThmMGY2YmYzYjJkOCIvPjxvYnNlcnZhdGlvbkZvY3VzIGNvZGU9IlJDS01TX0xvZ2ljU2V0X0ZpcmVkX0luZGljYXRvciIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuMy43OTUuNS40LjEyLjIuMyIgY29kZVN5c3RlbU5hbWU9IlJlcG9ydGFibGUgQ29uZGl0aW9ucyBGb2N1cyIgZGlzcGxheU5hbWU9IkxvZ2ljIFNldCBGaXJlZCBJbmRpY2F0b3IiLz48b2JzZXJ2YXRpb25FdmVudFRpbWUgaGlnaD0iMjAyMTAyMjMxOTEzMTIuODkwKzAwMDAiIGxvdz0iMjAyMTAyMjMxOTEzMTIuODkwKzAwMDAiLz48b2JzZXJ2YXRpb25WYWx1ZT48aWRlbnRpZmllciByb290PSJhYTcwOGZkOGQ1ZjE4MzA4ZjkzMTY2MmViNTEyZTFhYyIvPjwvb2JzZXJ2YXRpb25WYWx1ZT48L29ic2VydmF0aW9uUmVzdWx0PjxvYnNlcnZhdGlvblJlc3VsdD48aWQgcm9vdD0iMTUwMmMwZDktYzRiYS00MjJmLWFiNWItNTQ4YWFlYjRmYTQ0Ii8+PG9ic2VydmF0aW9uRm9jdXMgY29kZT0iUkNLTVNfTWF5YmVfU3BlY2lmaWNhdGlvbl9JRCIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuMy43OTUuNS40LjEyLjIuMyIgY29kZVN5c3RlbU5hbWU9IlJlcG9ydGFibGUgQ29uZGl0aW9ucyBGb2N1cyIgZGlzcGxheU5hbWU9IlJlcG9ydGFibGUgQ29uZGl0aW9ucyBGb2N1cyIvPjxvYnNlcnZhdGlvbkV2ZW50VGltZSBoaWdoPSIyMDIxMDIyMzE5MTMxMi44ODUrMDAwMCIgbG93PSIyMDIxMDIyMzE5MTMxMi44ODUrMDAwMCIvPjxvYnNlcnZhdGlvblZhbHVlPjxpZGVudGlmaWVyIHJvb3Q9IjhkMGI2NzQ4ZDczOTUwYTRlNDg2Mjk5Y2FkNjk4ZDc5Ii8+PC9vYnNlcnZhdGlvblZhbHVlPjwvb2JzZXJ2YXRpb25SZXN1bHQ+PG9ic2VydmF0aW9uUmVzdWx0PjxpZCByb290PSI3MWNkNzU0ZC0wZmVjLTQwZjMtYTU4NS05NzM1YjY5Y2RjNTkiLz48b2JzZXJ2YXRpb25Gb2N1cyBjb2RlPSJSQ0tNU19NYXliZV9SZXBvcnRpbmdfSW5kaWNhdG9yIiBjb2RlU3lzdGVtPSIyLjE2Ljg0MC4xLjExMzg4My4zLjc5NS41LjQuMTIuMi4zIiBjb2RlU3lzdGVtTmFtZT0iUmVwb3J0YWJsZSBDb25kaXRpb25zIEZvY3VzIiBkaXNwbGF5TmFtZT0iUmVwb3J0YWJsZSBDb25kaXRpb25zIEZvY3VzIi8+PG9ic2VydmF0aW9uRXZlbnRUaW1lIGhpZ2g9IjIwMjEwMjIzMTkxMzEyLjg4MyswMDAwIiBsb3c9IjIwMjEwMjIzMTkxMzEyLjg4MyswMDAwIi8+PG9ic2VydmF0aW9uVmFsdWU+PGNvbmNlcHQgY29kZT0iMTA1NjI5MDAwIiBjb2RlU3lzdGVtPSIyLjE2Ljg0MC4xLjExMzg4My42Ljk2IiBkaXNwbGF5TmFtZT0iQ2hsYW15ZGlhbCBpbmZlY3Rpb24gKGRpc29yZGVyKSIgb3JpZ2luYWxUZXh0PSJSZXBvcnRhYmlsaXR5IGNvdWxkIG5vdCBiZSBkZXRlcm1pbmVkIGR1ZSB0byBtaXNzaW5nIGluZm9ybWF0aW9uIG5lZWRlZCBmb3IgdGhlIGZvbGxvd2luZyBjcml0ZXJpYTogRGV0ZWN0aW9uIG9mIENobGFteWRpYSB0cmFjaG9tYXRpcyBhbnRpZ2VuIGluIGEgY2xpbmljYWwgc3BlY2ltZW4gYnkgYW55IG1ldGhvZCIvPjwvb2JzZXJ2YXRpb25WYWx1ZT48L29ic2VydmF0aW9uUmVzdWx0PjxvYnNlcnZhdGlvblJlc3VsdD48aWQgcm9vdD0iZDlhYmEwMjAtOTc2NS00ZjdhLWExYWUtZDRkM2U2Y2I5OTA5Ii8+PG9ic2VydmF0aW9uRm9jdXMgY29kZT0iUkNLTVNfTWF5YmVfQ3JpdGVyaWFfRmlyZWRfSW5kaWNhdG9yIiBjb2RlU3lzdGVtPSIyLjE2Ljg0MC4xLjExMzg4My4zLjc5NS41LjQuMTIuMi4zIiBjb2RlU3lzdGVtTmFtZT0iUmVwb3J0YWJsZSBDb25kaXRpb25zIEZvY3VzIiBkaXNwbGF5TmFtZT0iQ3JpdGVyaWEgTWF5YmUgRmlyZWQgSW5kaWNhdG9yIi8+PG9ic2VydmF0aW9uRXZlbnRUaW1lIGhpZ2g9IjIwMjEwMjIzMTkxMzEyLjg4OCswMDAwIiBsb3c9IjIwMjEwMjIzMTkxMzEyLjg4OCswMDAwIi8+PG9ic2VydmF0aW9uVmFsdWU+PGlkZW50aWZpZXIgcm9vdD0iMzMzYTAyNTVkZDIzZWFiMWJlZmNmMTc4ZTM0MTA2NWEiLz48L29ic2VydmF0aW9uVmFsdWU+PC9vYnNlcnZhdGlvblJlc3VsdD48b2JzZXJ2YXRpb25SZXN1bHQ+PGlkIHJvb3Q9IjI1MTMzNjRlLTg4MTQtNGM3YS04MjE0LWIzNzkxOWYxZTk0ZCIvPjxvYnNlcnZhdGlvbkZvY3VzIGNvZGU9IlJDS01TX01heWJlX1NwZWNpZmljYXRpb25fSUQiIGNvZGVTeXN0ZW09IjIuMTYuODQwLjEuMTEzODgzLjMuNzk1LjUuNC4xMi4yLjMiIGNvZGVTeXN0ZW1OYW1lPSJSZXBvcnRhYmxlIENvbmRpdGlvbnMgRm9jdXMiIGRpc3BsYXlOYW1lPSJSZXBvcnRhYmxlIENvbmRpdGlvbnMgRm9jdXMiLz48b2JzZXJ2YXRpb25FdmVudFRpbWUgaGlnaD0iMjAyMTAyMjMxOTEzMTIuODg0KzAwMDAiIGxvdz0iMjAyMTAyMjMxOTEzMTIuODg0KzAwMDAiLz48b2JzZXJ2YXRpb25WYWx1ZT48aWRlbnRpZmllciByb290PSI4OTE3MzBiZmQ3MTMyMjU3ZjQ1YTBiODc0Y2RmMTFkYiIvPjwvb2JzZXJ2YXRpb25WYWx1ZT48L29ic2VydmF0aW9uUmVzdWx0PjxvYnNlcnZhdGlvblJlc3VsdD48aWQgcm9vdD0iYzIxNDk2YjMtYjc3ZC00NzNmLWJhZTEtNWYyN2NhM2ViNGRhIi8+PG9ic2VydmF0aW9uRm9jdXMgY29kZT0iUkNLTVNfTG9naWNTZXRfRmlyZWRfSW5kaWNhdG9yIiBjb2RlU3lzdGVtPSIyLjE2Ljg0MC4xLjExMzg4My4zLjc5NS41LjQuMTIuMi4zIiBjb2RlU3lzdGVtTmFtZT0iUmVwb3J0YWJsZSBDb25kaXRpb25zIEZvY3VzIiBkaXNwbGF5TmFtZT0iTG9naWMgU2V0IEZpcmVkIEluZGljYXRvciIvPjxvYnNlcnZhdGlvbkV2ZW50VGltZSBoaWdoPSIyMDIxMDIyMzE5MTMxMi44OTArMDAwMCIgbG93PSIyMDIxMDIyMzE5MTMxMi44OTArMDAwMCIvPjxvYnNlcnZhdGlvblZhbHVlPjxpZGVudGlmaWVyIHJvb3Q9IjI3Mzk3OWI1OWU3OTM5NDk0ZjUyZGNmMzk3ODU3ZTczIi8+PC9vYnNlcnZhdGlvblZhbHVlPjwvb2JzZXJ2YXRpb25SZXN1bHQ+PC9vYnNlcnZhdGlvblJlc3VsdHM+PHByb2JsZW1zLz48L2NsaW5pY2FsU3RhdGVtZW50cz48L3BhdGllbnQ+PC92bXJPdXRwdXQ+PC9uczI6Y2RzT3V0cHV0Pg==
+        </output>
+        <locationRelevance>
+            <code>RRVS7</code>
+            <displayName>Both patient home address and provider facility address</displayName>
+            <codeSystem>2.16.840.1.114222.4.5.274</codeSystem>
+            <codeSystemName>Location Relevance</codeSystemName>
+        </locationRelevance>
+        <reportingCondition reportable="YES">
+            <relId>591b7a0f930d73446ca2fe2a595d572c</relId>
+            <specificationId>4e922da6664f6fc72360a26851e0b3ff</specificationId>
+            <name>Pertussis</name>
+            <conditionDisplayName>Pertussis (disorder)</conditionDisplayName>
+            <conditionCodeSystem>2.16.840.1.113883.6.96</conditionCodeSystem>
+            <conditionCode>27836007</conditionCode>
+            <nnc>10190</nnc>
+            <logicSet>
+                <id>273979b59e7939494f52dcf397857e73</id>
+                <name>DX</name>
+                <reporterType>Provider/Facility Reporting</reporterType>
+            </logicSet>
+            <logicSetId>273979b59e7939494f52dcf397857e73</logicSetId>
+            <criteria>
+                <relId>591b7a0f930d73446ca2fe2a595d572c</relId>
+                <criteriaId>591b7a0f930d73446ca2fe2a595d572c</criteriaId>
+                <name>Pertussis (as a diagnosis or active problem)</name>
+                <criteriaType>Clinical</criteriaType>
+            </criteria>
+            <criteria>
+                <relId>6456456456457457</relId>
+                <criteriaId>criteria2</criteriaId>
+                <name>Pertussis (as a diagnosis or active problem)</name>
+                <criteriaType>Clinical</criteriaType>
+            </criteria>
+            <responsibleAgency id="ut" displayName="Utah Department of Health"/>
+            <responsibleAgency id="nv" displayName="Nevada Department of Health"/>
+        </reportingCondition>
+        <reportingCondition reportable="MAY_BE_REPORTABLE">
+            <specificationId>84e31a0e635cddd6e7141558c680433d</specificationId>
+            <name>Zika</name>
+            <conditionDisplayName>Zika virus disease (disorder)</conditionDisplayName>
+            <conditionCodeSystem>2.16.840.1.113883.6.96</conditionCodeSystem>
+            <conditionCode>3928002</conditionCode>
+            <nnc>50223, 50224</nnc>
+            <logicSet>
+                <id>44b4725dd5a6d726ab7da441206879aa</id>
+                <name>Lab</name>
+                <reporterType>Provider/Facility Reporting</reporterType>
+                <reportingTimeframe unit="Day(s)" value="1"/>
+            </logicSet>
+            <logicSetId>44b4725dd5a6d726ab7da441206879aa</logicSetId>
+            <linkAndReference>
+                <id>25238ada7d710335b99a09adb5540b8e</id>
+                <name>Clinical Guidance</name>
+                <description>Clinical guidance for Zika virus</description>
+                <url>https://www.cdc.gov/zika/hc-providers/index.html</url>
+                <priority>Information only</priority>
+                <category>Additional Resources</category>
+                <excerpt>Information about clinical guidance for Zika virus</excerpt>
+            </linkAndReference>
+            <linkAndReference>
+                <id>b371bac9424e115c650f1eed25f78f2e</id>
+                <name>Zika Virus Diagnostic Testing</name>
+                <description>Zika Virus diagnostic testing</description>
+                <url>https://www.cdc.gov/zika/hc-providers/testing-for-zika-virus.html</url>
+                <priority>Information only</priority>
+                <category>Additional Resources</category>
+                <excerpt>Information on Zika Virus diagnostic testing</excerpt>
+            </linkAndReference>
+            <linkAndReference>
+                <id>c173ab3e7e2fd860fc248c40919b17a5</id>
+                <name>Zika Virus Disease Plan</name>
+                <description>Zika Virus disease plan in Utah</description>
+                <url>http://health.utah.gov/epi/diseases/zika/plan.pdf</url>
+                <priority>Information only</priority>
+                <category>Additional Resources</category>
+                <excerpt>Information about zika virus surveillance in Utah</excerpt>
+            </linkAndReference>
+            <linkAndReference>
+                <id>962e6c62e85e2f0dc98f272172c0734b</id>
+                <name>Zika Virus Prevention and Transmission</name>
+                <description>Zika Virus prevention and transmission</description>
+                <url>https://www.cdc.gov/zika/prevention/index.html</url>
+                <priority>Information only</priority>
+                <category>Treatment and/or prevention</category>
+                <excerpt>Information on Zika Virus prevention and transmission</excerpt>
+            </linkAndReference>
+            <reportingTimeframe unit="Day(s)" value="1"/>
+            <responsibleAgency id="ut" displayName="Utah Department of Health"/>
+            <reason>Reportability could not be determined due to missing information needed for the following criteria: Negative
+                results of tests for detection of Zika Virus nucleic acid by any method in a clinical specimen (i.e., ?negative?
+                nucleic acid results)
+            </reason>
+        </reportingCondition>
+        <reportingCondition reportable="MAY_BE_REPORTABLE">
+            <specificationId>87682939ef0a1c3d4ac7b85f2d055ec7</specificationId>
+            <name>Gonorrhea</name>
+            <conditionDisplayName>Gonorrhea (disorder)</conditionDisplayName>
+            <conditionCodeSystem>2.16.840.1.113883.6.96</conditionCodeSystem>
+            <conditionCode>15628003</conditionCode>
+            <nnc>10280</nnc>
+            <logicSet>
+                <id>d7f80703e0b162f0175be091fe2b4da3</id>
+                <name>LAB</name>
+                <reporterType>Provider/Facility Reporting</reporterType>
+            </logicSet>
+            <logicSetId>d7f80703e0b162f0175be091fe2b4da3</logicSetId>
+            <responsibleAgency id="ut" displayName="Utah Department of Health"/>
+            <reason>Reportability could not be determined due to missing information needed for the following criteria: Detection of
+                Neisseria gonorrhoeae nucleic acid in a clinical specimen by any method
+            </reason>
+        </reportingCondition>
+        <reportingCondition reportable="MAY_BE_REPORTABLE">
+            <specificationId>40bbd5c453ff43bb12027f577aa9f83d</specificationId>
+            <name>Salmonellosis</name>
+            <conditionDisplayName>Salmonella infection (disorder)</conditionDisplayName>
+            <conditionCodeSystem>2.16.840.1.113883.6.96</conditionCodeSystem>
+            <conditionCode>302231008</conditionCode>
+            <nnc>11000</nnc>
+            <logicSet>
+                <id>a56f2e6fe686440d88c230844d53f351</id>
+                <name>LAB</name>
+                <reporterType>Provider/Facility Reporting</reporterType>
+            </logicSet>
+            <logicSetId>a56f2e6fe686440d88c230844d53f351</logicSetId>
+            <responsibleAgency id="ut" displayName="Utah Department of Health"/>
+            <reason>Reportability could not be determined due to missing information needed for the following criteria:
+                Identification of Salmonella species and serovars (except S. typhi and S. paratyphi) in a clinical specimen by
+                culture method, including identification tests performed on an isolate
+            </reason>
+        </reportingCondition>
+        <reportingCondition reportable="MAY_BE_REPORTABLE">
+            <specificationId>8d0b6748d73950a4e486299cad698d79</specificationId>
+            <name>COVID-19</name>
+            <conditionDisplayName>Coronavirus infection (disorder)</conditionDisplayName>
+            <conditionCodeSystem>2.16.840.1.113883.6.96</conditionCodeSystem>
+            <conditionCode>186747009</conditionCode>
+            <nnc>11065</nnc>
+            <logicSet>
+                <id>e7b760935e0ae72b50bf4e218eeb7667</id>
+                <name>LAB</name>
+                <reporterType>Provider/Facility Reporting</reporterType>
+                <reportingTimeframe unit="Immediate"/>
+            </logicSet>
+            <logicSetId>e7b760935e0ae72b50bf4e218eeb7667</logicSetId>
+            <linkAndReference>
+                <id>4b53c1f926d20042bc2bddc49405eb59</id>
+                <name>CDC COVID-19 website</name>
+                <description>CDC COVID-19 webpage</description>
+                <url>https://www.cdc.gov/coronavirus/2019-ncov/index.html</url>
+                <priority>Information only</priority>
+                <category>Outbreak- or Cluster related</category>
+            </linkAndReference>
+            <linkAndReference>
+                <id>49c1571bba8be7987882955ea9723bdb</id>
+                <name>[PHA MUST UPDATE] Public Health Agency Contact Information</name>
+                <description>Public Health Agency Contact Information</description>
+                <priority>Information only</priority>
+                <category>PHA Contact Information</category>
+            </linkAndReference>
+            <reportingTimeframe unit="Immediate"/>
+            <responsibleAgency id="ut" displayName="Utah Department of Health"/>
+            <reason>Reportability could not be determined due to missing information needed for the following criteria: Detection of
+                SARS-CoV-2 nucleic acid in a clinical specimen by any method
+            </reason>
+        </reportingCondition>
+        <reportingCondition reportable="MAY_BE_REPORTABLE">
+            <specificationId>891730bfd7132257f45a0b874cdf11db</specificationId>
+            <name>Hepatitis C Virus Infection</name>
+            <conditionDisplayName>Chronic hepatitis C (disorder)</conditionDisplayName>
+            <conditionCodeSystem>2.16.840.1.113883.6.96</conditionCodeSystem>
+            <conditionCode>128302006</conditionCode>
+            <nnc>10106</nnc>
+            <logicSet>
+                <id>aa708fd8d5f18308f931662eb512e1ac</id>
+                <name>LAB</name>
+                <reporterType>Provider/Facility Reporting</reporterType>
+            </logicSet>
+            <logicSetId>aa708fd8d5f18308f931662eb512e1ac</logicSetId>
+            <responsibleAgency id="ut" displayName="Utah Department of Health"/>
+            <reason>Reportability could not be determined due to missing information needed for the following criteria: Negative
+                results for tests for detection of hepatitis C virus nucleic acid in a clinical specimen by any organism-specific
+                method
+            </reason>
+        </reportingCondition>
+        <reportingCondition reportable="MAY_BE_REPORTABLE">
+            <specificationId>ea472443e6969635468b556dfe5c1d50</specificationId>
+            <name>Chlamydia</name>
+            <conditionDisplayName>Chlamydial infection (disorder)</conditionDisplayName>
+            <conditionCodeSystem>2.16.840.1.113883.6.96</conditionCodeSystem>
+            <conditionCode>105629000</conditionCode>
+            <nnc>10274</nnc>
+            <logicSet>
+                <id>cbb3336a6d0bf97bde7ca257616e1198</id>
+                <name>LAB</name>
+                <reporterType>Provider/Facility Reporting</reporterType>
+            </logicSet>
+            <logicSet>
+                <id>logicset2</id>
+                <name>LAB</name>
+                <reporterType>Provider/Facility Reporting</reporterType>
+            </logicSet>
+            <logicSetId>cbb3336a6d0bf97bde7ca257616e1198</logicSetId>
+            <logicSetId>logicset2</logicSetId>
+            <responsibleAgency id="ut" displayName="Utah Department of Health"/>
+            <reason>Reportability could not be determined due to missing information needed for the following criteria: Detection of
+                Chlamydia trachomatis antigen in a clinical specimen by any method
+            </reason>
+        </reportingCondition>
+        <routingEntity id="ut" displayName="Utah Department of Health"/>
+        <authoringAgency id="ut" displayName="Utah Department of Health"/>
+    </jurisdiction>
+    <serviceMessage>OpenCDS invocation ran successfully for knowledge module RCKMS^gov.cdc.rckms.ut^1.0.0.</serviceMessage>
+    <serviceMessage>Condition code Pertussis (disorder) (27836007) was reportable for jurisdiction Utah Department of Health because
+        reportCareProvided flag was checked.
+    </serviceMessage>
+    <serviceMessage>Condition code Pertussis (disorder) (27836007) was reportable for jurisdiction Utah Department of Health because
+        reportPatientResident flag was checked.
+    </serviceMessage>
+    <serviceMessage>Condition code Zika virus disease (disorder) (3928002) was maybe reportable for jurisdiction Utah Department of
+        Health because reportCareProvided flag was checked.
+    </serviceMessage>
+    <serviceMessage>Condition code Zika virus disease (disorder) (3928002) was maybe reportable for jurisdiction Utah Department of
+        Health because reportPatientResident flag was checked.
+    </serviceMessage>
+    <serviceMessage>Condition code Gonorrhea (disorder) (15628003) was maybe reportable for jurisdiction Utah Department of Health
+        because reportCareProvided flag was checked.
+    </serviceMessage>
+    <serviceMessage>Condition code Gonorrhea (disorder) (15628003) was maybe reportable for jurisdiction Utah Department of Health
+        because reportPatientResident flag was checked.
+    </serviceMessage>
+    <serviceMessage>Condition code Salmonella infection (disorder) (302231008) was maybe reportable for jurisdiction Utah Department
+        of Health because reportCareProvided flag was checked.
+    </serviceMessage>
+    <serviceMessage>Condition code Salmonella infection (disorder) (302231008) was maybe reportable for jurisdiction Utah Department
+        of Health because reportPatientResident flag was checked.
+    </serviceMessage>
+    <serviceMessage>Condition code Coronavirus infection (disorder) (186747009) was maybe reportable for jurisdiction Utah
+        Department of Health because reportCareProvided flag was checked.
+    </serviceMessage>
+    <serviceMessage>Condition code Coronavirus infection (disorder) (186747009) was maybe reportable for jurisdiction Utah
+        Department of Health because reportPatientResident flag was checked.
+    </serviceMessage>
+    <serviceMessage>Condition code Chronic hepatitis C (disorder) (128302006) was maybe reportable for jurisdiction Utah Department
+        of Health because reportCareProvided flag was checked.
+    </serviceMessage>
+    <serviceMessage>Condition code Chronic hepatitis C (disorder) (128302006) was maybe reportable for jurisdiction Utah Department
+        of Health because reportPatientResident flag was checked.
+    </serviceMessage>
+    <serviceMessage>Condition code Chlamydial infection (disorder) (105629000) was maybe reportable for jurisdiction Utah Department
+        of Health because reportCareProvided flag was checked.
+    </serviceMessage>
+    <serviceMessage>Condition code Chlamydial infection (disorder) (105629000) was maybe reportable for jurisdiction Utah Department
+        of Health because reportPatientResident flag was checked.
+    </serviceMessage>
+    <serviceMessage>Service request completed successfully.</serviceMessage>
+    <responseCode>200</responseCode>
+    <input>
+        PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/Pgo8bnMyOmNkc0lucHV0IHhtbG5zOm5zMj0ib3JnLm9wZW5jZHMudm1yLnYxXzAuc2NoZW1hLmNkc2lucHV0IiB4bWxuczpuczM9Im9yZy5vcGVuY2RzLnZtci52MV8wLnNjaGVtYS5jZHNvdXRwdXQiIHhtbG5zOm5zND0ib3JnLm9wZW5jZHMudm1yLnYxXzAuc2NoZW1hLnZtciIgeG1sbnM6bnM1PSJvcmcub3BlbmNkcy52bXIudjFfMC5zY2hlbWEuY2RzaW5wdXQuc3BlY2lmaWNhdGlvbiI+CiAgICA8dGVtcGxhdGVJZCByb290PSIyLjE2Ljg0MC4xLjExMzg4My4zLjE4MjkuMTEuMS4xLjgiLz4KICAgIDxjZHNDb250ZXh0PgogICAgICAgIDxjZHNTeXN0ZW1Vc2VyVHlwZSBjb2RlPSJQUk9WSURFUl9GQUNJTElUWSIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuMy43OTUuNS40LjEyLjIuMSIvPgogICAgICAgIDxjZHNTeXN0ZW1Vc2VyUHJlZmVycmVkTGFuZ3VhZ2UgY29kZT0iZW4iIGNvZGVTeXN0ZW09IjIuMTYuODQwLjEuMTEzODgzLjYuOTkiIGRpc3BsYXlOYW1lPSJFbmdsaXNoIi8+CiAgICA8L2Nkc0NvbnRleHQ+CiAgICA8dm1ySW5wdXQ+CiAgICAgICAgPHRlbXBsYXRlSWQgcm9vdD0iMi4xNi44NDAuMS4xMTM4ODMuMy4xODI5LjExLjEuMi4xOCIvPgogICAgICAgIDxwYXRpZW50PgogICAgICAgICAgICA8dGVtcGxhdGVJZCByb290PSIyLjE2Ljg0MC4xLjExMzg4My4zLjE4MjkuMTEuMi4zLjMiLz4KICAgICAgICAgICAgPGlkIHJvb3Q9IjIuMTYuODQwLjEuMTEzODgzLjE5LjUiIGV4dGVuc2lvbj0iNmU2NmVkZWYtZTY0YS00MDU1LTg2Y2QtZGI5ZDdkZWNjYTNkIi8+CiAgICAgICAgICAgIDxkZW1vZ3JhcGhpY3M+CiAgICAgICAgICAgICAgICA8YmlydGhUaW1lIHZhbHVlPSIyMDE0MDEwMSIvPgogICAgICAgICAgICAgICAgPGdlbmRlciBjb2RlPSJGIiBjb2RlU3lzdGVtPSIyLjE2Ljg0MC4xLjExMzg4My4xLjExLjEiLz4KICAgICAgICAgICAgICAgIDxhZGRyZXNzIHVzZT0iSCI+CiAgICAgICAgICAgICAgICAgICAgPHBhcnQgdHlwZT0iU0FMIiB2YWx1ZT0iMjg4IE5vcnRoIDE0NjAgV2VzdCIvPgogICAgICAgICAgICAgICAgICAgIDxwYXJ0IHR5cGU9IkNUWSIgdmFsdWU9IlNhbHQgTGFrZSBDaXR5Ii8+CiAgICAgICAgICAgICAgICAgICAgPHBhcnQgdHlwZT0iU1RBIiB2YWx1ZT0iVVQiLz4KICAgICAgICAgICAgICAgICAgICA8cGFydCB0eXBlPSJaSVAiIHZhbHVlPSI4NDExNiIvPgogICAgICAgICAgICAgICAgICAgIDxwYXJ0IHR5cGU9IkNQQSIgdmFsdWU9IlNhbHQgTGFrZSIvPgogICAgICAgICAgICAgICAgICAgIDxwYXJ0IHR5cGU9IkNOVCIgdmFsdWU9IlVTIi8+CiAgICAgICAgICAgICAgICA8L2FkZHJlc3M+CiAgICAgICAgICAgICAgICA8dGVsZWNvbSB2YWx1ZT0idGVsOjU1NS01NTUtMjAwNSIgdXNlPSJIUCIvPgogICAgICAgICAgICAgICAgPHRlbGVjb20gdmFsdWU9Im1haWx0bzpra2tpZGRAZW1haWwuY29tIiB1c2U9IkhQIi8+CiAgICAgICAgICAgICAgICA8aXNEZWNlYXNlZCB2YWx1ZT0iZmFsc2UiLz4KICAgICAgICAgICAgPC9kZW1vZ3JhcGhpY3M+CiAgICAgICAgICAgIDxyZWxhdGVkRW50aXR5PgogICAgICAgICAgICAgICAgPGZhY2lsaXR5PgogICAgICAgICAgICAgICAgICAgIDx0ZW1wbGF0ZUlkIHJvb3Q9IjIuMTYuODQwLjEuMTEzODgzLjMuMTgyOS4xMS4xNi4yLjIwIi8+CiAgICAgICAgICAgICAgICAgICAgPGlkIHJvb3Q9IjIuMTYuODQwLjEuMTEzODgzLjQuNiIgZXh0ZW5zaW9uPSI0OWRjM2JkYS0zOTcwLTRmZmYtYmNlNC1mN2NkOWEwNWEwMGIiLz4KICAgICAgICAgICAgICAgICAgICA8ZW50aXR5VHlwZSBjb2RlPSJGQUMiIGNvZGVTeXN0ZW09IjIuMTYuODQwLjEuMTEzODgzLjMuNzk1LjUuNC4xMi4yLjEiLz4KICAgICAgICAgICAgICAgICAgICA8YWRkcmVzcyB1c2U9IldQIj4KICAgICAgICAgICAgICAgICAgICAgICAgPHBhcnQgdHlwZT0iU0FMIiB2YWx1ZT0iNTEyMSBTb3V0aCBDb3R0b253b29kIFN0cmVldCIvPgogICAgICAgICAgICAgICAgICAgICAgICA8cGFydCB0eXBlPSJDVFkiIHZhbHVlPSJNdXJyYXkiLz4KICAgICAgICAgICAgICAgICAgICAgICAgPHBhcnQgdHlwZT0iU1RBIiB2YWx1ZT0iVVQiLz4KICAgICAgICAgICAgICAgICAgICAgICAgPHBhcnQgdHlwZT0iWklQIiB2YWx1ZT0iODQxMDciLz4KICAgICAgICAgICAgICAgICAgICAgICAgPHBhcnQgdHlwZT0iQ1BBIiB2YWx1ZT0iIi8+CiAgICAgICAgICAgICAgICAgICAgICAgIDxwYXJ0IHR5cGU9IkNOVCIgdmFsdWU9IiIvPgogICAgICAgICAgICAgICAgICAgIDwvYWRkcmVzcz4KICAgICAgICAgICAgICAgIDwvZmFjaWxpdHk+CiAgICAgICAgICAgIDwvcmVsYXRlZEVudGl0eT4KICAgICAgICAgICAgPGNsaW5pY2FsU3RhdGVtZW50cz4KICAgICAgICAgICAgICAgIDxlbmNvdW50ZXJFdmVudHM+CiAgICAgICAgICAgICAgICAgICAgPGVuY291bnRlckV2ZW50PgogICAgICAgICAgICAgICAgICAgICAgICA8dGVtcGxhdGVJZCByb290PSIyLjE2Ljg0MC4xLjExMzg4My4zLjE4MjkuMTEuNC4zLjgiLz4KICAgICAgICAgICAgICAgICAgICAgICAgPGlkIHJvb3Q9IjIuMTYuODQwLjEuMTEzODgzLjE5IiBleHRlbnNpb249Ijc5OWM5NjdkLWM3NDctNDA5ZC04ZjNiLWQ2MmM2ZTZkMzZjYiIvPgogICAgICAgICAgICAgICAgICAgICAgICA8ZW5jb3VudGVyVHlwZSBjb2RlPSI5OTIxMyIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuNi4xMiIgY29kZVN5c3RlbU5hbWU9IkNQVC00IiBkaXNwbGF5TmFtZT0iT2ZmaWNlIG91dHBhdGllbnQgdmlzaXQgMTUgbWludXRlcyIvPgogICAgICAgICAgICAgICAgICAgICAgICA8ZW5jb3VudGVyRXZlbnRUaW1lIGhpZ2g9IjIwMTYwMTA0IiBsb3c9IjIwMTYwMTA0Ii8+CiAgICAgICAgICAgICAgICAgICAgICAgIDxyZWxhdGVkQ2xpbmljYWxTdGF0ZW1lbnQ+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8dGFyZ2V0UmVsYXRpb25zaGlwVG9Tb3VyY2UgY29kZT0iUEVSVCIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuNS4xMDAyIi8+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8b2JzZXJ2YXRpb25SZXN1bHQ+Cjx0ZW1wbGF0ZUlkIHJvb3Q9IjIuMTYuODQwLjEuMTEzODgzLjMuNzk1LjExLjYuMy4xIi8+CjxpZCByb290PSJmMzM3ZDIzMC02YmI0LTQ2NDUtOWY1Yy05MWE2NjFjNzk3ZGQiLz4KPG9ic2VydmF0aW9uRm9jdXMgY29kZT0iUEhfRGlzY2hhcmdlRGlzcG9zaXRpb25fSEw3XzJ4IiBjb2RlU3lzdGVtPSIyLjE2Ljg0MC4xLjExMzg4My4zLjE4MjkuMTEuNC4zLjEyIi8+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L29ic2VydmF0aW9uUmVzdWx0PgogICAgICAgICAgICAgICAgICAgICAgICA8L3JlbGF0ZWRDbGluaWNhbFN0YXRlbWVudD4KICAgICAgICAgICAgICAgICAgICA8L2VuY291bnRlckV2ZW50PgogICAgICAgICAgICAgICAgICAgIDxlbmNvdW50ZXJFdmVudD4KICAgICAgICAgICAgICAgICAgICAgICAgPHRlbXBsYXRlSWQgcm9vdD0iMi4xNi44NDAuMS4xMTM4ODMuMy4xODI5LjExLjQuMy44Ii8+CiAgICAgICAgICAgICAgICAgICAgICAgIDxpZCByb290PSJkMWJlMjRiNC0yOTVhLTQzZjQtYTkzMS1kZjA2MGY2ODdkMDAiIGV4dGVuc2lvbj0iODA3ODZhMDQtYzIzZi00OWQxLTg1NDMtZDVlZTEzMWM3ODFjIi8+CiAgICAgICAgICAgICAgICAgICAgICAgIDxlbmNvdW50ZXJUeXBlIGNvZGU9Ijk5MjEzIiBjb2RlU3lzdGVtPSIyLjE2Ljg0MC4xLjExMzg4My42LjEyIiBjb2RlU3lzdGVtTmFtZT0iQ1BULTQiIGRpc3BsYXlOYW1lPSJPZmZpY2Ugb3V0cGF0aWVudCB2aXNpdCAxNSBtaW51dGVzIi8+CiAgICAgICAgICAgICAgICAgICAgICAgIDxlbmNvdW50ZXJFdmVudFRpbWUgaGlnaD0iMjAxNjAxMDQiIGxvdz0iMjAxNjAxMDQiLz4KICAgICAgICAgICAgICAgICAgICAgICAgPHJlbGF0ZWRDbGluaWNhbFN0YXRlbWVudD4KICAgICAgICAgICAgICAgICAgICAgICAgICAgIDx0YXJnZXRSZWxhdGlvbnNoaXBUb1NvdXJjZSBjb2RlPSJQRVJUIiBjb2RlU3lzdGVtPSIyLjE2Ljg0MC4xLjExMzg4My41LjEwMDIiLz4KICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxwcm9ibGVtPgo8dGVtcGxhdGVJZCByb290PSIyLjE2Ljg0MC4xLjExMzg4My4zLjE4MjkuMTEuNy4yLjIwIi8+CjxpZCByb290PSIzNjVmZGIyNi1hNDYwLTQwYzgtYTFhOC1lZDQxZGUxNTI5MjgiIGV4dGVuc2lvbj0iNGNlMDQwYTQtODliMy00MmM2LThiMzEtYWFiYmExMzM3YzdiIi8+Cjxwcm9ibGVtQ29kZSBjb2RlPSJBMzcuMCIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuNi45MCIgY29kZVN5c3RlbU5hbWU9IklDRC0xMCIgZGlzcGxheU5hbWU9Ildob29waW5nIGNvdWdoIGR1ZSB0byBCb3JkZXRlbGxhIHBlcnR1c3NpcyIvPgo8cHJvYmxlbUVmZmVjdGl2ZVRpbWUgaGlnaD0iMjAxNjAxMDQiIGxvdz0iMjAxNjAxMDQiLz4KPGRpYWdub3N0aWNFdmVudFRpbWUgbG93PSIyMDE2MDEwNCIvPgo8cHJvYmxlbVN0YXR1cyBjb2RlPSJjb21wbGV0ZWQiIGNvZGVTeXN0ZW09IjIuMTYuODQwLjEuMTEzODgzLjMuMTkzNy45OC41LjgiIGNvZGVTeXN0ZW1OYW1lPSJTTk9NRUQtQ1QiLz4KICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvcHJvYmxlbT4KICAgICAgICAgICAgICAgICAgICAgICAgPC9yZWxhdGVkQ2xpbmljYWxTdGF0ZW1lbnQ+CiAgICAgICAgICAgICAgICAgICAgPC9lbmNvdW50ZXJFdmVudD4KICAgICAgICAgICAgICAgIDwvZW5jb3VudGVyRXZlbnRzPgogICAgICAgICAgICAgICAgPG9ic2VydmF0aW9uUmVzdWx0cz4KICAgICAgICAgICAgICAgICAgICA8b2JzZXJ2YXRpb25SZXN1bHQ+CiAgICAgICAgICAgICAgICAgICAgICAgIDx0ZW1wbGF0ZUlkIHJvb3Q9IjIuMTYuODQwLjEuMTEzODgzLjMuNzk1LjExLjYuMy4xIi8+CiAgICAgICAgICAgICAgICAgICAgICAgIDxpZCByb290PSI0YjEyODI4Yy1iOWI0LTQwNjItYjdlYy1mN2JkZGIzNDJjNmUiIGV4dGVuc2lvbj0iY2FhY2UyMWUtZGQ4Zi00ZGIxLWIyODYtZTRiMmMyYjEwZGY3Ii8+CiAgICAgICAgICAgICAgICAgICAgICAgIDxvYnNlcnZhdGlvbkZvY3VzIGNvZGU9Ijc2Njg5LTkiIGNvZGVTeXN0ZW09IjIuMTYuODQwLjEuMTEzODgzLjYuMSIgY29kZVN5c3RlbU5hbWU9IkxPSU5DIiBkaXNwbGF5TmFtZT0iU2V4IEFzc2lnbmVkIEF0IEJpcnRoIi8+CiAgICAgICAgICAgICAgICAgICAgICAgIDxvYnNlcnZhdGlvbkV2ZW50VGltZSBoaWdoPSIyMDE0MDEwMSIgbG93PSIyMDE0MDEwMSIvPgogICAgICAgICAgICAgICAgICAgICAgICA8b2JzZXJ2YXRpb25WYWx1ZT4KICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxjb25jZXB0IGNvZGU9IkYiIGNvZGVTeXN0ZW09IjIuMTYuODQwLjEuMTEzODgzLjUuMSIgY29kZVN5c3RlbU5hbWU9IkFkbWluaXN0cmF0aXZlR2VuZGVyIiBkaXNwbGF5TmFtZT0iRmVtYWxlIi8+CiAgICAgICAgICAgICAgICAgICAgICAgIDwvb2JzZXJ2YXRpb25WYWx1ZT4KICAgICAgICAgICAgICAgICAgICA8L29ic2VydmF0aW9uUmVzdWx0PgogICAgICAgICAgICAgICAgPC9vYnNlcnZhdGlvblJlc3VsdHM+CiAgICAgICAgICAgIDwvY2xpbmljYWxTdGF0ZW1lbnRzPgogICAgICAgIDwvcGF0aWVudD4KICAgIDwvdm1ySW5wdXQ+CjwvbnMyOmNkc0lucHV0Pgo=
+    </input>
+</rckmsOutput>
