@@ -53,6 +53,9 @@ public class XmlUnitComparisonEngine202103 extends AbstractXmlUnitComparisonEngi
         .whenElementIsNamed("routingEntity")
         .thenUse(ElementSelectors.byNameAndAttributes("id"))
 
+        .whenElementIsNamed("jurisdiction")
+        .thenUse(ElementSelectors.byNameAndAttributes("id"))
+
         // To handle the rename of serviceResponseCode->responseCode, this pairs the serviceResponseCode element in the control doc
         // to the responseCode element in the variant doc
         .when(new NodeNamePredicate("jurisdiction/serviceResponseCode"))

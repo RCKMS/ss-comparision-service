@@ -15,6 +15,7 @@
         </locationRelevance>
         <reportingCondition reportable="YES">
             <relId>591b7a0f930d73446ca2fe2a595d572c</relId>
+            <relId>relId2</relId>
             <specificationId>4e922da6664f6fc72360a26851e0b3ff</specificationId>
             <name>Pertussis</name>
             <conditionDisplayName>Pertussis (disorder)</conditionDisplayName>
@@ -216,6 +217,10 @@
         </reportingCondition>
         <routingEntity id="ut" displayName="Utah Department of Health"/>
         <authoringAgency id="ut" displayName="Utah Department of Health"/>
+    </jurisdiction>
+    <jurisdiction id="nv" displayName="Nevada Department of Health">
+        <serviceResponseCode>200</serviceResponseCode>
+        <serviceResponseMessage displayName="Success" code="OK"></serviceResponseMessage>
     </jurisdiction>
     <serviceMessage>OpenCDS invocation ran successfully for knowledge module RCKMS^gov.cdc.rckms.ut^1.0.0.</serviceMessage>
     <serviceMessage>Condition code Pertussis (disorder) (27836007) was reportable for jurisdiction Utah Department of Health because

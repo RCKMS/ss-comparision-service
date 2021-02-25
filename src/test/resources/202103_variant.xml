@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <rckmsOutput xmlns="org.cdsframework.rckms.output" requestDate="2021-02-23-19:02">
+    <jurisdiction id="nv" displayName="Nevada Department of Health">
+        <responseCode>200</responseCode>
+        <responseMessage displayName="Success" code="OK"></responseMessage>
+    </jurisdiction>
     <jurisdiction id="ut" displayName="Utah Department of Health">
         <responseCode>200</responseCode>
         <responseMessage displayName="Success" code="OK">Jurisdiction request completed successfully for ut</responseMessage>
@@ -13,6 +17,7 @@
             <conditionDisplayName>Pertussis (disorder)</conditionDisplayName>
             <conditionCodeSystem>2.16.840.1.113883.6.96</conditionCodeSystem>
             <conditionCode>27836007</conditionCode>
+            <relId>relId2</relId>
             <locationRelevance>
                 <code>RRVS7</code>
                 <displayName>Both patient home address and provider facility address</displayName>
