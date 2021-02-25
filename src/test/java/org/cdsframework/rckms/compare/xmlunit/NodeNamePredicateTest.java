@@ -21,12 +21,12 @@ public class NodeNamePredicateTest
     Document doc = toDoc(xml);
     Element root = doc.getDocumentElement();
 
-    NodeNamePredicate predicate = new NodeNamePredicate("root");
+    NodeNamePredicate<Node> predicate = NodeNamePredicate.pathMatching("root");
     assertTrue(predicate.test(root));
 
-    predicate = new NodeNamePredicate("root").withAncestry("foo");
+    predicate = NodeNamePredicate.pathMatching("root").withAncestry("foo");
     assertFalse(predicate.test(root));
-    predicate = new NodeNamePredicate("foo/root");
+    predicate = NodeNamePredicate.pathMatching("foo/root");
     assertFalse(predicate.test(root));
   }
 
@@ -39,22 +39,22 @@ public class NodeNamePredicateTest
     Element child1 = (Element) root.getElementsByTagName("child1").item(0);
     Element child2 = (Element) child1.getElementsByTagName("child2").item(0);
 
-    NodeNamePredicate predicate = new NodeNamePredicate("child2");
+    NodeNamePredicate<Node> predicate = NodeNamePredicate.pathMatching("child2");
     assertTrue(predicate.test(child2));
 
-    predicate = new NodeNamePredicate("child2").withAncestry("child1");
+    predicate = NodeNamePredicate.pathMatching("child2").withAncestry("child1");
     assertTrue(predicate.test(child2));
-    predicate = new NodeNamePredicate("child1/child2");
-    assertTrue(predicate.test(child2));
-
-    predicate = new NodeNamePredicate("child2").withAncestry("child1", "root");
-    assertTrue(predicate.test(child2));
-    predicate = new NodeNamePredicate("root/child1/child2");
+    predicate = NodeNamePredicate.pathMatching("child1/child2");
     assertTrue(predicate.test(child2));
 
-    predicate = new NodeNamePredicate("child2").withAncestry("root");
+    predicate = NodeNamePredicate.pathMatching("child2").withAncestry("child1", "root");
+    assertTrue(predicate.test(child2));
+    predicate = NodeNamePredicate.pathMatching("root/child1/child2");
+    assertTrue(predicate.test(child2));
+
+    predicate = NodeNamePredicate.pathMatching("child2").withAncestry("root");
     assertFalse(predicate.test(child2));
-    predicate = new NodeNamePredicate("root/child2");
+    predicate = NodeNamePredicate.pathMatching("root/child2");
     assertFalse(predicate.test(child2));
   }
 
@@ -67,17 +67,17 @@ public class NodeNamePredicateTest
     Element child1 = (Element) root.getElementsByTagName("child1").item(0);
     Node textNode = child1.getChildNodes().item(0);
 
-    NodeNamePredicate predicate = new NodeNamePredicate("#text");
+    NodeNamePredicate<Node> predicate = NodeNamePredicate.pathMatching("#text");
     assertTrue(predicate.test(textNode));
 
-    predicate = new NodeNamePredicate("#text").withAncestry("child1");
+    predicate = NodeNamePredicate.pathMatching("#text").withAncestry("child1");
     assertTrue(predicate.test(textNode));
-    predicate = new NodeNamePredicate("child1/#text");
+    predicate = NodeNamePredicate.pathMatching("child1/#text");
     assertTrue(predicate.test(textNode));
 
-    predicate = new NodeNamePredicate("#text").withAncestry("root");
+    predicate = NodeNamePredicate.pathMatching("#text").withAncestry("root");
     assertFalse(predicate.test(textNode));
-    predicate = new NodeNamePredicate("root/#text");
+    predicate = NodeNamePredicate.pathMatching("root/#text");
     assertFalse(predicate.test(textNode));
   }
 
@@ -89,12 +89,12 @@ public class NodeNamePredicateTest
     Element root = doc.getDocumentElement();
     Node node = root.getAttributeNode("attr");
 
-    NodeNamePredicate predicate = new NodeNamePredicate("attr");
+    NodeNamePredicate<Node> predicate = NodeNamePredicate.pathMatching("attr");
     assertTrue(predicate.test(node));
 
-    predicate = new NodeNamePredicate("attr").withAncestry("root");
+    predicate = NodeNamePredicate.pathMatching("attr").withAncestry("root");
     assertTrue(predicate.test(node));
-    predicate = new NodeNamePredicate("root/attr");
+    predicate = NodeNamePredicate.pathMatching("root/attr");
     assertTrue(predicate.test(node));
   }
 

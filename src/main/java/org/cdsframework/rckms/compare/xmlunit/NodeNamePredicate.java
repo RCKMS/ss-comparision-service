@@ -7,7 +7,7 @@ import java.util.List;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Node;
 
-final class NodeNamePredicate implements PredicateSupport<Node>
+final class NodeNamePredicate<T extends Node> implements PredicateSupport<T>
 {
   private final String name;
   private String[] ancestors;
@@ -21,17 +21,22 @@ final class NodeNamePredicate implements PredicateSupport<Node>
    * For example, given the xml <code><root><child1><child2/></child1></root></code>, if you wanted to target the child2 node
    * then you can do
    * <code>
-   * new NodeNamePredicate("root/child1/child2")
+   * NodeNamePredicate.forPathFragment("root/child1/child2")
    * </code>
    * <p>
    * Partial ancestries are also supported, like this:
    * <code>
-   * new NodeNamePredicate("child1/child2")
+   * NodeNamePredicate.forPathFragment("child1/child2")
    * </code>
    *
    * @param path
    */
-  public NodeNamePredicate(String path)
+  public static <T extends Node> NodeNamePredicate<T> pathMatching(String path)
+  {
+    return new NodeNamePredicate<>(path);
+  }
+
+  private NodeNamePredicate(String path)
   {
     if (!path.contains("/"))
       this.name = path;
@@ -50,7 +55,7 @@ final class NodeNamePredicate implements PredicateSupport<Node>
    * @param ancestor
    * @return
    */
-  NodeNamePredicate withAncestry(String... ancestor)
+  NodeNamePredicate<T> withAncestry(String... ancestor)
   {
     ancestors = ancestor;
     return this;
@@ -62,14 +67,14 @@ final class NodeNamePredicate implements PredicateSupport<Node>
    * @param ancestors
    * @return
    */
-  NodeNamePredicate withAncestry(List<String> ancestors)
+  NodeNamePredicate<T> withAncestry(List<String> ancestors)
   {
     withAncestry(ancestors.toArray(new String[ancestors.size()]));
     return this;
   }
 
   @Override
-  public boolean test(Node node)
+  public boolean test(T node)
   {
     return name.equals(node.getNodeName()) && ancestryMatches(node);
   }

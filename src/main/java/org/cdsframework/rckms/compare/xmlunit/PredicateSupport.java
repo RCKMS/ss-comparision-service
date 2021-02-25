@@ -11,13 +11,13 @@ interface PredicateSupport<T> extends Predicate<T>
     return (t) -> !test(t);
   }
 
-  default PredicateSupport<T> and(PredicateSupport<? super T> other)
+  default PredicateSupport<T> and(PredicateSupport<T> other)
   {
     Objects.requireNonNull(other);
     return (t) -> test(t) && other.test(t);
   }
 
-  static <T> PredicateSupport<T> not(PredicateSupport<? super T> target)
+  static <T> PredicateSupport<T> not(PredicateSupport<T> target)
   {
     Objects.requireNonNull(target);
     return (PredicateSupport<T>) target.negate();

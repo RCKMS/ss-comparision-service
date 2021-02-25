@@ -50,8 +50,8 @@ public class BulkInsert
   {
     String testId = OffsetDateTime.now().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
     String engineId = "202103";
-    String controlSourceId = "control";
-    String variantSourceId = "variant";
+    String controlSourceId = "RCKMS_OLD";
+    String variantSourceId = "RCKMS_NEW";
     ComparisonTest test = managementService.getComparisonTest(testId).orElse(null);
     if (test == null)
     {

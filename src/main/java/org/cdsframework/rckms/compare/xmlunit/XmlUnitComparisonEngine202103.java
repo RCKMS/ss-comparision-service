@@ -1,11 +1,12 @@
 package org.cdsframework.rckms.compare.xmlunit;
 
-import static org.cdsframework.rckms.compare.xmlunit.PredicateSupport.*;
+import static org.cdsframework.rckms.compare.xmlunit.NodeNamePredicate.*;
 
 import java.util.Collections;
 import java.util.Map;
 
 import org.springframework.stereotype.Component;
+import org.w3c.dom.Attr;
 import org.w3c.dom.Node;
 import org.xmlunit.builder.DiffBuilder;
 import org.xmlunit.builder.Input;
@@ -15,6 +16,7 @@ import org.xmlunit.diff.DifferenceEvaluator;
 import org.xmlunit.diff.DifferenceEvaluators;
 import org.xmlunit.diff.ElementSelector;
 import org.xmlunit.diff.ElementSelectors;
+import org.xmlunit.util.Predicate;
 
 @Component
 public class XmlUnitComparisonEngine202103 extends AbstractXmlUnitComparisonEngine
@@ -39,7 +41,8 @@ public class XmlUnitComparisonEngine202103 extends AbstractXmlUnitComparisonEngi
             .ignoreWhitespace()
             .ignoreComments()
             // Note that NodeFilters are applied BEFORE comparisons (and before NodeMatcher), which makes sense.
-            .withNodeFilter(nodeFilter())
+            .withNodeFilter(excludeElements())
+            .withAttributeFilter(excludeAttributes())
             .withNodeMatcher(new DefaultNodeMatcher(elementPairingStrategy()))
             .withDifferenceEvaluator(diffEvaluator());
   }
@@ -58,12 +61,12 @@ public class XmlUnitComparisonEngine202103 extends AbstractXmlUnitComparisonEngi
 
         // To handle the rename of serviceResponseCode->responseCode, this pairs the serviceResponseCode element in the control doc
         // to the responseCode element in the variant doc
-        .when(new NodeNamePredicate("jurisdiction/serviceResponseCode"))
+        .when(pathMatching("jurisdiction/serviceResponseCode"))
         .thenUse((control, variant) -> variant.getTagName().equals("responseCode"))
 
         // To handle the rename of serviceResponseMessage->responseMessage, this pairs the serviceResponseMessage element in the
         // control doc to the responseMessage element in the variant doc
-        .when(new NodeNamePredicate("jurisdiction/serviceResponseMessage"))
+        .when(pathMatching("jurisdiction/serviceResponseMessage"))
         .thenUse((control, variant) -> variant.getTagName().equals("responseMessage"))
 
         // Pair up reportingCondition elements based on equivalent conditionCode values
@@ -98,14 +101,25 @@ public class XmlUnitComparisonEngine202103 extends AbstractXmlUnitComparisonEngi
     return ElementSelectors.byXPath("./" + RCKMS_NS_PREFIX + ":" + childName, namespaces, ElementSelectors.byNameAndText);
   }
 
-  private static PredicateSupport<Node> nodeFilter()
+  private static Predicate<Node> excludeElements()
   {
-    return not(new NodeNamePredicate("rckmsOutput/diagnostics"))
-        .and(not(new NodeNamePredicate("rckmsOutput/input/#text")))
+    return not(pathMatching("rckmsOutput/diagnostics"))
+        .and(not(pathMatching("rckmsOutput/input/#text")))
         // Output is never the same, I believe because it encodes a timestamp
-        .and(not(new NodeNamePredicate("rckmsOutput/output/#text")))
+        .and(not(pathMatching("rckmsOutput/output/#text")))
         // serviceMessage text (and the number of them) may have changed and can be ignored altogther
-        .and(not(new NodeNamePredicate("rckmsOutput/serviceMessage")));
+        .and(not(pathMatching("rckmsOutput/serviceMessage")));
+  }
+
+  private static Predicate<Attr> excludeAttributes()
+  {
+    return not(NodeNamePredicate.<Attr>pathMatching("rckmsOutput/sessionKey"))
+        .and(not(pathMatching("rckmsOutput/requestDate")));
+  }
+
+  private static <T> PredicateSupport<T> not(PredicateSupport<T> source)
+  {
+    return PredicateSupport.not(source);
   }
 
   private static DifferenceEvaluator diffEvaluator()
@@ -130,9 +144,9 @@ public class XmlUnitComparisonEngine202103 extends AbstractXmlUnitComparisonEngi
     // Unfortunately, there isn't really a way to know that the CHILD_NODELIST_LENGTH failure was due to a specific
     // child node.
     return DifferenceEvaluators.chain(new IgnoreComparisonTypeDifference(ComparisonType.CHILD_NODELIST_LENGTH)
-            .onControlNode(new NodeNamePredicate("rckmsOutput/jurisdiction")),
+            .onControlNode(pathMatching("rckmsOutput/jurisdiction")),
         new IgnoreComparisonTypeDifference(ComparisonType.CHILD_LOOKUP)
-            .onTestNode(new NodeNamePredicate("jurisdiction/routingEntity")));
+            .onTestNode(pathMatching("jurisdiction/routingEntity")));
   }
 
   private static DifferenceEvaluator ignoringLocationRelevance()
@@ -140,16 +154,16 @@ public class XmlUnitComparisonEngine202103 extends AbstractXmlUnitComparisonEngi
     return DifferenceEvaluators.chain(
         // Ignore that the count of jurisdiction child nodes will be different
         new IgnoreComparisonTypeDifference(ComparisonType.CHILD_NODELIST_LENGTH)
-            .onControlNode(new NodeNamePredicate("rckmsOutput/jurisdiction")),
+            .onControlNode(pathMatching("rckmsOutput/jurisdiction")),
         // Ignore that count of reportingCondition child nodes will be different
         new IgnoreComparisonTypeDifference(ComparisonType.CHILD_NODELIST_LENGTH)
-            .onControlNode(new NodeNamePredicate("jurisdiction/reportingCondition")),
+            .onControlNode(pathMatching("jurisdiction/reportingCondition")),
         // Ignore that the jurisdiction/locationRelevance in the control doc won't be present in the variant doc
         new IgnoreComparisonTypeDifference(ComparisonType.CHILD_LOOKUP)
-            .onControlNode(new NodeNamePredicate("jurisdiction/locationRelevance")),
+            .onControlNode(pathMatching("jurisdiction/locationRelevance")),
         // Ignore that the jurisdiction/reportingCondition/locationRelevance in the variant doc won't be present in the control doc
         new IgnoreComparisonTypeDifference(ComparisonType.CHILD_LOOKUP)
-            .onTestNode(new NodeNamePredicate("reportingCondition/locationRelevance")));
+            .onTestNode(pathMatching("reportingCondition/locationRelevance")));
   }
 
   private static DifferenceEvaluator ignoringNewResponseMessageInVariant()
@@ -158,17 +172,17 @@ public class XmlUnitComparisonEngine202103 extends AbstractXmlUnitComparisonEngi
         // Ignore that the count of rckmsOutput child nodes will be different because the new version contains an extra
         // top-level responseMessage node
         new IgnoreComparisonTypeDifference(ComparisonType.CHILD_NODELIST_LENGTH)
-            .onControlNode(new NodeNamePredicate("rckmsOutput")),
+            .onControlNode(pathMatching("rckmsOutput")),
         // Ignore that the responseMessage in the variant doc won't be present in the control doc
         new IgnoreComparisonTypeDifference(ComparisonType.CHILD_LOOKUP)
-            .onTestNode(new NodeNamePredicate("rckmsOutput/responseMessage")));
+            .onTestNode(pathMatching("rckmsOutput/responseMessage")));
   }
 
   private static DifferenceEvaluator ignoringElementNameChange(String newElement)
   {
     return
         new IgnoreComparisonTypeDifference(ComparisonType.ELEMENT_TAG_NAME)
-            .onTestNode(new NodeNamePredicate(newElement));
+            .onTestNode(pathMatching(newElement));
   }
 
 }

@@ -20,8 +20,8 @@ public class IgnoreComparisonTypeDifferenceTest
     String control = "<a><b></b></a>";
     String test = "<a><b></b><c></c></a>";
 
-    Predicate<Node> parentNode = new NodeNamePredicate("a");
-    Predicate<Node> extraChildNode = new NodeNamePredicate("c");
+    Predicate<Node> parentNode = NodeNamePredicate.pathMatching("a");
+    Predicate<Node> extraChildNode = NodeNamePredicate.pathMatching("c");
     DifferenceEvaluator ignoreExtraChildrenInTestDoc = DifferenceEvaluators.chain(
         new IgnoreComparisonTypeDifference(ComparisonType.CHILD_NODELIST_LENGTH).onControlNode(parentNode),
         new IgnoreComparisonTypeDifference(ComparisonType.CHILD_LOOKUP).onTestNode(extraChildNode)
@@ -41,8 +41,8 @@ public class IgnoreComparisonTypeDifferenceTest
     String control = "<a><b></b></a>";
     String test = "<a><b></b><b></b></a>";
 
-    Predicate<Node> parentNode = new NodeNamePredicate("a");
-    Predicate<Node> extraChildNode = new NodeNamePredicate("b");
+    Predicate<Node> parentNode = NodeNamePredicate.pathMatching("a");
+    Predicate<Node> extraChildNode = NodeNamePredicate.pathMatching("b");
     DifferenceEvaluator ignoreExtraChildrenInTestDoc = DifferenceEvaluators.chain(
         new IgnoreComparisonTypeDifference(ComparisonType.CHILD_NODELIST_LENGTH).onControlNode(parentNode),
         new IgnoreComparisonTypeDifference(ComparisonType.CHILD_LOOKUP).onTestNode(extraChildNode)
