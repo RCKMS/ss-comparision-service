@@ -119,7 +119,7 @@ public class ComparisonServiceTest
     ManagementService svc = Mockito.mock(ManagementService.class);
     when(svc.getComparisonSet(comparisonSet.getComparisonSetKey())).thenReturn(Optional.of(comparisonSet));
     when(svc.getComparisonTest(test.getId())).thenReturn(Optional.of(test));
-    when(svc.getServiceOutput(comparisonSet.getComparisonSetKey())).thenReturn(svcOutput);
+    when(svc.loadServiceOutput(comparisonSet.getComparisonSetKey())).thenReturn(svcOutput);
     return svc;
   }
 

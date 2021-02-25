@@ -11,6 +11,8 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Document(collection = "comparison_set")
 @CompoundIndexes({
                      @CompoundIndex(name = "comparisonTestId_createDate", def = "{'comparisonTestId' : 1, 'createDate': 1}")
@@ -141,6 +143,9 @@ public class ComparisonSet
     this.status = status;
   }
 
+  // This is excluded from json output because it is only set on FAIL instances and, for consistency, retrieval of the output
+  // regardless of status should be driven through the /output endpoint
+  @JsonIgnore
   public List<ServiceOutput> getServiceOutputs()
   {
     return serviceOutputs;

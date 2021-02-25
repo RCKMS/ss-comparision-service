@@ -21,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -77,7 +78,18 @@ public class ManagementService
     return comparisonSetRepo.findComparisonSets(query);
   }
 
-  public List<ServiceOutput> getServiceOutput(String comparisonSetKey)
+  public List<ServiceOutput> getServiceOutput(ComparisonSet comparisonSet)
+  {
+    // ComparisonSets that had errors will have the output attached directly to it so we can just return
+    // that.
+    if (comparisonSet.getServiceOutputs() != null && !comparisonSet.getServiceOutputs().isEmpty())
+      return comparisonSet.getServiceOutputs();
+    // Otherwise, query it from service_output. Note that this could still return an empty list if the output
+    // records have been expired
+    return loadServiceOutput(comparisonSet.getComparisonSetKey());
+  }
+
+  public List<ServiceOutput> loadServiceOutput(String comparisonSetKey)
   {
     return serviceOutputRepo.findByComparisonSetKey(comparisonSetKey);
   }
@@ -85,6 +97,16 @@ public class ManagementService
   public void saveComparisonSet(ComparisonSet comparisonSet)
   {
     comparisonSetRepo.save(comparisonSet);
+  }
+
+  /**
+   * This only updates the fields we allow to be modified
+   *
+   * @param comparisonSet
+   */
+  public void updateComparisonSet(ComparisonSet comparisonSet)
+  {
+
   }
 
   public void saveServiceOutput(ServiceOutput output)
@@ -97,17 +119,27 @@ public class ManagementService
     serviceOutputRepo.markCompared(outputs, comparisonDate);
   }
 
-  @Cacheable(cacheNames = CACHE_COMPARISON_TESTS)
-  public Optional<ComparisonTest> getComparisonTest(String testId)
+  public Optional<ComparisonTest> loadComparisonTest(String testId)
   {
     return comparisonTestRepo.findById(testId);
   }
 
-  @CachePut(cacheNames = CACHE_COMPARISON_TESTS)
+  @Cacheable(cacheNames = CACHE_COMPARISON_TESTS)
+  public Optional<ComparisonTest> getComparisonTest(String testId)
+  {
+    return loadComparisonTest(testId);
+  }
+
+  @CachePut(cacheNames = CACHE_COMPARISON_TESTS, key = "#test.id")
   public ComparisonTest addTest(ComparisonTest test)
   {
     test.setCreateDate(OffsetDateTime.now());
     return comparisonTestRepo.save(test);
+  }
+
+  public Page<ComparisonTest> getAllTests(Pageable pageable)
+  {
+    return comparisonTestRepo.findAll(pageable);
   }
 
   public Optional<ComparisonTestSummary> getTestSummary(String testId, OffsetDateTime start, OffsetDateTime end)

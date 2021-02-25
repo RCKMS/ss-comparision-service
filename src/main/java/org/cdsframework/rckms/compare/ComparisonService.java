@@ -121,7 +121,7 @@ public class ComparisonService
 
   private List<ServiceOutput> getServiceOutputs(String comparisonSetKey)
   {
-    List<ServiceOutput> outputs = managementService.getServiceOutput(comparisonSetKey);
+    List<ServiceOutput> outputs = managementService.loadServiceOutput(comparisonSetKey);
     if (outputs.isEmpty())
       throw new ComparisonServiceException(comparisonSetKey,
           "ServiceOutput records not found for comparisonSetKey: " + comparisonSetKey);

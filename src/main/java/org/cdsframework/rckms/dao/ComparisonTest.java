@@ -41,6 +41,7 @@ public class ComparisonTest
   {
     this.id = id;
     this.controlSourceId = controlSourceId;
+    this.createDate = OffsetDateTime.now();
   }
 
   public String getId()
