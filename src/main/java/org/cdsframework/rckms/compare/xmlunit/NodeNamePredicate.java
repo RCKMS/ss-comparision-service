@@ -7,6 +7,14 @@ import java.util.List;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Node;
 
+/**
+ * XmlUnit Predicate to match nodes for things like node/attribute filters and pairing strategies.
+ * This is mostly needed because most of XmlUnit's built-in mechanisms just allow you to identify a node by name alone without
+ * any path context so you could easily have a predicate that applies to the wrong node simply because it uses the same name.
+ * This implementation allows you to specify at least a partial path to match against.
+ *
+ * @param <T>
+ */
 final class NodeNamePredicate<T extends Node> implements PredicateSupport<T>
 {
   private final String name;

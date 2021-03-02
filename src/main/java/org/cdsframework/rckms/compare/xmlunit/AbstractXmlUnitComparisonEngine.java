@@ -26,22 +26,6 @@ abstract class AbstractXmlUnitComparisonEngine implements ComparisonEngine
 
     List<ComparisonResult> results = new ArrayList<>();
     diff.getDifferences().forEach(d -> results.add(transform(d, context)));
-    //    int i = 0;
-    //    for (Difference d : diff.getDifferences())
-    //    {
-    //      i++;
-    //      Node controlNode = d.getComparison().getControlDetails().getTarget();
-    //      Node testNode = d.getComparison().getTestDetails().getTarget();
-    //      logger.info("Diff[" + i + "]: " + d.getComparison().getType() + "=" + d.getResult());
-    //      logger.info(
-    //          "Diff[" + i + "]: Control Node: " +
-    //              (controlNode != null ? controlNode.getNodeName() : null) + ": " +
-    //              (controlNode != null ? controlNode.getLocalName() : null) + ": "
-    //              + controlNode);
-    //      logger.info("Diff[" + i + "]: Control XPath: " + d.getComparison().getControlDetails().getXPath());
-    //      logger.info("Diff[" + i + "]: Variant Node: " + (testNode != null ? testNode.getNodeName() : null) + ": " + testNode);
-    //      logger.info("Diff[" + i + "]: Variant XPath: " + d.getComparison().getTestDetails().getXPath());
-    //    }
     return results;
   }
 

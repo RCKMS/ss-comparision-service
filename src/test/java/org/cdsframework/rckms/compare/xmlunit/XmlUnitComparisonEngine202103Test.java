@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
+import org.cdsframework.rckms.SSComparisonServiceApplicationConfig.EnvType;
 import org.cdsframework.rckms.compare.ComparisonContext;
 import org.cdsframework.rckms.compare.ComparisonEngine;
 import org.cdsframework.rckms.dao.ComparisonResult;
@@ -20,9 +21,17 @@ public class XmlUnitComparisonEngine202103Test
   @Test
   public void testIgnoreKnownDifferences() throws Exception
   {
-    // This variant contains diagnostics element and an extra routingEntity element
     ComparisonContext ctx = createContext("classpath:202103_control.xml", "classpath:202103_variant.xml");
-    XmlUnitComparisonEngine202103 comparison = new XmlUnitComparisonEngine202103();
+    XmlUnitComparisonEngine202103 comparison = new XmlUnitComparisonEngine202103(EnvType.NONPROD);
+    List<ComparisonResult> results = compare(comparison, ctx);
+    assertTrue(results.isEmpty(), results.toString());
+  }
+
+  @Test
+  public void testIgnoreKnownDifferences2() throws Exception
+  {
+    ComparisonContext ctx = createContext("classpath:202103_training_TC-Per_DD.xml", "classpath:202103_demo_TC-Per_DD.xml");
+    XmlUnitComparisonEngine202103 comparison = new XmlUnitComparisonEngine202103(EnvType.NONPROD);
     List<ComparisonResult> results = compare(comparison, ctx);
     assertTrue(results.isEmpty(), results.toString());
   }
@@ -32,7 +41,7 @@ public class XmlUnitComparisonEngine202103Test
   {
     // This variant contains a different responseCode
     ComparisonContext ctx = createContext("classpath:202103_control.xml", "classpath:202103_variant_with_diff.xml");
-    XmlUnitComparisonEngine202103 comparison = new XmlUnitComparisonEngine202103();
+    XmlUnitComparisonEngine202103 comparison = new XmlUnitComparisonEngine202103(EnvType.NONPROD);
     List<ComparisonResult> results = compare(comparison, ctx);
     assertEquals(1, results.size());
     assertEquals(Type.NODE_DIFF, results.get(0).getType());

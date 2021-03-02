@@ -1,14 +1,11 @@
 package org.cdsframework.rckms.rest;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Positive;
 
 public class AddOutputRequest
 {
   @Positive
   private int serviceStatus;
-  @NotBlank
   private String serviceOutput;
 
   public int getServiceStatus()

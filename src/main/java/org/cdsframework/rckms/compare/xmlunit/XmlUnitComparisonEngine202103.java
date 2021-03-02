@@ -3,8 +3,11 @@ package org.cdsframework.rckms.compare.xmlunit;
 import static org.cdsframework.rckms.compare.xmlunit.NodeNamePredicate.*;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
+import org.cdsframework.rckms.SSComparisonServiceApplicationConfig.EnvType;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Node;
@@ -24,6 +27,13 @@ public class XmlUnitComparisonEngine202103 extends AbstractXmlUnitComparisonEngi
   private static final String RCKMS_NS_PREFIX = "rckms";
   private static final String RCKMS_NS = "org.cdsframework.rckms.output";
   private static final Map<String, String> namespaces = Collections.singletonMap(RCKMS_NS_PREFIX, RCKMS_NS);
+
+  private EnvType envType;
+
+  public XmlUnitComparisonEngine202103(EnvType envType)
+  {
+    this.envType = envType;
+  }
 
   @Override
   public String getId()
@@ -54,10 +64,12 @@ public class XmlUnitComparisonEngine202103 extends AbstractXmlUnitComparisonEngi
         // (routingEntity) and its id attribute. This ensures that at a minimum, the single routingEntity we expect in the control
         // doc is present in the variant.
         .whenElementIsNamed("routingEntity")
-        .thenUse(ElementSelectors.byNameAndAttributes("id"))
+        //.thenUse(ElementSelectors.byNameAndAttributes("id"))
+        .thenUse(ElementPairing.byNameAndAttribute("id", false))
 
         .whenElementIsNamed("jurisdiction")
-        .thenUse(ElementSelectors.byNameAndAttributes("id"))
+        //.thenUse(ElementSelectors.byNameAndAttributes("id"))
+        .thenUse(ElementPairing.byNameAndAttribute("id", false))
 
         // To handle the rename of serviceResponseCode->responseCode, this pairs the serviceResponseCode element in the control doc
         // to the responseCode element in the variant doc
@@ -79,15 +91,16 @@ public class XmlUnitComparisonEngine202103 extends AbstractXmlUnitComparisonEngi
 
         // Pair up logicSet elements based on equivalent id values
         .whenElementIsNamed("logicSet")
-        .thenUse(pairByChildElementText("id"))
+        .thenUse(pairByChildElementText("name"))
 
         // Pair up criteria elements based on equivalent criteriaId values
         .whenElementIsNamed("criteria")
-        .thenUse(pairByChildElementText("criteriaId"))
+        .thenUse(pairByChildElementText("name"))
 
         // Pair up responsibleAgency elements based on equivalent id values
         .whenElementIsNamed("responsibleAgency")
-        .thenUse(ElementSelectors.byNameAndAttributes("id"))
+        //.thenUse(ElementSelectors.byNameAndAttributes("id"))
+        .thenUse(ElementPairing.byNameAndAttribute("id", false))
 
         // Otherwise, by default, just pair up elements by their name and text value
         .elseUse(ElementSelectors.byNameAndText)
@@ -101,20 +114,37 @@ public class XmlUnitComparisonEngine202103 extends AbstractXmlUnitComparisonEngi
     return ElementSelectors.byXPath("./" + RCKMS_NS_PREFIX + ":" + childName, namespaces, ElementSelectors.byNameAndText);
   }
 
-  private static Predicate<Node> excludeElements()
+  private Predicate<Node> excludeElements()
   {
-    return not(pathMatching("rckmsOutput/diagnostics"))
-        .and(not(pathMatching("rckmsOutput/input/#text")))
-        // Output is never the same, I believe because it encodes a timestamp
-        .and(not(pathMatching("rckmsOutput/output/#text")))
+    PredicateSupport<Node> nodesFilter = not(pathMatching("rckmsOutput/diagnostics"))
+        .and(not(pathMatching("rckmsOutput/input")))
         // serviceMessage text (and the number of them) may have changed and can be ignored altogther
-        .and(not(pathMatching("rckmsOutput/serviceMessage")));
+        .and(not(pathMatching("rckmsOutput/serviceMessage")))
+        // Output is never the same, I believe because it encodes a timestamp
+        .and(not(pathMatching("jurisdiction/output")))
+        .and(not(pathMatching("jurisdiction/serviceResponseMessage")))
+        .and(not(pathMatching("jurisdiction/responseMessage")))
+        .and(not(pathMatching("reportingCondition/linkAndReference")));
+
+    if (EnvType.NONPROD.equals(envType))
+    {
+      nodesFilter = nodesFilter.and(not(pathMatching("criteria/relId")))
+          .and(not(pathMatching("criteria/criteriaId")))
+          .and(not(pathMatching("reportingCondition/relId")))
+          .and(not(pathMatching("reportingCondition/specificationId")))
+          .and(not(pathMatching("reportingCondition/logicSetId")))
+          .and(not(pathMatching("logicSet/id")));
+    }
+
+    return nodesFilter;
   }
 
   private static Predicate<Attr> excludeAttributes()
   {
     return not(NodeNamePredicate.<Attr>pathMatching("rckmsOutput/sessionKey"))
-        .and(not(pathMatching("rckmsOutput/requestDate")));
+        .and(not(pathMatching("rckmsOutput/requestDate")))
+        .and(not(pathMatching("jurisdiction/serviceResponseMessage/code")))
+        ;
   }
 
   private static <T> PredicateSupport<T> not(PredicateSupport<T> source)
@@ -132,7 +162,13 @@ public class XmlUnitComparisonEngine202103 extends AbstractXmlUnitComparisonEngi
         // Even though the elementPairingStrategy() will pair serviceResponseCode to responseCode, we still have to
         // explicitly tell XmlUnit to ignore the name change.
         ignoringElementNameChange("jurisdiction/responseCode"),
-        ignoringElementNameChange("jurisdiction/responseMessage"));
+        ignoringElementNameChange("jurisdiction/responseMessage"),
+        ignoringCase("jurisdiction/id"),
+        ignoringCase("routingEntity/id"),
+        ignoringCase("responsibleAgency/id"),
+        ignoringCase("authoringAgency/id"),
+        ignoringReportingTimeFrameUnitsChange()
+    );
   }
 
   private static DifferenceEvaluator ignoringExtraRoutingEntities()
@@ -183,6 +219,26 @@ public class XmlUnitComparisonEngine202103 extends AbstractXmlUnitComparisonEngi
     return
         new IgnoreComparisonTypeDifference(ComparisonType.ELEMENT_TAG_NAME)
             .onTestNode(pathMatching(newElement));
+  }
+
+  private static DifferenceEvaluator ignoringCase(String path)
+  {
+    return NodeTextEvaluator.ignoreCase().onNode(pathMatching(path));
+  }
+
+  private static DifferenceEvaluator ignoringReportingTimeFrameUnitsChange()
+  {
+    // Map control values to their new values, e.g. MINUTE_S will be Minute(s) in the variant
+    Map<String, String> unitsMap = new HashMap<>();
+    unitsMap.put("MINUTE_S", "Minute(s)");
+    unitsMap.put("HOUR_S", "Hour(s)");
+    unitsMap.put("DAY_S", "Day(s)");
+    unitsMap.put("WEEK_S", "Week(s)");
+    unitsMap.put("MONTH_S", "Month(s)");
+    unitsMap.put("YEAR_S", "Year(s)");
+    unitsMap.put("IMMEDIATE", "Immediate");
+    return new NodeTextEvaluator((control, variant) -> Objects.equals(unitsMap.get(control), variant))
+        .onNode(pathMatching("reportingTimeframe/unit"));
   }
 
 }

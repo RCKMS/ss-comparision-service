@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.cdsframework.rckms.dao.converter.OffsetDateTimeReadConverter;
 import org.cdsframework.rckms.dao.converter.OffsetDateTimeWriteConverter;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.caffeine.CaffeineCacheManager;
@@ -27,6 +28,9 @@ import io.micrometer.core.instrument.MeterRegistry;
 public class SSComparisonServiceApplicationConfig
 {
   public static final String CACHE_COMPARISON_TESTS = "comparison-tests";
+
+  @Value("${envType:PROD}")
+  private EnvType envType;
 
   @Bean
   public MongoCustomConversions mongoCustomConversions()
@@ -51,6 +55,18 @@ public class SSComparisonServiceApplicationConfig
   public TimedAspect timedAspect(MeterRegistry registry)
   {
     return new TimedAspect(registry);
+  }
+
+  @Bean
+  public EnvType getEnvType()
+  {
+    return envType;
+  }
+
+  public enum EnvType
+  {
+    PROD(),
+    NONPROD
   }
 
 }

@@ -51,6 +51,14 @@ service-output-expiration: 10d
 spring:
   config:
     activate:
+      on-profile: nonprod
+
+envType: NONPROD
+---
+
+spring:
+  config:
+    activate:
       on-profile: sandbox
 
 server:
