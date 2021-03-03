@@ -11,6 +11,8 @@ import java.util.stream.Collectors;
 import org.cdsframework.rckms.dao.ComparisonResult.Type;
 import org.cdsframework.rckms.dao.ComparisonSet.Status;
 import org.cdsframework.rckms.dao.util.MongoUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.domain.Page;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -21,10 +23,13 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.data.support.PageableExecutionUtils;
 
+import com.mongodb.MongoWriteException;
 import com.mongodb.client.result.UpdateResult;
 
 public class CustomComparisonSetRepositoryImpl implements CustomComparisonSetRepository
 {
+  private static final Logger logger = LoggerFactory.getLogger(CustomComparisonSetRepositoryImpl.class);
+
   private MongoTemplate mongoTemplate;
 
   public CustomComparisonSetRepositoryImpl(MongoTemplate mongoTemplate)
@@ -44,8 +49,23 @@ public class CustomComparisonSetRepositoryImpl implements CustomComparisonSetRep
         .setOnInsert("comparisonSetKey", comparisonSetKey)
         .setOnInsert("createDate", OffsetDateTime.now());
 
-    UpdateResult result = mongoTemplate.upsert(query, update, ComparisonSet.class);
-    return (int) result.getMatchedCount();
+    try
+    {
+      UpdateResult result = mongoTemplate.upsert(query, update, ComparisonSet.class);
+      return (int) result.getMatchedCount();
+    }
+    catch (MongoWriteException e)
+    {
+      // Per https://jira.mongodb.org/browse/SERVER-14322, mongodb versions < 4.1.6 have a bug whereby a race condition
+      // can cause the upsert to actually insert a duplicate, i.e. when 2 concurrent processes execute the upsert at the
+      // exact same time, it's possible that neither see the other and the second one that tries to insert will fail
+      // assuming there is a unique index on the query fields (as is the case for us here).
+      // So this totally lame, but their recommendation is to simply retry. At that point, it is guaranteed to work since it
+      // will be an update, not an insert
+      logger.warn("Retrying failed upsert", e);
+      UpdateResult result = mongoTemplate.upsert(query, update, ComparisonSet.class);
+      return (int) result.getMatchedCount();
+    }
   }
 
   @Override

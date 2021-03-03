@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
@@ -72,6 +73,34 @@ public class ManagementController
 
     List<ServiceOutput> result = managementService.getServiceOutput(comparisonSet.get());
     return (ResponseEntity.ok(result));
+  }
+
+  @GetMapping(value = "/comparison-sets/{comparison-key}/output/{output-id}")
+  public ResponseEntity<ServiceOutput> getServiceOutput(@PathVariable(name = "comparison-key") String comparisonKey,
+      @PathVariable(name = "output-id") String id)
+  {
+    ServiceOutput output = getRequiredServiceOutput(comparisonKey, id);
+    return (ResponseEntity.ok(output));
+  }
+
+  @GetMapping(value = "/comparison-sets/{comparison-key}/output/{output-id}/xml")
+  @RequestMapping(value = "/comparison-sets/{comparison-key}/output/{output-id}/xml", method = RequestMethod.GET,
+                  produces = "application/xml")
+  public ResponseEntity<String> getServiceOutputXml(@PathVariable(name = "comparison-key") String comparisonKey,
+      @PathVariable(name = "output-id") String id)
+  {
+    ServiceOutput output = getRequiredServiceOutput(comparisonKey, id);
+    return (ResponseEntity.ok(output.getOutput()));
+  }
+
+  private ServiceOutput getRequiredServiceOutput(String comparisonSetKey, String outputId)
+  {
+    ComparisonSet comparisonSet = managementService.getComparisonSet(comparisonSetKey)
+        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, comparisonSetKey));
+    return managementService.getServiceOutput(comparisonSet).stream()
+        .filter(so -> so.getId().equals(outputId))
+        .findFirst()
+        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, outputId));
   }
 
   @GetMapping(value = "/comparison-tests/{comparison-test}/comparison-sets")

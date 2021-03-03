@@ -210,11 +210,19 @@ e.g.
 }
 ```
 
-#### Retrieve ServiceOutput for a ComparisonSet
+#### Retrieve all ServiceOutput for a ComparisonSet
 
 `GET /ss-comparison-service/v1/management/comparison-sets/{comparison-set-key}/output`
 
-#### Pagination Support
+#### Retrieve a single ServiceOutput by ID
+
+`GET /ss-comparison-service/v1/management/comparison-sets/{comparison-set-key}/output/{output-id}`
+
+#### Retrieve just the XML payload from a single ServiceOutput
+
+`GET /ss-comparison-service/v1/management/comparison-sets/{comparison-set-key}/output/{output-id}/xml`
+
+### Pagination Support
 
 Note that most management endpoints that return an array of objects also support pagination control. The following query params can
 be supplied:
