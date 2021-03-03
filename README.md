@@ -237,6 +237,7 @@ including pas/fail stats, output counts, etc. The following filter query params 
 
 `GET /ss-comparison-service/v1/queue/stats` will provide stats on the queue such as processing time, polling time, count of queue
 records, etc.
+
 ---
 
 ## Deployment Configuration
