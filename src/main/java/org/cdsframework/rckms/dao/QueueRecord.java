@@ -29,7 +29,7 @@ public class QueueRecord
   private String id;
 
   @Field
-  @Indexed(unique = true)
+  @Indexed
   private String comparisonSetKey;
 
   @Field
