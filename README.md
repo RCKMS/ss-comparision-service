@@ -250,6 +250,16 @@ records, etc.
 
 ## Deployment Configuration
 
+### Spring Profiles
+
+When running in **nonprod**, activate the `nonprod` spring profile by setting the `spring_profiles_active=nonprod` env variable or
+by passing it as a JVM system property, e.g. `-Dspring.profiles.active=nonprod`.
+
+That profile will configure the service to ignore certain data discrepancies that exist only when comparing one nonprod env to
+another nonprod env such as training vs demo.
+
+### Env variables
+
 The following variables **must** be set by the runtime environment:
 
 * `mongodb.url`: The mongodb/documentDb conenction URI
