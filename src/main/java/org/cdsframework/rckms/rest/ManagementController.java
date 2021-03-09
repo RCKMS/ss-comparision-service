@@ -44,11 +44,23 @@ public class ManagementController
   @GetMapping(value = "/comparison-sets/{comparison-key}")
   public ResponseEntity<ComparisonSet> getComparisonSet(@PathVariable(name = "comparison-key") String comparisonKey)
   {
-    Optional<ComparisonSet> result = managementService.getComparisonSet(comparisonKey);
-    if (result.isEmpty())
-      return ResponseEntity.notFound().build();
+    return (ResponseEntity.ok(getRequiredComparisonSet(comparisonKey)));
+  }
 
-    return (ResponseEntity.ok(result.get()));
+  @GetMapping(value = "/comparison-sets/{comparison-key}/details")
+  public ResponseEntity<ComparisonSetDetails> getComparisonSetDetails(@PathVariable(name = "comparison-key") String comparisonKey)
+  {
+    ComparisonSet comparisonSet = getRequiredComparisonSet(comparisonKey);
+    List<ServiceOutput> outputs = managementService.getServiceOutput(comparisonSet);
+    ComparisonSetDetails details = new ComparisonSetDetails(comparisonSet, outputs);
+    return (ResponseEntity.ok(details));
+  }
+
+  private ComparisonSet getRequiredComparisonSet(String comparisonSetKey)
+  {
+    ComparisonSet comparisonSet = managementService.getComparisonSet(comparisonSetKey)
+        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, comparisonSetKey));
+    return comparisonSet;
   }
 
   @PutMapping(value = "/comparison-sets/{comparison-key}")
@@ -95,8 +107,7 @@ public class ManagementController
 
   private ServiceOutput getRequiredServiceOutput(String comparisonSetKey, String outputId)
   {
-    ComparisonSet comparisonSet = managementService.getComparisonSet(comparisonSetKey)
-        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, comparisonSetKey));
+    ComparisonSet comparisonSet = getRequiredComparisonSet(comparisonSetKey);
     return managementService.getServiceOutput(comparisonSet).stream()
         .filter(so -> so.getId().equals(outputId))
         .findFirst()
