@@ -159,7 +159,7 @@ Note that the order in which those 2 calls are made does **not** matter.
 
 #### Retrieve a specific ComparisonTest by ID
 
-`GET /ss-comparison-service/v1/management/comparison-tests/{id}}`
+`GET /ss-comparison-service/v1/management/comparison-tests/{id}`
 
 #### Add a new ComparisonTest
 
@@ -178,6 +178,13 @@ With a body like:
 #### Retrieve a ComparisonSet by its comparison set key
 
 `GET /ss-comparison-service/v1/management/comparison-sets/{comparison-set-key}`
+
+#### Retrieve a ComparisonSet by its comparison set key, including details
+
+`GET /ss-comparison-service/v1/management/comparison-sets/{comparison-set-key}/details`
+
+Note that this differs from the endpoint above only in that it includes more details such as links to retrieve the rckmsOutput XML
+associated to the comparison.
 
 #### Find all ComparisonSets for a specific ComparisonTest and matching given filters
 

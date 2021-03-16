@@ -39,9 +39,88 @@ public class BulkInsert
   private ManagementService managementService;
 
   @Test
-  public void test()
+  @Disabled
+  public void demoInsert() throws Exception
   {
+    String testId = "20210317_demo_02";
+    String engineId = "202103";
+    String controlSourceId = "RCKMS_OLD";
+    String variantSourceId = "RCKMS_NEW";
+    ComparisonTest test = managementService.getComparisonTest(testId).orElse(null);
+    if (test == null)
+    {
+      test = new ComparisonTest(testId, controlSourceId);
+      test.setComparisonEngineId(engineId);
+      test = managementService.addTest(test);
+    }
+    ComparisonTest test1 = test;
 
+    String controlXml = XmlUtils.loadXml("classpath:202103_training_TC-Per_DD.xml");
+    String variantXml = XmlUtils.loadXml("classpath:202103_demo_TC-Per_DD.xml");
+
+    int count = 100;
+
+    ExecutorService executor = Executors.newFixedThreadPool(15);
+    for (int i = 0; i < count; i++)
+    {
+      final int j = i;
+      executor.submit(() ->
+      {
+        String comparisonSetKey = UUID.randomUUID().toString();
+        AddOutputRequest controlReq = new AddOutputRequest();
+        controlReq.setServiceStatus(200);
+        controlReq.setServiceOutput(controlXml);
+
+        AddOutputRequest variantReq = new AddOutputRequest();
+        variantReq.setServiceStatus(200);
+        variantReq.setServiceOutput(variantXml);
+
+        if (j >= 52 && j % 52 == 0)
+        {
+          // duplicate some requests
+          managementService.addServiceOutput(test1, comparisonSetKey, controlSourceId, controlReq);
+          managementService.addServiceOutput(test1, comparisonSetKey, variantSourceId, variantReq);
+          managementService.addServiceOutput(test1, comparisonSetKey, variantSourceId, variantReq);
+        }
+        else if (j >= 83 && j % 83 == 0)
+        {
+          // missing variant
+          managementService.addServiceOutput(test1, comparisonSetKey, controlSourceId, controlReq);
+        }
+        else if (j >= 65 && j % 65 == 0)
+        {
+          // missing control
+          managementService.addServiceOutput(test1, comparisonSetKey, variantSourceId, variantReq);
+        }
+
+        else if (j >= 60 && j % 60 == 0)
+        {
+          // difference
+          managementService.addServiceOutput(test1, comparisonSetKey, controlSourceId, controlReq);
+          variantReq.setServiceOutput(variantReq.getServiceOutput()
+              .replace("<reportingTimeframe unit=\"Day(s)\" value=\"3\"/>", "<reportingTimeframe unit=\"Day(s)\" value=\"4\"/>"));
+          managementService.addServiceOutput(test1, comparisonSetKey, variantSourceId, variantReq);
+        }
+        else if (j >= 77 && j % 77 == 0)
+        {
+          // service status difference
+          managementService.addServiceOutput(test1, comparisonSetKey, controlSourceId, controlReq);
+          variantReq.setServiceStatus(500);
+          managementService.addServiceOutput(test1, comparisonSetKey, variantSourceId, variantReq);
+        }
+        else
+        {
+          // Normal match
+          addServiceOutput(test1, comparisonSetKey, controlSourceId, controlReq);
+          addServiceOutput(test1, comparisonSetKey, variantSourceId, variantReq);
+        }
+
+      });
+
+    }
+    logger.info("Submitted {} resources for testId {}", count, testId);
+    executor.shutdown();
+    executor.awaitTermination(120, TimeUnit.SECONDS);
   }
 
   @Test
