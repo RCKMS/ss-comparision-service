@@ -42,7 +42,7 @@ public class BulkInsert
   @Disabled
   public void demoInsert() throws Exception
   {
-    String testId = "20210317_demo_02";
+    String testId = "20210317_demo_000";
     String engineId = "202103";
     String controlSourceId = "RCKMS_OLD";
     String variantSourceId = "RCKMS_NEW";

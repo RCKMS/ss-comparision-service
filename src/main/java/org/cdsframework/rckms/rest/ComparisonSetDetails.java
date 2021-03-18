@@ -4,11 +4,16 @@ import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.cdsframework.rckms.dao.ComparisonResult;
 import org.cdsframework.rckms.dao.ComparisonResult.Type;
 import org.cdsframework.rckms.dao.ComparisonSet;
 import org.cdsframework.rckms.dao.ComparisonSet.Status;
 import org.cdsframework.rckms.dao.ServiceOutput;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -107,8 +112,15 @@ public class ComparisonSetDetails
 
     static String createOutputUrl(String comparisonSetKey, String outputId)
     {
-      return ServletUriComponentsBuilder.fromCurrentContextPath()
-          .path("ss-comparison-service/v1/management/comparison-sets/{comp-set-key}/output/{output-id}/xml")
+      RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
+      HttpServletRequest servletRequest = ((ServletRequestAttributes) requestAttributes).getRequest();
+      //      System.out.println("ContextPath = " + servletRequest.getContextPath()); // ""
+      //      System.out.println("ServletPath = " + servletRequest.getServletPath()); ///ss-comparison-service/v1/management/comparison-sets/56e45774-a0e7-49fe-8485-f94f726c62f0/details
+      //      System.out.println("requestURI = " + servletRequest.getRequestURI());///ss-comparison-service/v1/management/comparison-sets/56e45774-a0e7-49fe-8485-f94f726c62f0/details
+      //      System.out.println("requestURL = " + servletRequest.getRequestURL());//http://localhost:8180/ss-comparison-service/v1/management/comparison-sets/56e45774-a0e7-49fe-8485-f94f726c62f0/details
+
+      return ServletUriComponentsBuilder.fromCurrentRequest()
+          .replacePath("ss-comparison-service/v1/management/comparison-sets/{comp-set-key}/output/{output-id}/xml")
           .build(comparisonSetKey, outputId).toString();
     }
   }
