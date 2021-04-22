@@ -269,10 +269,14 @@ another nonprod env such as training vs demo.
 
 The following variables **must** be set by the runtime environment:
 
-* `mongodb.url`: The mongodb/documentDb conenction URI
+* `mongodb.url`: The mongodb/documentDb connection URI
 
 Optional variables:
 
+* `management-base-url`: The base URL for the comparison-service management endpoints,
+  e.g. `http://localhost:8180/ss-comparison-service/v1/management`. This should be the external-facing URL because it is used to
+  construct resource URLs in the REST service output for the client to use directly. This may be **required** in certain cases, like
+  if behind a reverse proxy.
 * `service-output-expiration`: Defines how long to keep `service_output` documents **once they've been compared**. By default it is
   set to 10 days. After this expiration, documents will be automatically deleted.
 * `processor.enabled`: Enable/Disable the queue processor. Default is `true`.

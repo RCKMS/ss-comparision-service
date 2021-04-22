@@ -69,4 +69,7 @@ logging:
     org.cdsframework.rckms: TRACE
 
 mongodb:
-  uri: mongodb://localhost:8888/ss-comparison-service?maxIdleTimeMS=300000
+  #uri: mongodb://localhost:8888/ss-comparison-service?maxIdleTimeMS=300000
+  uri: mongodb://localhost:27017/ss-comparison-service?maxIdleTimeMS=300000
+
+management-base-url: http://localhost:8180/ss-comparison-service/v1/management
