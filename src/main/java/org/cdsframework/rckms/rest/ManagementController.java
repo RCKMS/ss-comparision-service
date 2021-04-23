@@ -12,6 +12,7 @@ import org.cdsframework.rckms.dao.ComparisonSet.Status;
 import org.cdsframework.rckms.dao.ComparisonSetQuery;
 import org.cdsframework.rckms.dao.ComparisonTest;
 import org.cdsframework.rckms.dao.ServiceOutput;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -34,6 +35,8 @@ import org.springframework.web.server.ResponseStatusException;
 @Validated
 public class ManagementController
 {
+  @Value("${management-base-url:#{null}}")
+  private String managementBaseUrl;
   private ManagementService managementService;
 
   public ManagementController(ManagementService managementService)
@@ -52,7 +55,7 @@ public class ManagementController
   {
     ComparisonSet comparisonSet = getRequiredComparisonSet(comparisonKey);
     List<ServiceOutput> outputs = managementService.getServiceOutput(comparisonSet);
-    ComparisonSetDetails details = new ComparisonSetDetails(comparisonSet, outputs);
+    ComparisonSetDetails details = new ComparisonSetDetails(comparisonSet, outputs, managementBaseUrl);
     return (ResponseEntity.ok(details));
   }
 

@@ -14,7 +14,7 @@ import org.cdsframework.rckms.dao.ServiceOutput;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -23,11 +23,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "results" })
 public class ComparisonSetDetails
 {
+  private String managementBaseUrl;
   private ComparisonSet comparisonSet;
   private List<ServiceOutput> outputs;
 
-  public ComparisonSetDetails(ComparisonSet comparisonSet, List<ServiceOutput> outputs)
+  public ComparisonSetDetails(ComparisonSet comparisonSet, List<ServiceOutput> outputs, String managementBaseUrl)
   {
+    this.managementBaseUrl = managementBaseUrl;
     this.comparisonSet = comparisonSet;
     this.outputs = outputs;
   }
@@ -65,23 +67,25 @@ public class ComparisonSetDetails
   public List<ComparisonResultDTO> getResults()
   {
     return comparisonSet.getResults().stream()
-        .map(r -> new ComparisonResultDTO(r, comparisonSet.getComparisonSetKey()))
+        .map(r -> new ComparisonResultDTO(r, comparisonSet.getComparisonSetKey(), managementBaseUrl))
         .collect(Collectors.toList());
   }
 
   public List<ServiceOutputDTO> getServiceOutput()
   {
     return outputs.stream()
-        .map(ServiceOutputDTO::new)
+        .map((output) -> new ServiceOutputDTO(output, managementBaseUrl))
         .collect(Collectors.toList());
   }
 
   public static final class ServiceOutputDTO
   {
+    private String managementBaseUrl;
     private final ServiceOutput serviceOutput;
 
-    public ServiceOutputDTO(ServiceOutput serviceOutput)
+    public ServiceOutputDTO(ServiceOutput serviceOutput, String managementBaseUrl)
     {
+      this.managementBaseUrl = managementBaseUrl;
       this.serviceOutput = serviceOutput;
     }
 
@@ -102,7 +106,7 @@ public class ComparisonSetDetails
 
     public String getOutputUrl()
     {
-      return createOutputUrl(serviceOutput.getComparisonSetKey(), getId());
+      return createOutputUrl(serviceOutput.getComparisonSetKey(), getId(), managementBaseUrl);
     }
 
     public OffsetDateTime getCreateDate()
@@ -110,18 +114,22 @@ public class ComparisonSetDetails
       return serviceOutput.getCreateDate();
     }
 
-    static String createOutputUrl(String comparisonSetKey, String outputId)
+    static String createOutputUrl(String comparisonSetKey, String outputId, String managementBaseUrl)
     {
-      RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
-      HttpServletRequest servletRequest = ((ServletRequestAttributes) requestAttributes).getRequest();
-      //      System.out.println("ContextPath = " + servletRequest.getContextPath()); // ""
-      //      System.out.println("ServletPath = " + servletRequest.getServletPath()); ///ss-comparison-service/v1/management/comparison-sets/56e45774-a0e7-49fe-8485-f94f726c62f0/details
-      //      System.out.println("requestURI = " + servletRequest.getRequestURI());///ss-comparison-service/v1/management/comparison-sets/56e45774-a0e7-49fe-8485-f94f726c62f0/details
-      //      System.out.println("requestURL = " + servletRequest.getRequestURL());//http://localhost:8180/ss-comparison-service/v1/management/comparison-sets/56e45774-a0e7-49fe-8485-f94f726c62f0/details
-
-      return ServletUriComponentsBuilder.fromCurrentRequest()
-          .replacePath("ss-comparison-service/v1/management/comparison-sets/{comp-set-key}/output/{output-id}/xml")
-          .build(comparisonSetKey, outputId).toString();
+      if (managementBaseUrl != null)
+      {
+        return UriComponentsBuilder.fromUriString(managementBaseUrl)
+            .path("/comparison-sets/{comp-set-key}/output/{output-id}/xml")
+            .build(comparisonSetKey, outputId).toString();
+      }
+      else
+      {
+        RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
+        HttpServletRequest req = ((ServletRequestAttributes) requestAttributes).getRequest();
+        return UriComponentsBuilder.fromUriString(req.getRequestURL().toString())
+            .replacePath("ss-comparison-service/v1/management/comparison-sets/{comp-set-key}/output/{output-id}/xml")
+            .build(comparisonSetKey, outputId).toString();
+      }
     }
   }
 
@@ -129,11 +137,13 @@ public class ComparisonSetDetails
   {
     private final ComparisonResult result;
     private final String comparisonSetKey;
+    private String managementBaseUrl;
 
-    public ComparisonResultDTO(ComparisonResult result, String comparisonSetKey)
+    public ComparisonResultDTO(ComparisonResult result, String comparisonSetKey, String managementBaseUrl)
     {
       this.result = result;
       this.comparisonSetKey = comparisonSetKey;
+      this.managementBaseUrl = managementBaseUrl;
     }
 
     public String getNode()
@@ -163,7 +173,7 @@ public class ComparisonSetDetails
 
     private String createUrl(String outputId)
     {
-      return ServiceOutputDTO.createOutputUrl(comparisonSetKey, outputId).toString();
+      return ServiceOutputDTO.createOutputUrl(comparisonSetKey, outputId, managementBaseUrl).toString();
     }
   }
 }
