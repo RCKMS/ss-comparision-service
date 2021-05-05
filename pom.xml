@@ -114,15 +114,24 @@
             <plugin>
                 <groupId>com.google.cloud.tools</groupId>
                 <artifactId>jib-maven-plugin</artifactId>
-                <version>2.6.0</version>
+                <version>3.0.0</version>
                 <configuration>
                     <to>
                         <image>${project.artifactId}</image>
-                        <tags>
-                            <tag>${branchtag}</tag>
-                            <tag>${shatag}</tag>
-                        </tags>
+                        <!--                        <tags>-->
+                        <!--                            <tag>${branchtag}</tag>-->
+                        <!--                            <tag>${shatag}</tag>-->
+                        <!--                        </tags>-->
                     </to>
+                    <extraDirectories>
+                        <paths>
+                            <path>
+                                <from>.aws.config</from>
+                                <into>/certs</into>
+                                <includes>rds-truststore.jks</includes>
+                            </path>
+                        </paths>
+                    </extraDirectories>
                     <container>
                         <creationTime>USE_CURRENT_TIMESTAMP</creationTime>
                     </container>

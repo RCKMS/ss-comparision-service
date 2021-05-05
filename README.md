@@ -269,7 +269,12 @@ another nonprod env such as training vs demo.
 
 The following variables **must** be set by the runtime environment:
 
-* `mongodb.url`: The mongodb/documentDb connection URI
+* `mongodb.uri`: The mongodb/documentDb connection URI
+* `JAVA_TOOL_OPTIONS`: Required *only* for prod deployments using aws documentDb, in order to use a custom trust store that contains
+  the `rds-combined-ca-bundle.pem` certs. The following JVM args must be included in the `JAVA_TOOL_OPTIONS` env variable:
+    * `-Djavax.net.ssl.trustStore=/certs/rds-truststore.jks`
+    * `-Djavax.net.ssl.trustStorePassword=<truststore pwd>`
+    * Sample: `JAVA_TOOL_OPTIONS="-Djavax.net.ssl.trustStore=/certs/rds-truststore.jks -Djavax.net.ssl.trustStorePassword=<pwd>"`
 
 Optional variables:
 

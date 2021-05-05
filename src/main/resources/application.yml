@@ -70,6 +70,7 @@ logging:
 
 mongodb:
   #uri: mongodb://localhost:8888/ss-comparison-service?maxIdleTimeMS=300000
-  uri: mongodb://localhost:27017/ss-comparison-service?maxIdleTimeMS=300000
+  #uri: mongodb://localhost:27017/ss-comparison-service?maxIdleTimeMS=300000
+  uri: mongodb://blake:0tQ34vRq8y-@docdb-2021-05-04-18-29-11.cluster-c8xky1n7ytea.us-east-1.docdb.amazonaws.com:27017/ss-comparison-service?ssl=true&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false
 
 management-base-url: http://localhost:8180/ss-comparison-service/v1/management
