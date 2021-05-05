@@ -118,10 +118,10 @@
                 <configuration>
                     <to>
                         <image>${project.artifactId}</image>
-                        <!--                        <tags>-->
-                        <!--                            <tag>${branchtag}</tag>-->
-                        <!--                            <tag>${shatag}</tag>-->
-                        <!--                        </tags>-->
+                        <tags>
+                            <tag>${branchtag}</tag>
+                            <tag>${shatag}</tag>
+                        </tags>
                     </to>
                     <extraDirectories>
                         <paths>
