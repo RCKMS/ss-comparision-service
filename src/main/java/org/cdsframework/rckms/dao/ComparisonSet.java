@@ -2,7 +2,9 @@ package org.cdsframework.rckms.dao;
 
 import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
@@ -59,7 +61,9 @@ public class ComparisonSet
   @Field
   private List<ComparisonResult> results;
 
-  // Note that this field is only populated on comparison sets that have been compared and that had errors
+  // Note that the ServiceOutput is only attached directly here after the comparison has been evaluated.
+  // AND note that we do NOT include the ServiceOutput.output (xml payload) when this ComparisonSet is in a
+  // PASS status. If FAIL, then it will contain the full output
   @Field
   private List<ServiceOutput> serviceOutputs;
 
@@ -143,7 +147,7 @@ public class ComparisonSet
     this.status = status;
   }
 
-  // This is excluded from json output because it is only set on FAIL instances and, for consistency, retrieval of the output
+  // This is excluded from json output because it is only set in its complete state on FAIL instances and, for consistency, retrieval of the output
   // regardless of status should be driven through the /output endpoint
   @JsonIgnore
   public List<ServiceOutput> getServiceOutputs()
@@ -154,6 +158,16 @@ public class ComparisonSet
   public void setServiceOutputs(List<ServiceOutput> serviceOutputs)
   {
     this.serviceOutputs = serviceOutputs;
+  }
+
+  public Map<String, Double> getServiceResponseTimes()
+  {
+    if (serviceOutputs == null)
+      return null;
+    Map<String, Double> averages = serviceOutputs.stream()
+        .filter(o -> o.getServiceResponseTime() != null)
+        .collect(Collectors.groupingBy(o -> o.getSourceId(), Collectors.averagingDouble(ServiceOutput::getServiceResponseTime)));
+    return averages;
   }
 
   @Override

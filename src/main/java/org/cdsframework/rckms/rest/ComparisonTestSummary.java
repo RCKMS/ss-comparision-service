@@ -4,11 +4,13 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.OffsetDateTime;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.cdsframework.rckms.dao.ComparisonResult.Type;
 import org.cdsframework.rckms.dao.ComparisonSet.Status;
+import org.cdsframework.rckms.dao.CustomComparisonSetRepositoryImpl.ServiceOutputAggregation;
 
 public class ComparisonTestSummary
 {
@@ -33,9 +35,9 @@ public class ComparisonTestSummary
     return comparisonSets;
   }
 
-  public void addServiceOutputCounts(Map<String, Integer> countsBySource)
+  public void addServiceOutputStats(List<ServiceOutputAggregation> outputStats)
   {
-    payloads = new ServiceOutputInfo(countsBySource);
+    payloads = new ServiceOutputInfo(outputStats);
   }
 
   public ServiceOutputInfo getPayloads()
@@ -136,22 +138,23 @@ public class ComparisonTestSummary
   public static final class ServiceOutputInfo
   {
     private final int totalCount;
-    private final Map<String, AggregateStats> sourceDistribution = new HashMap<>();
+    private final Map<String, Map<String, Object>> sources = new HashMap<>();
 
-    ServiceOutputInfo(Map<String, Integer> countsBySource)
+    ServiceOutputInfo(List<ServiceOutputAggregation> outputStats)
     {
-      totalCount = countsBySource.values().stream().collect(Collectors.summingInt(Integer::intValue));
-      countsBySource.forEach((source, count) -> this.sourceDistribution.put(source, new AggregateStats(count, totalCount)));
+      totalCount = outputStats.stream().collect(Collectors.summingInt(ServiceOutputAggregation::getCount));
+      for (ServiceOutputAggregation sourceStats : outputStats)
+      {
+        Map<String, Object> stats = new HashMap<>();
+        stats.put("sourceCount", new AggregateStats(sourceStats.getCount(), totalCount));
+        stats.put("avgResponseTime", sourceStats.getAvgResponseTime());
+        sources.put(sourceStats.getSourceId(), stats);
+      }
     }
 
-    public int getTotalCount()
+    public Map<String, Map<String, Object>> getSources()
     {
-      return totalCount;
-    }
-
-    public Map<String, AggregateStats> getSourceDistribution()
-    {
-      return sourceDistribution;
+      return sources;
     }
   }
 }

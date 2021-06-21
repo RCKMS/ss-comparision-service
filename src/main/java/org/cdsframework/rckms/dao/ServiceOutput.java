@@ -19,20 +19,6 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class ServiceOutput
 {
 
-  ServiceOutput()
-  {
-  }
-
-  public ServiceOutput(String comparisonTestId, String comparisonSetKey, String sourceId, int serviceStatus, String output)
-  {
-    this.comparisonTestId = comparisonTestId;
-    this.comparisonSetKey = comparisonSetKey;
-    this.sourceId = sourceId;
-    this.serviceStatus = serviceStatus;
-    this.output = output;
-    this.createDate = OffsetDateTime.now();
-  }
-
   @Id
   private String id;
 
@@ -50,6 +36,9 @@ public class ServiceOutput
   private int serviceStatus;
 
   @Field
+  private Integer serviceResponseTime;
+
+  @Field
   private String output;
 
   @Field
@@ -58,6 +47,18 @@ public class ServiceOutput
   @Field
   // See MongoConfig for the TTL index on this.
   private OffsetDateTime comparisonDate;
+
+  ServiceOutput()
+  {
+  }
+
+  public ServiceOutput(String comparisonTestId, String comparisonSetKey, String sourceId)
+  {
+    this.comparisonTestId = comparisonTestId;
+    this.comparisonSetKey = comparisonSetKey;
+    this.sourceId = sourceId;
+    this.createDate = OffsetDateTime.now();
+  }
 
   public String getId()
   {
@@ -137,6 +138,16 @@ public class ServiceOutput
   public void setComparisonTestId(String comparisonTestId)
   {
     this.comparisonTestId = comparisonTestId;
+  }
+
+  public Integer getServiceResponseTime()
+  {
+    return serviceResponseTime;
+  }
+
+  public void setServiceResponseTime(Integer serviceResponseTime)
+  {
+    this.serviceResponseTime = serviceResponseTime;
   }
 
   @Override

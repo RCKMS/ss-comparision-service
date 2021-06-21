@@ -7,6 +7,7 @@ public class AddOutputRequest
   @Positive
   private int serviceStatus;
   private String serviceOutput;
+  private Integer serviceResponseTime;
 
   public int getServiceStatus()
   {
@@ -26,5 +27,15 @@ public class AddOutputRequest
   public void setServiceOutput(String serviceOutput)
   {
     this.serviceOutput = serviceOutput;
+  }
+
+  public Integer getServiceResponseTime()
+  {
+    return serviceResponseTime;
+  }
+
+  public void setServiceResponseTime(Integer serviceResponseTime)
+  {
+    this.serviceResponseTime = serviceResponseTime;
   }
 }

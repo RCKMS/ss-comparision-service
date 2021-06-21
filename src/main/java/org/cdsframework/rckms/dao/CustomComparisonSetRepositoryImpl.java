@@ -17,7 +17,6 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.domain.Page;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -98,14 +97,14 @@ public class CustomComparisonSetRepositoryImpl implements CustomComparisonSetRep
     Criteria match = Criteria.where("comparisonTestId").is(comparisonTestId);
     MongoUtils.andBetween(match, "createDate", start, end);
 
-    Aggregation agg = newAggregation(
+    org.springframework.data.mongodb.core.aggregation.Aggregation agg = newAggregation(
         match(match),
-        group("status").count().as("count")
+        group("status").count().as("value")
     );
-    AggregationResults<GroupCount> groupResults
-        = mongoTemplate.aggregate(agg, ComparisonSet.class, GroupCount.class);
+    AggregationResults<Aggregation> groupResults
+        = mongoTemplate.aggregate(agg, ComparisonSet.class, Aggregation.class);
     return groupResults.getMappedResults().stream()
-        .collect(Collectors.toMap(group -> Status.valueOf(group.getGroup()), GroupCount::getCount));
+        .collect(Collectors.toMap(group -> Status.valueOf(group.getGroup()), Aggregation::getValue));
   }
 
   @Override
@@ -114,23 +113,41 @@ public class CustomComparisonSetRepositoryImpl implements CustomComparisonSetRep
     Criteria match = Criteria.where("comparisonTestId").is(comparisonTestId);
     MongoUtils.andBetween(match, "createDate", start, end);
 
-    Aggregation agg = newAggregation(
+    org.springframework.data.mongodb.core.aggregation.Aggregation agg = newAggregation(
         match(match),
         unwind("results"),
-        group("results.type").count().as("count")
+        group("results.type").count().as("value")
     );
-    AggregationResults<GroupCount> groupResults
-        = mongoTemplate.aggregate(agg, ComparisonSet.class, GroupCount.class);
+    AggregationResults<Aggregation> groupResults
+        = mongoTemplate.aggregate(agg, ComparisonSet.class, Aggregation.class);
     return groupResults.getMappedResults().stream()
         .filter(group -> group.getGroup() != null)
-        .collect(Collectors.toMap(group -> Type.valueOf(group.getGroup()), GroupCount::getCount));
+        .collect(Collectors.toMap(group -> Type.valueOf(group.getGroup()), Aggregation::getValue));
   }
 
-  public static class GroupCount
+  @Override
+  public List<ServiceOutputAggregation> serviceOutputStats(String comparisonTestId, OffsetDateTime start, OffsetDateTime end)
+  {
+    Criteria match = Criteria.where("comparisonTestId").is(comparisonTestId);
+    MongoUtils.andBetween(match, "createDate", start, end);
+
+    org.springframework.data.mongodb.core.aggregation.Aggregation agg = newAggregation(
+        match(match),
+        unwind("serviceOutputs"),
+        group("serviceOutputs.sourceId")
+            .avg("serviceOutputs.serviceResponseTime").as("avgResponseTime")
+            .count().as("count")
+    );
+    AggregationResults<ServiceOutputAggregation> groupResults
+        = mongoTemplate.aggregate(agg, ComparisonSet.class, ServiceOutputAggregation.class);
+    return groupResults.getMappedResults();
+  }
+
+  public static class Aggregation
   {
     @Id
     private String group;
-    private int count;
+    private int value;
 
     public String getGroup()
     {
@@ -142,6 +159,34 @@ public class CustomComparisonSetRepositoryImpl implements CustomComparisonSetRep
       this.group = group;
     }
 
+    public int getValue()
+    {
+      return value;
+    }
+
+    public void setValue(int value)
+    {
+      this.value = value;
+    }
+  }
+
+  public static class ServiceOutputAggregation
+  {
+    @Id
+    private String sourceId;
+    private int count;
+    private double avgResponseTime;
+
+    public String getSourceId()
+    {
+      return sourceId;
+    }
+
+    public void setSourceId(String sourceId)
+    {
+      this.sourceId = sourceId;
+    }
+
     public int getCount()
     {
       return count;
@@ -150,6 +195,16 @@ public class CustomComparisonSetRepositoryImpl implements CustomComparisonSetRep
     public void setCount(int count)
     {
       this.count = count;
+    }
+
+    public double getAvgResponseTime()
+    {
+      return avgResponseTime;
+    }
+
+    public void setAvgResponseTime(double avgResponseTime)
+    {
+      this.avgResponseTime = avgResponseTime;
     }
   }
 

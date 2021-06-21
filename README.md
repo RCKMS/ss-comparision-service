@@ -132,13 +132,15 @@ The body of the `POST` should be in `json` following this format:
 ```json
 {
   "serviceStatus": 200,
-  "serviceOutput": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><rckmsOutput xmlns=\"org.cdsframework.rckms.output\" ...</rckmsOutput>"
+  "serviceOutput": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><rckmsOutput xmlns=\"org.cdsframework.rckms.output\" ...</rckmsOutput>",
+  "serviceResponseTime": 105
 }
 ```
 
 * `serviceStatus`: Set to the HTTP status code from the SharedService response
 * `serviceOutput`: Set to the response body received from the SharedService, e.g. for non-error responses, it would be
   the `rckmsOutput` XML as shown above.
+* `serviceResponseTime`: The elapsed time to get the SharedService response, in milliseconds.
 
 For example, when an eICR is received in AIMS, a unique comparison set key (something that uniquely identifies the eICR input) would
 need to be sent as part of each submission to the comparison service. Assuming the test we are running is called "

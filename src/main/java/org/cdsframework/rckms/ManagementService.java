@@ -3,10 +3,12 @@ package org.cdsframework.rckms;
 import static org.cdsframework.rckms.SSComparisonServiceApplicationConfig.*;
 
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.cdsframework.rckms.dao.ComparisonSet;
+import org.cdsframework.rckms.dao.ComparisonSet.Status;
 import org.cdsframework.rckms.dao.ComparisonSetQuery;
 import org.cdsframework.rckms.dao.ComparisonSetRepository;
 import org.cdsframework.rckms.dao.ComparisonTest;
@@ -49,7 +51,10 @@ public class ManagementService
   {
     // 1. add service_output
     ServiceOutput serviceOutput =
-        new ServiceOutput(test.getId(), comparisonSetKey, sourceId, req.getServiceStatus(), req.getServiceOutput());
+        new ServiceOutput(test.getId(), comparisonSetKey, sourceId);
+    serviceOutput.setServiceStatus(req.getServiceStatus());
+    serviceOutput.setOutput(req.getServiceOutput());
+    serviceOutput.setServiceResponseTime(req.getServiceResponseTime());
     serviceOutputRepo.save(serviceOutput);
 
     // 2. upsert comparison_set doc
@@ -80,13 +85,24 @@ public class ManagementService
 
   public List<ServiceOutput> getServiceOutput(ComparisonSet comparisonSet)
   {
-    // ComparisonSets that had errors will have the output attached directly to it so we can just return
-    // that.
-    if (comparisonSet.getServiceOutputs() != null && !comparisonSet.getServiceOutputs().isEmpty())
-      return comparisonSet.getServiceOutputs();
-    // Otherwise, query it from service_output. Note that this could still return an empty list if the output
-    // records have been expired
-    return loadServiceOutput(comparisonSet.getComparisonSetKey());
+    List<ServiceOutput> outputs = null;
+    if (Status.PASS.equals(comparisonSet.getStatus()))
+    {
+      // For ones have been compared and in a PASS state, the ServiceOutput will not have the actual service payload
+      // since we delete that for space reasons.
+      // So, we first see if we still have the FULL, original ServiceOutput in the service_output collection since that
+      // will have all data. But it may have been expired and removed from the collection.
+      outputs = loadServiceOutput(comparisonSet.getComparisonSetKey());
+      // if the service_output docs have been expired, then we fallback to returning the minimized outputs attached
+      // directly to the comparison_set doc
+      if (outputs.isEmpty())
+        outputs = comparisonSet.getServiceOutputs();
+    }
+    else
+      // If it's not yet been evaluated or was a FAIL, then simply return the output attached to the ComparisonSet.
+      outputs = comparisonSet.getServiceOutputs();
+
+    return outputs != null ? outputs : new ArrayList<>();
   }
 
   public List<ServiceOutput> loadServiceOutput(String comparisonSetKey)
@@ -154,7 +170,7 @@ public class ManagementService
     summary.addComparisonSetInfo(
         comparisonSetRepo.statusCounts(testId, start, end),
         comparisonSetRepo.failureTypeCounts(testId, start, end));
-    summary.addServiceOutputCounts(serviceOutputRepo.countsForTestGroupedBySource(testId, start, end));
+    summary.addServiceOutputStats(comparisonSetRepo.serviceOutputStats(testId, start, end));
 
     return Optional.of(summary);
   }
