@@ -150,7 +150,10 @@ public class ComparisonServiceTest
 
   private static ServiceOutput mockServiceOutput(String testId, String compSetKey, String sourceId, int serviceStatus, String xml)
   {
-    ServiceOutput output = new ServiceOutput(testId, compSetKey, sourceId, serviceStatus, xml);
+    ServiceOutput output = new ServiceOutput(testId, compSetKey, sourceId);
+    output.setServiceStatus(serviceStatus);
+    output.setOutput(xml);
+    //output.setServiceResponseTime(req.getServiceResponseTime());
     return output;
   }
 }

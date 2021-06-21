@@ -42,7 +42,7 @@ public class BulkInsert
   @Disabled
   public void demoInsert() throws Exception
   {
-    String testId = "20210317_demo_000";
+    String testId = "20210621_demo_000";
     String engineId = "202103";
     String controlSourceId = "RCKMS_OLD";
     String variantSourceId = "RCKMS_NEW";
@@ -70,10 +70,12 @@ public class BulkInsert
         AddOutputRequest controlReq = new AddOutputRequest();
         controlReq.setServiceStatus(200);
         controlReq.setServiceOutput(controlXml);
+        controlReq.setServiceResponseTime(1000 + j);
 
         AddOutputRequest variantReq = new AddOutputRequest();
         variantReq.setServiceStatus(200);
         variantReq.setServiceOutput(variantXml);
+        variantReq.setServiceResponseTime(800 + j);
 
         if (j >= 52 && j % 52 == 0)
         {

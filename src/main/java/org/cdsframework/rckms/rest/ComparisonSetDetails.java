@@ -2,6 +2,7 @@ package org.cdsframework.rckms.rest;
 
 import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,8 +20,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonPropertyOrder(
-    { "comparisonSetKey", "comparisonTestId", "status", "createDate", "comparisonDate", "serviceOutputCount", "serviceOutput",
-        "results" })
+    { "comparisonSetKey", "comparisonTestId", "status", "createDate", "comparisonDate", "serviceOutputCount",
+        "serviceResponseTimes", "serviceOutput", "results" })
 public class ComparisonSetDetails
 {
   private String managementBaseUrl;
@@ -47,6 +48,11 @@ public class ComparisonSetDetails
   public int getServiceOutputCount()
   {
     return comparisonSet.getServiceOutputCount();
+  }
+
+  public Map<String, Double> getServiceResponseTimes()
+  {
+    return comparisonSet.getServiceResponseTimes();
   }
 
   public OffsetDateTime getCreateDate()
@@ -102,6 +108,11 @@ public class ComparisonSetDetails
     public int getServiceStatus()
     {
       return serviceOutput.getServiceStatus();
+    }
+
+    public Integer getServiceResponseTime()
+    {
+      return serviceOutput.getServiceResponseTime();
     }
 
     public String getOutputUrl()

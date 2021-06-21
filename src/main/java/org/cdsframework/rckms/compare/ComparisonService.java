@@ -144,11 +144,12 @@ public class ComparisonService
     comparisonSet.setComparisonDate(now);
     comparisonSet.setResults(results);
     comparisonSet.setStatus(results.isEmpty() ? Status.PASS : Status.FAIL);
-    // Because we auto-expire ServiceOutput records, if there were errors, then attach the outputs to the comparison set
-    // so we keep record of them. The assumption is that there should be relatively very few errors so adding them to the
+    // If there were no errors, then clear out the output to limit storage requirements.
+    // The assumption is that there should be relatively very few errors so adding them to the
     // comparison sets shouldn't be a problem.
-    if (!results.isEmpty())
-      comparisonSet.setServiceOutputs(outputs);
+    if (Status.PASS.equals(comparisonSet.getStatus()))
+      outputs.forEach(output -> output.setOutput(null));
+    comparisonSet.setServiceOutputs(outputs);
     managementService.saveComparisonSet(comparisonSet);
     managementService.markServiceOutputsAsCompared(outputs, now);
   }

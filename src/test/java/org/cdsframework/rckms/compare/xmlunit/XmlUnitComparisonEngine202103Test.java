@@ -60,7 +60,9 @@ public class XmlUnitComparisonEngine202103Test
 
   private ServiceOutput createServiceOutput(String sourceId, String xml)
   {
-    ServiceOutput output = new ServiceOutput("test", "comparison-set-key", sourceId, 200, xml);
+    ServiceOutput output = new ServiceOutput("test", "comparison-set-key", sourceId);
+    output.setServiceStatus(200);
+    output.setOutput(xml);
     return output;
   }
 
