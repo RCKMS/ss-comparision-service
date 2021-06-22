@@ -19,7 +19,15 @@ steps:
   - name: gcr.io/cloud-builders/mvn
     id: build
     args:
-      [ "clean", "install", "jib:build", "-DskipTests", "-Dimage=us.gcr.io/${PROJECT_ID}/${_IMAGE_NAME}", "-Dbranchtag=${BRANCH_NAME}", "-Dshatag=${SHORT_SHA}" ]
+      [
+        "clean",
+        "install",
+        "jib:build",
+        "-DskipTests",
+        "-Dimage=us.gcr.io/${PROJECT_ID}/${_IMAGE_NAME}",
+        "-Dbranchtag=${BRANCH_NAME}",
+        "-Dshatag=${SHORT_SHA}",
+      ]
     volumes:
       - name: m2
         path: /root/.m2
@@ -45,5 +53,5 @@ steps:
     args:
       - -c
       - |
-        gcloud container clusters get-credentials --project="hln-rckms" --region="${_GKE_REGION}" "${_GKE_CLUSTER}" || exit
-        kubectl set image deployment/${_GKE_WORKLOAD_NAME} ${_GKE_WORKLOAD_NAME}=us.gcr.io/hln-rckms/${_GKE_WORKLOAD_NAME}:$SHORT_SHA --namespace=rckms-$BRANCH_NAME || exit 0
+        gcloud container clusters get-credentials --project="$PROJECT_ID" --region="${_GKE_REGION}" "${_GKE_CLUSTER}" || exit
+        kubectl set image deployment/${_GKE_WORKLOAD} ${_GKE_WORKLOAD}=us.gcr.io/hln-rckms/${_GKE_WORKLOAD}:$SHORT_SHA --namespace=${_GKE_NAMESPACE} || exit 0
