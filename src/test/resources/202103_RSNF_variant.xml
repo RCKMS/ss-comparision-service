@@ -1,0 +1,122 @@
+<!-- NEW -->
+<rckmsOutput xmlns="org.cdsframework.rckms.output" requestDate="2022-01-21-13:12">
+    <jurisdiction id="ms" displayName="Mississippi State Department of Health">
+        <responseCode>404</responseCode>
+        <responseMessage displayName="Reporting Specifications Not Found" code="RSNF">No reporting specifications found for jurisdiction Mississippi State Department of Health for the environment PRODUCTION</responseMessage>
+    </jurisdiction>
+    <jurisdiction id="tn" displayName="Tennessee Department of Health">
+        <responseCode>200</responseCode>
+        <responseMessage displayName="Success" code="OK">Jurisdiction request completed successfully for tn</responseMessage>
+        <reportingCondition reportable="YES">
+            <relId>15a29066d9b17dc3e3cff67c687bf2eb</relId>
+            <specificationId>1068d37a5a52935fb10e0889b19740b2</specificationId>
+            <name>COVID-19</name>
+            <conditionDisplayName>Disease caused by severe acute respiratory syndrome coronavirus 2 (disorder)</conditionDisplayName>
+            <conditionCodeSystem>2.16.840.1.113883.6.96</conditionCodeSystem>
+            <conditionCode>840539006</conditionCode>
+            <locationRelevance>
+                <code>RRVS5</code>
+                <displayName>Patient home address</displayName>
+                <codeSystem>2.16.840.1.114222.4.5.274</codeSystem>
+                <codeSystemName>Location Relevance</codeSystemName>
+            </locationRelevance>
+            <nnc>11065</nnc>
+            <logicSet>
+                <id>b5a656b3df5ed61d6993c94bd6ad79b4</id>
+                <name>LAB</name>
+                <reporterType>Provider/Facility Reporting</reporterType>
+                <reportingTimeframe unit="Day(s)" value="1"/>
+            </logicSet>
+            <logicSetId>b5a656b3df5ed61d6993c94bd6ad79b4</logicSetId>
+            <linkAndReference>
+                <id>d29bff41d735b4aaff4b9efab1d48148</id>
+                <name>Tennessee Department of Health COVID website</name>
+                <description>This includes references to more specific COVID reporting guidance for Tennessee.</description>
+                <url>https://www.tn.gov/health/cedep/ncov/healthcare-providers.html</url>
+                <priority>Information only</priority>
+                <category>Additional Resources</category>
+            </linkAndReference>
+            <linkAndReference>
+                <id>d173224122c05120ee1c5f71731ece5e</id>
+                <name>CDC COVID-19 website</name>
+                <description>CDC COVID-19 webpage</description>
+                <url>https://www.cdc.gov/coronavirus/2019-ncov/index.html</url>
+                <priority>Information only</priority>
+                <category>Outbreak- or Cluster related</category>
+            </linkAndReference>
+            <linkAndReference>
+                <id>114ab82859a0babeaf1dd511e1a28a21</id>
+                <name>Tennessee Department of Health Contact Information</name>
+                <description>If you have questions, please contact TDH by phone at (615)741-7247.</description>
+                <url>https://www.tn.gov/health/health-contact-information.html</url>
+                <priority>Information only</priority>
+                <category>PHA Contact Information</category>
+            </linkAndReference>
+            <linkAndReference>
+                <id>96828bd92181c69f6838a9f0cd57a78e</id>
+                <name>2021 Tennessee Reportable Disease List for Healthcare Providers</name>
+                <description>Link to PDF version of 2021 Tennessee Reportable Conditions.</description>
+                <url>https://www.tn.gov/content/dam/tn/health/documents/reportable-diseases/Provider-list-2022.pdf</url>
+                <priority>Information only</priority>
+                <category>Additional Resources</category>
+            </linkAndReference>
+            <criteria>
+                <relId>15a29066d9b17dc3e3cff67c687bf2eb</relId>
+                <criteriaId>15a29066d9b17dc3e3cff67c687bf2eb</criteriaId>
+                <name>Detection of SARS-CoV-2 nucleic acid in a clinical or post-mortem specimen by any method</name>
+                <criteriaType>Laboratory</criteriaType>
+            </criteria>
+            <reportingTimeframe unit="Day(s)" value="1"/>
+            <responsibleAgency id="tn" displayName="Tennessee Department of Health"/>
+        </reportingCondition>
+        <routingEntity id="tn" displayName="Tennessee Department of Health"/>
+        <authoringAgency id="tn" displayName="Tennessee Department of Health">
+            <address>
+                <streetAddressLine>Communicable and Environmental Diseases and Emergency Preparedness
+                    Andrew Johnson Towerr
+                    710 James Robertson Parkway, Nashville, TN 37243
+                </streetAddressLine>
+                <city>Nashville</city>
+                <state>TN</state>
+                <postalcode>37243</postalcode>
+                <description>Tennessee
+                    Department of Health
+                </description>
+                <telecom use="WP" value="ceds.informatics@tn.gov"/>
+                <telecom use="WP" value="(615) 741-7247"/>
+                <telecom use="WP" value="(615) 741-3857"/>
+            </address>
+        </authoringAgency>
+    </jurisdiction>
+    <serviceMessage>OpenCDS invocation ran successfully for knowledge module RCKMS^gov.cdc.rckms.tn^1.0.0.</serviceMessage>
+    <serviceMessage>Condition code Disease caused by severe acute respiratory syndrome coronavirus 2 (disorder) (840539006) was reportable for jurisdiction Tennessee Department of Health because reportPatientResident flag was checked.</serviceMessage>
+    <serviceMessage>Service request completed successfully.</serviceMessage>
+    <responseCode>200</responseCode>
+    <responseMessage>Completed OK</responseMessage>
+    <diagnostics>
+        <diagnostic>
+            <key>eicr_document_id</key>
+            <value/>
+        </diagnostic>
+        <diagnostic>
+            <key>execution_start</key>
+            <value>1642770738621</value>
+        </diagnostic>
+        <diagnostic>
+            <key>execution_stop</key>
+            <value>1642770742528</value>
+        </diagnostic>
+        <diagnostic>
+            <key>rckms_shared_service_duration</key>
+            <value>3907</value>
+        </diagnostic>
+        <diagnostic>
+            <key>vmr_converter_service_duration</key>
+            <value>41</value>
+        </diagnostic>
+        <diagnostic>
+            <key>open_cds_service_duration</key>
+            <value>56</value>
+        </diagnostic>
+    </diagnostics>
+</rckmsOutput>
