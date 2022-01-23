@@ -42,6 +42,7 @@ public class ServiceOutput
   private String output;
 
   @Field
+  @Indexed
   private OffsetDateTime createDate;
 
   @Field
