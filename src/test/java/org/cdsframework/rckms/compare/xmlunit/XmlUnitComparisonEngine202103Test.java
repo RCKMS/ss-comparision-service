@@ -48,6 +48,25 @@ public class XmlUnitComparisonEngine202103Test
     assertEquals("/rckmsOutput[1]/jurisdiction[1]/serviceResponseCode[1]/text()[1]", results.get(0).getNode());
   }
 
+  @Test
+  public void testIgnoreExtraRSNFJurisdictionElements() throws Exception
+  {
+    ComparisonContext ctx = createContext("classpath:202103_RSNF_control.xml", "classpath:202103_RSNF_variant.xml");
+    XmlUnitComparisonEngine202103 comparison = new XmlUnitComparisonEngine202103(EnvType.NONPROD);
+    List<ComparisonResult> results = compare(comparison, ctx);
+    assertTrue(results.isEmpty(), results.toString());
+  }
+
+  @Test
+  public void testUnexpectedExtraJurisdictionElement() throws Exception
+  {
+    ComparisonContext ctx =
+        createContext("classpath:202103_TestExtraJurisdiction_control.xml", "classpath:202103_TestExtraJurisdiction_variant.xml");
+    XmlUnitComparisonEngine202103 comparison = new XmlUnitComparisonEngine202103(EnvType.NONPROD);
+    List<ComparisonResult> results = compare(comparison, ctx);
+    assertEquals("/rckmsOutput[1]/jurisdiction[1]", results.get(0).getNode());
+  }
+
   private ComparisonContext createContext(String controlUri, String variantUri) throws Exception
   {
     String controlXml = XmlUtils.loadXml(controlUri);

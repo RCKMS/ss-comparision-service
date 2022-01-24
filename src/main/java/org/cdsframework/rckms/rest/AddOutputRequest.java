@@ -1,10 +1,7 @@
 package org.cdsframework.rckms.rest;
 
-import javax.validation.constraints.Positive;
-
 public class AddOutputRequest
 {
-  @Positive
   private int serviceStatus;
   private String serviceOutput;
   private Integer serviceResponseTime;

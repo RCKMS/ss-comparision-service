@@ -19,6 +19,7 @@ import org.cdsframework.rckms.dao.ServiceOutput;
 import org.cdsframework.rckms.dao.ServiceOutputRepository;
 import org.cdsframework.rckms.rest.AddOutputRequest;
 import org.cdsframework.rckms.rest.ComparisonTestSummary;
+import org.cdsframework.rckms.util.ServiceOutputSanitizer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
@@ -36,6 +37,7 @@ public class ManagementService
   private ComparisonTestRepository comparisonTestRepo;
   private ComparisonSetRepository comparisonSetRepo;
   private ServiceOutputRepository serviceOutputRepo;
+  private ServiceOutputSanitizer outputSanitizer = new ServiceOutputSanitizer();
 
   public ManagementService(QueueRepository queueRepo, ComparisonTestRepository comparisonTestRepo,
       ComparisonSetRepository comparisonSetRepo,
@@ -53,8 +55,11 @@ public class ManagementService
     ServiceOutput serviceOutput =
         new ServiceOutput(test.getId(), comparisonSetKey, sourceId);
     serviceOutput.setServiceStatus(req.getServiceStatus());
-    serviceOutput.setOutput(req.getServiceOutput());
+    String payload = outputSanitizer.sanitize(req.getServiceOutput());
+    serviceOutput.setOutput(payload);
     serviceOutput.setServiceResponseTime(req.getServiceResponseTime());
+    if (payload != null && payload.contains("Exception"))
+      serviceOutput.setOutputContainsException(true);
     serviceOutputRepo.save(serviceOutput);
 
     // 2. upsert comparison_set doc

@@ -124,7 +124,11 @@ public class XmlUnitComparisonEngine202103 extends AbstractXmlUnitComparisonEngi
         .and(not(pathMatching("jurisdiction/output")))
         .and(not(pathMatching("jurisdiction/serviceResponseMessage")))
         .and(not(pathMatching("jurisdiction/responseMessage")))
-        .and(not(pathMatching("reportingCondition/linkAndReference")));
+        .and(not(pathMatching("reportingCondition/linkAndReference")))
+        // New ss returns a jurisdiction element with a responseCode=404 for jurisdiction not found and RS not found scenarios.
+        // Old ss does not return a jurisdiction element for those cases - it just returns info in a status message.
+        // So, this is filtering out jurisdiction nodes from the new ss output that have a nested <responseCode>404</responseCode>
+        .and(not(ChildNodeValuePredicate.forParent("jurisdiction").withChildElement("responseCode", "404")));
 
     if (EnvType.NONPROD.equals(envType))
     {
