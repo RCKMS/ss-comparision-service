@@ -55,8 +55,11 @@ public class ManagementService
     ServiceOutput serviceOutput =
         new ServiceOutput(test.getId(), comparisonSetKey, sourceId);
     serviceOutput.setServiceStatus(req.getServiceStatus());
-    serviceOutput.setOutput(outputSanitizer.sanitize(req.getServiceOutput()));
+    String payload = outputSanitizer.sanitize(req.getServiceOutput());
+    serviceOutput.setOutput(payload);
     serviceOutput.setServiceResponseTime(req.getServiceResponseTime());
+    if (payload != null && payload.contains("Exception"))
+      serviceOutput.setOutputContainsException(true);
     serviceOutputRepo.save(serviceOutput);
 
     // 2. upsert comparison_set doc

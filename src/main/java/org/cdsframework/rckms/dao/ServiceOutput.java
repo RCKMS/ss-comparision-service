@@ -49,6 +49,10 @@ public class ServiceOutput
   // See MongoConfig for the TTL index on this.
   private OffsetDateTime comparisonDate;
 
+  @Field
+  @Indexed
+  private Boolean outputContainsException;
+
   ServiceOutput()
   {
   }
@@ -155,6 +159,16 @@ public class ServiceOutput
   public String toString()
   {
     return comparisonSetKey + "[" + sourceId + "]";
+  }
+
+  public Boolean isOutputContainsException()
+  {
+    return outputContainsException;
+  }
+
+  public void setOutputContainsException(Boolean outputContainsException)
+  {
+    this.outputContainsException = outputContainsException;
   }
 
   @Override
