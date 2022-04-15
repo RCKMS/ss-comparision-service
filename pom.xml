@@ -92,13 +92,13 @@
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy</artifactId>
-            <version>3.0.6</version>
+            <version>3.0.10</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-xml</artifactId>
-            <version>3.0.6</version>
+            <version>3.0.10</version>
             <scope>test</scope>
         </dependency>
 
