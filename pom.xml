@@ -11,7 +11,7 @@
     </parent>
     <groupId>org.cdsframework.rckms</groupId>
     <artifactId>ss-comparison-service</artifactId>
-    <version>1.2.0</version>
+    <version>1.3.1</version>
     <name>ss-comparison-service</name>
     <description>SS Comparison Service</description>
 
